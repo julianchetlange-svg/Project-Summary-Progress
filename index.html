@@ -68,6 +68,10 @@
   .s-return { background: #c8ecd2; color: #0f3d1e; }
   .con-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
   .wrap-cell { white-space: normal !important; word-break: break-word; vertical-align: top; line-height: 1.4; }
+  .note-card { background: #fff; border: 1px solid #d8e4d8; border-left: 4px solid #F5C400; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .note-date { font-size: 12px; font-weight: 700; color: #1B5C2E; margin-bottom: 6px; }
+  .note-text { font-size: 13px; color: #333; line-height: 1.5; white-space: pre-wrap; }
+  .note-empty { text-align: center; color: #aaa; font-size: 13px; padding: 40px 0; }
   .con-detail { font-size: 11px; color: #999; }
   #conlog-body td { vertical-align: top; }
 
@@ -144,6 +148,7 @@
   <button class="tab-btn" onclick="switchTab('all')">All projects</button>
   <button class="tab-btn" onclick="switchTab('conlog')">Contingency log</button>
   <button class="tab-btn" onclick="switchTab('budgetreq')">Budget requests</button>
+  <button class="tab-btn" onclick="switchTab('meetingnotes')">Budget meeting notes</button>
 </div>
 
 <!-- EXEC TAB -->
@@ -361,6 +366,15 @@
   <div class="count-label" id="budgetreq-count"></div>
 </div>
 
+<!-- BUDGET MEETING NOTES TAB -->
+<div id="tab-meetingnotes" class="tab-panel">
+  <div class="table-wrap" style="padding:16px 20px;">
+    <div style="font-size:11px;font-weight:600;color:#1B5C2E;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Budget meeting notes</div>
+    <div style="font-size:12px;color:#999;">Chronological log — newest first</div>
+  </div>
+  <div id="meetingnotes-list"></div>
+</div>
+
 </div>
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
@@ -504,18 +518,19 @@ const projects = [
   {id:6785,status:'Budget Plan',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:2000,cost:0,type:'Internal Team Maintenance',name:'115 Midlothian - Store Maintenance and Repair',start:'2026-06-01',effortDays:120,pct:0,carryover:false},
 
   /* BUDGET REQUEST */
-  {id:5102,status:'Budget Request',store:'047 Waco',region:'Region 02',assignee:'Steven McCormick',budget:35000,cost:0,type:'Other',name:'047 Waco - Fence',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'Jeff Metzler advised we keep pushing on this repair \u2014 the back fence is partially laying down and most of the fence posts are rusted out.'},
-  {id:6818,status:'Budget Request',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'066 Alice - Sitework - Asphalt Repairs',start:'2026-09-01',effortDays:60,pct:0,carryover:false,notes:'Requested by the store and regional manager. Leeland is getting a quote.'},
-  {id:6257,status:'Budget Request',store:'016 New Braunfels',region:'Region 07',assignee:'Carlos Garcia',budget:20000,cost:0,type:'Sitework',name:'016 New Braunfels - Base work freight truck exit',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Looking at lower insurance requirements for this work so we don\'t have to hire a large commercial contractor under the current insurance requirements.'},
-  {id:7049,status:'Budget Request',store:'114 Alvin',region:'Region 03',assignee:'Steven McCormick',budget:156156.38,cost:0,type:'HVAC',name:'114 Alvin - HVAC - RTU Replacement',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'HVAC systems were installed before coils were coated for coastal areas. Techs say units are almost beyond repair \u2014 running on 1 compressor or with leaking coils.'},
-  {id:6653,status:'Budget Request',store:'359 Burnet Reload',region:'Distribution',assignee:'Carlos Garcia',budget:60890.63,cost:0,type:'Sitework',name:'359 Mc Reload - Sitework - Base work',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Luis requested base work to repair worn areas, mostly in drainage areas.'},
-  {id:1250,status:'Budget Request',store:'027 SE San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:100000,cost:0,type:'Sitework',name:'027 SE San Antonio - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:200,pct:0,carryover:false,notes:'Paused \u2014 Corey wanted an onsite meeting. Budget was $100K; repairs came in at $52K.'},
-  {id:4937,status:'Budget Request',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:10059.13,cost:0,type:'Sitework',name:'115 Midlothian - Sitework - Yard Erosion',start:'2026-03-30',effortDays:90,pct:0,carryover:false,notes:'Ron asked we not move forward with the $11K landscaping quote. He eventually wants concrete cloth put down. Our teams are allocated to other projects \u2014 considering bringing in dirt since the stores have corrugated drain pipe at the end of the gutters.'},
-  {id:4904,status:'Budget Request',store:'038 Rosenberg',region:'Region 03',assignee:'Steven McCormick',budget:15000,cost:0,type:'Sitework',name:'038 Rosenberg - Sitework - Concrete Repairs',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'500 sq ft of concrete repairs needed on site. Submitted by S. McCormick during site survey.'},
-  {id:6752,status:'Budget Request',store:'050 SC San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'050 SC San Antonio - Sitework - Asphalt Repairs',start:'2026-10-26',effortDays:60,pct:0,carryover:false,notes:'Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.'},
-  {id:800,status:'Budget Request',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Sitework',name:'037 Brownsville - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false,notes:'Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.'},
-  {id:792,status:'Budget Request',store:'040 Beeville',region:'Region 04',assignee:'Leeland Weiss',budget:12800,cost:0,type:'Metal Work',name:'040 Beeville - Replace Damaged R - Panel',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'Could not find the 40\' R-panel originally requested in 2023. Wall appears to have been pushed out then reattached (not really an issue). Front of the warehouse and doors are very rough. Leeland got a quote to make these repairs: $62K.'},
-  {id:6191,status:'Budget Request',store:'017 N Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Sitework',name:'017 N Corpus Christi - Sitework - Drainage Plan',start:'2026-08-03',effortDays:90,pct:0,carryover:false,notes:'Water ponding on the base in front of the cantilever rack. Regrading the area will cost $9,100.'},
+  {id:5102,status:'Budget Request',store:'047 Waco',region:'Region 02',assignee:'Steven McCormick',budget:35000,cost:0,type:'Other',name:'047 Waco - Fence',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'Jeff Metzler advised we keep pushing on this repair \u2014 the back fence is partially laying down and most of the fence posts are rusted out.  ·  8/10/26 meeting: Per Ron, do the back side of the fence.'},
+  {id:6818,status:'Budget Request',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'066 Alice - Sitework - Asphalt Repairs',start:'2026-09-01',effortDays:60,pct:0,carryover:false,notes:'Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.'},
+  {id:6257,status:'Budget Request',store:'016 New Braunfels',region:'Region 07',assignee:'Carlos Garcia',budget:20000,cost:0,type:'Sitework',name:'016 New Braunfels - Base work freight truck exit',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Looking at lower insurance requirements for this work so we don\'t have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray\'s contractor (does not meet insurance requirements). Work to be done on Sunday.'},
+  {id:7049,status:'Budget Request',store:'114 Alvin',region:'Region 03',assignee:'Steven McCormick',budget:156156.38,cost:0,type:'HVAC',name:'114 Alvin - HVAC - RTU Replacement',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'HVAC systems were installed before coils were coated for coastal areas. Techs say units are almost beyond repair \u2014 running on 1 compressor or with leaking coils.  ·  8/10/26 meeting: Hold to early 2027 — per team, try to limp the system through 2026.'},
+  {id:6653,status:'Budget Request',store:'359 Burnet Reload',region:'Distribution',assignee:'Carlos Garcia',budget:60890.63,cost:0,type:'Sitework',name:'359 Mc Reload - Sitework - Base work',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Luis requested base work to repair worn areas, mostly in drainage areas.  ·  8/10/26 meeting: Per Waylon, hold and review again at 2027 budget review.'},
+  {id:1250,status:'Budget Request',store:'027 SE San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:100000,cost:0,type:'Sitework',name:'027 SE San Antonio - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:200,pct:0,carryover:false,notes:'Paused \u2014 Corey wanted an onsite meeting. Budget was $100K; repairs came in at $52K.  ·  8/10/26 meeting: Per Ron, look at repairs along the entryway and warehouse entrances.'},
+  {id:4937,status:'Budget Request',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:10059.13,cost:0,type:'Sitework',name:'115 Midlothian - Sitework - Yard Erosion',start:'2026-03-30',effortDays:90,pct:0,carryover:false,notes:'Ron asked we not move forward with the $11K landscaping quote. He eventually wants concrete cloth put down. Our teams are allocated to other projects \u2014 considering bringing in dirt since the stores have corrugated drain pipe at the end of the gutters.  ·  8/10/26 meeting: Team to get a quote to bring in dirt for erosion areas; lay concrete cloth after dirt is placed.'},
+  {id:4904,status:'Budget Request',store:'038 Rosenberg',region:'Region 03',assignee:'Steven McCormick',budget:15000,cost:0,type:'Sitework',name:'038 Rosenberg - Sitework - Concrete Repairs',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'500 sq ft of concrete repairs needed on site. Submitted by S. McCormick during site survey.  ·  8/10/26 meeting: Leave alone until 2027.'},
+  {id:6752,status:'Budget Request',store:'050 SC San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'050 SC San Antonio - Sitework - Asphalt Repairs',start:'2026-10-26',effortDays:60,pct:0,carryover:false,notes:'Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.  ·  8/10/26 meeting: Have Leeland get a quote for the trouble areas and send to Ron.'},
+  {id:800,status:'Budget Request',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Sitework',name:'037 Brownsville - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false,notes:'Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future.'},
+  {id:792,status:'Budget Request',store:'040 Beeville',region:'Region 04',assignee:'Leeland Weiss',budget:12800,cost:0,type:'Metal Work',name:'040 Beeville - Replace Damaged R - Panel',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'Could not find the 40\' R-panel originally requested in 2023. Wall appears to have been pushed out then reattached (not really an issue). Front of the warehouse and doors are very rough. Leeland got a quote to make these repairs: $62K.  ·  8/10/26 meeting: Push to 2027 budget review.'},
+  {id:6191,status:'Budget Request',store:'017 N Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Sitework',name:'017 N Corpus Christi - Sitework - Drainage Plan',start:'2026-08-03',effortDays:90,pct:0,carryover:false,notes:'Water ponding on the base in front of the cantilever rack. Regrading the area will cost $9,100.  ·  8/10/26 meeting: Go forward with regrading the area holding water.'},
+  {id:'PENDING-071',status:'Budget Request',store:'071 Nacogdoches',region:'Unknown',assignee:'Unassigned',budget:0,cost:0,type:'Sitework',name:'071 Nacogdoches - Asphalt Repairs',start:'2026-08-10',effortDays:60,pct:0,carryover:false,notes:'New request from 8/10/26 budget meeting — asphalt repairs, look at entryway to warehouse. Awaiting Fexa project ID, region, assignee, and budget estimate.'},
 ];
 
 const contingencyLog = [
@@ -561,6 +576,11 @@ const contingencyLog = [
   {name:'050 SC San Anonio - Lifecycle Replacements',detail:'Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget',department:null,projected:-18092.5,amount:-18092.5},
   {name:'123 Reno Springtown - Civil - ARC - MEP Design',detail:'Unplanned Spend',department:null,projected:396000,amount:396000},
   {name:'730 Store Development - Racking Invetory',detail:'Backfill Standard inventory and ship Specialize parts',department:null,projected:73610,amount:73610},
+];
+
+/* Budget meeting notes — chronological log, fed manually. Each entry: {date:'YYYY-MM-DD', text:'...'} */
+const meetingNotes = [
+  {date:'2026-08-10', text:'Reviewed all pending budget requests:\n\n• 5102 (047 Waco - Fence): Per Ron, do the back side of the fence.\n• 6818 (066 Alice - Sitework): Only do patch work — send quote to Ron; Leeland to move forward with the quote.\n• 6257 (016 New Braunfels): Use Ray\'s contractor (does not meet insurance requirements). Work to be done on Sunday.\n• 7049 (114 Alvin - HVAC): Hold to early 2027 — per team, try to limp the system through 2026.\n• 6653 (359 Mc Reload - Sitework): Per Waylon, hold and review again at 2027 budget review.\n• 1250 (027 SE San Antonio - Sitework): Per Ron, look at repairs along the entryway and warehouse entrances.\n• 4937 (115 Midlothian - Yard Erosion): Team to get a quote to bring in dirt for erosion areas; lay concrete cloth after dirt is placed.\n• 4904 (038 Rosenberg - Concrete Repairs): Leave alone until 2027.\n• 6752 (050 SC San Antonio - Sitework): Have Leeland get a quote for the trouble areas and send to Ron.\n• 800 (037 Brownsville - Sitework): Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future.\n• 792 (040 Beeville - R-Panel): Push to 2027 budget review.\n• 6191 (017 N Corpus Christi - Drainage): Go forward with regrading the area holding water.\n\nOther items discussed:\n• 3749 (061 Mt. Pleasant - Sitework - Asphalt Patches, currently Budget Plan status): Revised scope — look at entryway through the gate, push to 2027.\n• New request — 071 Nacogdoches: asphalt repairs, look at entryway to warehouse. Added to Budget Requests tab pending a Fexa project ID, region, assignee, and budget estimate.\n• 122 Canyon Lake: Per Waylon, turn lights off right after close (operational item, not a budget request).'},
 ];
 
 /* HELPERS */
@@ -890,13 +910,13 @@ function renderBudgetRequests(){
   const data=getFilteredBudgetRequests();
   document.getElementById('budgetreq-body').innerHTML=data.map(p=>`
     <tr class="clickrow${p.carryover?' carryover':''}">
-      <td style="font-size:11px;"><a href="${fexaUrl(p.id)}" target="_blank" rel="noopener" style="color:#1B5C2E;font-weight:600;text-decoration:none;" title="Open in Fexa">${p.id} ↗</a></td>
+      <td style="font-size:11px;">${typeof p.id==='number'?`<a href="${fexaUrl(p.id)}" target="_blank" rel="noopener" style="color:#1B5C2E;font-weight:600;text-decoration:none;" title="Open in Fexa">${p.id} ↗</a>`:`<span style="color:#aaa;font-style:italic;" title="No Fexa project ID yet">${p.id}</span>`}</td>
       <td title="${p.name}">${sn(p.name)}${coPill(p)}</td>
       <td style="color:#666;font-size:12px;">${p.region}</td>
       <td style="color:#666;font-size:12px;">${shA[p.assignee]||p.assignee}</td>
       <td style="color:#666;font-size:12px;">${p.type}</td>
       <td style="color:#666;font-size:12px;">${p.start}</td>
-      <td style="font-size:12px;">${fmt$(p.budget)}</td>
+      <td style="font-size:12px;">${p.budget?fmt$(p.budget):'TBD'}</td>
       <td class="wrap-cell" style="font-size:12px;color:#555;">${p.notes||'—'}</td>
     </tr>`).join('');
   document.getElementById('budgetreq-count').textContent=`Showing ${data.length} of ${all.length} budget requests`;
@@ -909,10 +929,26 @@ function exportBudgetRequestsCSV(){
   downloadCSV('mccoys_budget_requests.csv', rows);
 }
 
+function fmtNoteDate(d){const dt=new Date(d+'T00:00:00');return MO[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();}
+
+function renderMeetingNotes(){
+  const list=document.getElementById('meetingnotes-list');
+  if(!meetingNotes.length){
+    list.innerHTML='<div class="note-empty">No budget meeting notes yet.</div>';
+    return;
+  }
+  const sorted=[...meetingNotes].sort((a,b)=>b.date.localeCompare(a.date));
+  list.innerHTML=sorted.map(n=>`
+    <div class="note-card">
+      <div class="note-date">${fmtNoteDate(n.date)}</div>
+      <div class="note-text">${n.text}</div>
+    </div>`).join('');
+}
+
 function switchTab(t){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  ['exec','assignee','all','conlog','budgetreq'].forEach((n,i)=>{if(n===t){document.querySelectorAll('.tab-btn')[i].classList.add('active');document.getElementById('tab-'+n).classList.add('active');}});
+  ['exec','assignee','all','conlog','budgetreq','meetingnotes'].forEach((n,i)=>{if(n===t){document.querySelectorAll('.tab-btn')[i].classList.add('active');document.getElementById('tab-'+n).classList.add('active');}});
   if(t==='assignee'&&!window._stageChartBuilt) buildStageChart();
 }
 
@@ -923,7 +959,7 @@ const aS=document.getElementById('al-assignee');
 assignees.forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;aS.appendChild(o);});
 const brA=document.getElementById('br-assignee');
 assignees.forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;brA.appendChild(o);});
-renderExec(); renderAssignee(); renderAll(); renderContingencyLog(); renderBudgetRequests();
+renderExec(); renderAssignee(); renderAll(); renderContingencyLog(); renderBudgetRequests(); renderMeetingNotes();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
