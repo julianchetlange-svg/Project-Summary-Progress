@@ -143,6 +143,7 @@
   <button class="tab-btn" onclick="switchTab('assignee')">By assignee</button>
   <button class="tab-btn" onclick="switchTab('all')">All projects</button>
   <button class="tab-btn" onclick="switchTab('conlog')">Contingency log</button>
+  <button class="tab-btn" onclick="switchTab('budgetreq')">Budget requests</button>
 </div>
 
 <!-- EXEC TAB -->
@@ -328,6 +329,38 @@
   <div class="count-label" id="conlog-count"></div>
 </div>
 
+<!-- BUDGET REQUEST TAB -->
+<div id="tab-budgetreq" class="tab-panel">
+  <div class="metric-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="mc"><div class="mc-label">Pending requests</div><div class="mc-val" id="br-count" style="color:#7a5500;">—</div><div class="mc-sub">Awaiting budget approval</div></div>
+    <div class="mc" style="border-left-color:#F5C400;"><div class="mc-label">Total requested</div><div class="mc-val" id="br-total" style="color:#7a5500;">—</div><div class="mc-sub">Sum of requested budgets</div></div>
+    <div class="mc"><div class="mc-label">Carryover requests</div><div class="mc-val" id="br-carry">—</div><div class="mc-sub">2025 budget year</div></div>
+  </div>
+  <div class="filter-bar">
+    <label>Type</label>
+    <select id="br-type" onchange="renderBudgetRequests()"><option value="">All types</option></select>
+    <label>Assignee</label>
+    <select id="br-assignee" onchange="renderBudgetRequests()"><option value="">All</option></select>
+    <label class="co-toggle"><input type="checkbox" id="br-co" onchange="renderBudgetRequests()"> Carryover only</label>
+    <input type="text" id="br-search" placeholder="Search project or store..." oninput="renderBudgetRequests()" style="width:210px;" />
+    <button onclick="exportBudgetRequestsCSV()" style="margin-left:auto;font-size:12px;font-weight:600;color:#fff;background:#1B5C2E;border:none;padding:7px 14px;border-radius:6px;cursor:pointer;">Export CSV</button>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr>
+      <th style="width:5%;">ID</th>
+      <th style="width:22%;">Project</th>
+      <th style="width:9%;">Region</th>
+      <th style="width:12%;">Assignee</th>
+      <th style="width:9%;">Type</th>
+      <th style="width:12%;">Requested start</th>
+      <th style="width:11%;">Budget requested</th>
+      <th style="width:20%;">Notes</th>
+    </tr></thead>
+    <tbody id="budgetreq-body"></tbody>
+  </table></div>
+  <div class="count-label" id="budgetreq-count"></div>
+</div>
+
 </div>
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
@@ -471,18 +504,18 @@ const projects = [
   {id:6785,status:'Budget Plan',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:2000,cost:0,type:'Internal Team Maintenance',name:'115 Midlothian - Store Maintenance and Repair',start:'2026-06-01',effortDays:120,pct:0,carryover:false},
 
   /* BUDGET REQUEST */
-  {id:5102,status:'Budget Request',store:'047 Waco',region:'Region 02',assignee:'Steven McCormick',budget:35000,cost:0,type:'Other',name:'047 Waco - Fence',start:'2026-03-01',effortDays:30,pct:0,carryover:false},
-  {id:6818,status:'Budget Request',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'066 Alice - Sitework - Asphalt Repairs',start:'2026-09-01',effortDays:60,pct:0,carryover:false},
-  {id:6257,status:'Budget Request',store:'016 New Braunfels',region:'Region 07',assignee:'Carlos Garcia',budget:20000,cost:0,type:'Sitework',name:'016 New Braunfels - Base work freight truck exit',start:'2026-06-01',effortDays:120,pct:0,carryover:false},
-  {id:7049,status:'Budget Request',store:'114 Alvin',region:'Region 03',assignee:'Steven McCormick',budget:156156.38,cost:0,type:'HVAC',name:'114 Alvin - HVAC - RTU Replacement',start:'2026-07-01',effortDays:60,pct:0,carryover:false},
-  {id:6653,status:'Budget Request',store:'359 Burnet Reload',region:'Distribution',assignee:'Carlos Garcia',budget:60890.63,cost:0,type:'Sitework',name:'359 Mc Reload - Sitework - Base work',start:'2026-06-01',effortDays:120,pct:0,carryover:false},
-  {id:1250,status:'Budget Request',store:'027 SE San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:100000,cost:0,type:'Sitework',name:'027 SE San Antonio - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:200,pct:0,carryover:false},
-  {id:4937,status:'Budget Request',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:10059.13,cost:0,type:'Sitework',name:'115 Midlothian - Sitework - Yard Erosion',start:'2026-03-30',effortDays:90,pct:0,carryover:false},
-  {id:4904,status:'Budget Request',store:'038 Rosenberg',region:'Region 03',assignee:'Steven McCormick',budget:15000,cost:0,type:'Sitework',name:'038 Rosenberg - Sitework - Concrete Repairs',start:'2026-03-01',effortDays:30,pct:0,carryover:false},
-  {id:6752,status:'Budget Request',store:'050 SC San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'050 SC San Antonio - Sitework - Asphalt Repairs',start:'2026-10-26',effortDays:60,pct:0,carryover:false},
-  {id:800,status:'Budget Request',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Sitework',name:'037 Brownsville - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
-  {id:792,status:'Budget Request',store:'040 Beeville',region:'Region 04',assignee:'Leeland Weiss',budget:12800,cost:0,type:'Metal Work',name:'040 Beeville - Replace Damaged R - Panel',start:'2026-07-01',effortDays:60,pct:0,carryover:false},
-  {id:6191,status:'Budget Request',store:'017 N Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Sitework',name:'017 N Corpus Christi - Sitework - Drainage Plan',start:'2026-08-03',effortDays:90,pct:0,carryover:false},
+  {id:5102,status:'Budget Request',store:'047 Waco',region:'Region 02',assignee:'Steven McCormick',budget:35000,cost:0,type:'Other',name:'047 Waco - Fence',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'Jeff Metzler advised we keep pushing on this repair \u2014 the back fence is partially laying down and most of the fence posts are rusted out.'},
+  {id:6818,status:'Budget Request',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'066 Alice - Sitework - Asphalt Repairs',start:'2026-09-01',effortDays:60,pct:0,carryover:false,notes:'Requested by the store and regional manager. Leeland is getting a quote.'},
+  {id:6257,status:'Budget Request',store:'016 New Braunfels',region:'Region 07',assignee:'Carlos Garcia',budget:20000,cost:0,type:'Sitework',name:'016 New Braunfels - Base work freight truck exit',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Looking at lower insurance requirements for this work so we don\'t have to hire a large commercial contractor under the current insurance requirements.'},
+  {id:7049,status:'Budget Request',store:'114 Alvin',region:'Region 03',assignee:'Steven McCormick',budget:156156.38,cost:0,type:'HVAC',name:'114 Alvin - HVAC - RTU Replacement',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'HVAC systems were installed before coils were coated for coastal areas. Techs say units are almost beyond repair \u2014 running on 1 compressor or with leaking coils.'},
+  {id:6653,status:'Budget Request',store:'359 Burnet Reload',region:'Distribution',assignee:'Carlos Garcia',budget:60890.63,cost:0,type:'Sitework',name:'359 Mc Reload - Sitework - Base work',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Luis requested base work to repair worn areas, mostly in drainage areas.'},
+  {id:1250,status:'Budget Request',store:'027 SE San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:100000,cost:0,type:'Sitework',name:'027 SE San Antonio - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:200,pct:0,carryover:false,notes:'Paused \u2014 Corey wanted an onsite meeting. Budget was $100K; repairs came in at $52K.'},
+  {id:4937,status:'Budget Request',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:10059.13,cost:0,type:'Sitework',name:'115 Midlothian - Sitework - Yard Erosion',start:'2026-03-30',effortDays:90,pct:0,carryover:false,notes:'Ron asked we not move forward with the $11K landscaping quote. He eventually wants concrete cloth put down. Our teams are allocated to other projects \u2014 considering bringing in dirt since the stores have corrugated drain pipe at the end of the gutters.'},
+  {id:4904,status:'Budget Request',store:'038 Rosenberg',region:'Region 03',assignee:'Steven McCormick',budget:15000,cost:0,type:'Sitework',name:'038 Rosenberg - Sitework - Concrete Repairs',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'500 sq ft of concrete repairs needed on site. Submitted by S. McCormick during site survey.'},
+  {id:6752,status:'Budget Request',store:'050 SC San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'050 SC San Antonio - Sitework - Asphalt Repairs',start:'2026-10-26',effortDays:60,pct:0,carryover:false,notes:'Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.'},
+  {id:800,status:'Budget Request',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Sitework',name:'037 Brownsville - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false,notes:'Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.'},
+  {id:792,status:'Budget Request',store:'040 Beeville',region:'Region 04',assignee:'Leeland Weiss',budget:12800,cost:0,type:'Metal Work',name:'040 Beeville - Replace Damaged R - Panel',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'Could not find the 40\' R-panel originally requested in 2023. Wall appears to have been pushed out then reattached (not really an issue). Front of the warehouse and doors are very rough. Leeland got a quote to make these repairs: $62K.'},
+  {id:6191,status:'Budget Request',store:'017 N Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Sitework',name:'017 N Corpus Christi - Sitework - Drainage Plan',start:'2026-08-03',effortDays:90,pct:0,carryover:false,notes:'Water ponding on the base in front of the cantilever rack. Regrading the area will cost $9,100.'},
 ];
 
 const contingencyLog = [
@@ -537,6 +570,7 @@ function fmt$(v){if(v==null||isNaN(v))return'—';const neg=v<0,av=Math.abs(v),s
 function rem(p){return p.budget-(p.cost||0);}
 function remCell(p){const r=rem(p);return `<td class="${r<0?'rem-neg':'rem-pos'}">${fmt$(r)}</td>`;}
 function coPill(p){return p.carryover?` <span class="co-pill">2025 carry</span>`:'';}
+function fexaUrl(id){return `https://mccoys.fexa.io/main/index#project/${id}`;}
 function sBadge(s){const m={'Active':'s-active','Pre-Construction':'s-pre','Budget Plan':'s-budget','Budget Request':'s-req','Post-Construction':'s-post','Closed':'s-closed','Sourcing':'s-sourcing'};return `<span class="badge ${m[s]||'s-budget'}">${s}</span>`;}
 function pctCell(v){const c=v===100?'pf-done':v>0?'pf-active':'pf-none';return `<td>${v}%<span class="pbar-wrap"><span class="pbar-fill ${c}" style="width:${Math.max(v,2)}%;"></span></span></td>`;}
 function sn(n,l){l=l||38;return n.length>l?n.substring(0,l-1)+'…':n;}
@@ -834,20 +868,62 @@ function exportContingencyCSV(){
   downloadCSV('mccoys_contingency_log.csv', rows);
 }
 
+function getFilteredBudgetRequests(){
+  const tyF=document.getElementById('br-type').value;
+  const aF=document.getElementById('br-assignee').value;
+  const coF=document.getElementById('br-co').checked;
+  const q=document.getElementById('br-search').value.toLowerCase();
+  let data=projects.filter(p=>p.status==='Budget Request');
+  if(tyF) data=data.filter(p=>p.type===tyF);
+  if(aF)  data=data.filter(p=>p.assignee===aF);
+  if(coF) data=data.filter(p=>p.carryover);
+  if(q)   data=data.filter(p=>p.name.toLowerCase().includes(q)||p.store.toLowerCase().includes(q));
+  return data;
+}
+
+function renderBudgetRequests(){
+  const all=projects.filter(p=>p.status==='Budget Request');
+  document.getElementById('br-count').textContent=all.length;
+  document.getElementById('br-total').textContent=fmt$(all.reduce((s,p)=>s+p.budget,0));
+  document.getElementById('br-carry').textContent=all.filter(p=>p.carryover).length;
+
+  const data=getFilteredBudgetRequests();
+  document.getElementById('budgetreq-body').innerHTML=data.map(p=>`
+    <tr class="clickrow${p.carryover?' carryover':''}">
+      <td style="font-size:11px;"><a href="${fexaUrl(p.id)}" target="_blank" rel="noopener" style="color:#1B5C2E;font-weight:600;text-decoration:none;" title="Open in Fexa">${p.id} ↗</a></td>
+      <td title="${p.name}">${sn(p.name)}${coPill(p)}</td>
+      <td style="color:#666;font-size:12px;">${p.region}</td>
+      <td style="color:#666;font-size:12px;">${shA[p.assignee]||p.assignee}</td>
+      <td style="color:#666;font-size:12px;">${p.type}</td>
+      <td style="color:#666;font-size:12px;">${p.start}</td>
+      <td style="font-size:12px;">${fmt$(p.budget)}</td>
+      <td class="wrap-cell" style="font-size:12px;color:#555;">${p.notes||'—'}</td>
+    </tr>`).join('');
+  document.getElementById('budgetreq-count').textContent=`Showing ${data.length} of ${all.length} budget requests`;
+}
+
+function exportBudgetRequestsCSV(){
+  const data=getFilteredBudgetRequests();
+  const header=['ID','Project','Region','Assignee','Type','Requested Start','Budget Requested','Carryover','Notes','Fexa Link'];
+  const rows=[header, ...data.map(p=>[p.id,p.name,p.region,p.assignee,p.type,p.start,p.budget,p.carryover?'Yes':'No',p.notes||'',fexaUrl(p.id)])];
+  downloadCSV('mccoys_budget_requests.csv', rows);
+}
 
 function switchTab(t){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  ['exec','assignee','all','conlog'].forEach((n,i)=>{if(n===t){document.querySelectorAll('.tab-btn')[i].classList.add('active');document.getElementById('tab-'+n).classList.add('active');}});
+  ['exec','assignee','all','conlog','budgetreq'].forEach((n,i)=>{if(n===t){document.querySelectorAll('.tab-btn')[i].classList.add('active');document.getElementById('tab-'+n).classList.add('active');}});
   if(t==='assignee'&&!window._stageChartBuilt) buildStageChart();
 }
 
 const types=[...new Set(projects.map(p=>p.type))].sort();
 const assignees=[...new Set(projects.map(p=>p.assignee))].sort();
-['al-type','as-type'].forEach(id=>{const sel=document.getElementById(id);types.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});});
+['al-type','as-type','br-type'].forEach(id=>{const sel=document.getElementById(id);types.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});});
 const aS=document.getElementById('al-assignee');
 assignees.forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;aS.appendChild(o);});
-renderExec(); renderAssignee(); renderAll(); renderContingencyLog();
+const brA=document.getElementById('br-assignee');
+assignees.forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;brA.appendChild(o);});
+renderExec(); renderAssignee(); renderAll(); renderContingencyLog(); renderBudgetRequests();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
