@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>McCoy's Project Summary — Aug 5, 2026</title>
+<title>McCoy's Project Summary — Aug 20, 2026</title>
 <style>
   /* McCoy's brand: green #1B5C2E, yellow #F5C400 */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,8 +68,12 @@
   .s-return { background: #c8ecd2; color: #0f3d1e; }
   .con-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
   .wrap-cell { white-space: normal !important; word-break: break-word; vertical-align: top; line-height: 1.4; }
-  .note-card { background: #fff; border: 1px solid #d8e4d8; border-left: 4px solid #F5C400; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
-  .note-date { font-size: 12px; font-weight: 700; color: #1B5C2E; margin-bottom: 6px; }
+  .note-card { background: #fff; border: 1px solid #d8e4d8; border-left: 4px solid #F5C400; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+  .note-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; cursor: pointer; transition: background 0.1s; }
+  .note-header:hover { background: #fffef0; }
+  .note-date { font-size: 13px; font-weight: 700; color: #1B5C2E; }
+  .note-body { display: none; padding: 0 18px 16px; }
+  .note-body.open { display: block; }
   .note-text { font-size: 13px; color: #333; line-height: 1.5; white-space: pre-wrap; }
   .note-empty { text-align: center; color: #aaa; font-size: 13px; padding: 40px 0; }
   .con-detail { font-size: 11px; color: #999; }
@@ -128,17 +132,18 @@
       <div class="report-title">Project Summary Report</div>
     </div>
   </div>
-  <div class="report-date">As of August 5, 2026</div>
+  <div class="report-date">As of August 20, 2026</div>
 </div>
 
 <div class="disclaimer">
   <span class="disclaimer-icon">&#9432;</span>
   <span>
     <strong>Multi-year carryover notice:</strong> Projects marked <span class="co-pill">2025 carry</span> started
-    in 2025 or span a 2025–2026 budget year. Cost-to-date and budget remaining for these projects include
-    prior-year spend, so remaining balances may understate actual 2026 funds available. Update the
-    <code>cost</code> field for each carryover project with 2026-only actuals when available.
-    Use the "Carryover only" filter on any tab to review these projects in isolation.
+    in 2025 or span a 2025–2026 budget year — cost-to-date and budget remaining for these include prior-year
+    spend, so remaining balances may understate actual 2026 funds available. Update the <code>cost</code> field
+    for each with 2026-only actuals when available. Projects marked <span class="co-pill">2026‑27 carry</span>
+    are budgeted in 2026 but run into 2027 — their full budget is shown here even though a portion of the spend
+    will land in next year's program. Use the "Carryover only" filter on any tab to review these projects in isolation.
   </span>
 </div>
 
@@ -154,16 +159,16 @@
 <!-- EXEC TAB -->
 <div id="tab-exec" class="tab-panel active">
   <div class="metric-grid metric-grid-5">
-    <div class="mc"><div class="mc-label">Total projects</div><div class="mc-val">130</div><div class="mc-sub">2026 program</div></div>
+    <div class="mc"><div class="mc-label">Total projects</div><div class="mc-val">132</div><div class="mc-sub">2026 program</div></div>
     <div class="mc"><div class="mc-label">Active</div><div class="mc-val" style="color:#1B5C2E;" id="m-active">—</div><div class="mc-sub">In construction</div></div>
     <div class="mc"><div class="mc-label">Pre-construction</div><div class="mc-val" style="color:#4a8c5c;" id="m-pre">—</div><div class="mc-sub">Queued up</div></div>
     <div class="mc"><div class="mc-label">Budget plan</div><div class="mc-val" style="color:#5c4a00;" id="m-plan">—</div><div class="mc-sub">Planned, not approved</div></div>
     <div class="mc"><div class="mc-label">Complete YTD</div><div class="mc-val" style="color:#1B5C2E;" id="closed-ytd-val">—</div><div class="mc-sub" id="closed-ytd-sub">Closed + post-construction</div></div>
   </div>
   <div class="metric-grid metric-grid-3">
-    <div class="mc"><div class="mc-label">Total program budget</div><div class="mc-val">$28.4M</div><div class="mc-sub">All statuses combined</div></div>
-    <div class="mc"><div class="mc-label">Cost to date</div><div class="mc-val">$10.9M</div><div class="mc-sub">Incl. 2025 carryover spend</div></div>
-    <div class="mc"><div class="mc-label">Budget remaining</div><div class="mc-val" style="color:#1B5C2E;">$17.6M</div><div class="mc-sub">Program-wide</div></div>
+    <div class="mc"><div class="mc-label">Total program budget</div><div class="mc-val">$37.8M</div><div class="mc-sub">All statuses combined</div></div>
+    <div class="mc"><div class="mc-label">Cost to date</div><div class="mc-val">$11.2M</div><div class="mc-sub">Incl. 2025 carryover spend</div></div>
+    <div class="mc"><div class="mc-label">Budget remaining</div><div class="mc-val" style="color:#1B5C2E;">$26.6M</div><div class="mc-sub">Program-wide</div></div>
   </div>
   <div class="metric-grid" style="grid-template-columns:1fr 1fr;">
     <div class="mc">
@@ -378,7 +383,7 @@
 </div>
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
-   PROJECT DATA — week of Aug 5, 2026
+   PROJECT DATA — week of Aug 20, 2026
    Fields to maintain each cycle:
      pct        — percent complete (0–100)
      cost       — actual spend to date (dollars)
@@ -390,26 +395,24 @@
    ═══════════════════════════════════════════════════════════════════════ */
 const projects = [
   /* ACTIVE */
-  {id:3551,status:'Active',store:'122 Canyon Lake',region:'Region 07',assignee:'Jeff Schaefer',budget:12000000,cost:466015.56,type:'New Facility',name:'122 Canyon Lake - New Store',start:'2026-01-12',effortDays:394,pct:0,carryover:false},
-  {id:848,status:'Active',store:'011 South Austin',region:'Region 08',assignee:'Steven McCormick',budget:40000,cost:1495.11,type:'Lighting',name:'011 S Austin - Parking Lot Lighting',start:'2027-03-01',effortDays:60,pct:0,carryover:false},
-  {id:1219,status:'Active',store:'060 Brenham',region:'Region 01',assignee:'Steven McCormick',budget:411240.8,cost:7472.51,type:'Sitework',name:'060 Brenham - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
-  {id:6917,status:'Active',store:'950 Rio Truss',region:'Region 05',assignee:'Leeland Weiss',budget:97000,cost:1350,type:'Doors',name:'950 Rio Truss - Lean - To Cover for MiTek Saw',start:'2026-07-06',effortDays:60,pct:0,carryover:false},
+  {id:1219,status:'Active',store:'060 Brenham',region:'Region 01',assignee:'Steven McCormick',budget:411240.8,cost:47748.63,type:'Sitework',name:'060 Brenham - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
+  {id:6917,status:'Active',store:'950 Rio Truss',region:'Region 05',assignee:'Leeland Weiss',budget:97000,cost:104290,type:'Doors',name:'950 Rio Truss - Lean - To Cover for MiTek Saw',start:'2026-07-06',effortDays:60,pct:0,carryover:false},
   {id:4080,status:'Active',store:'730 Store Development',region:'Headquarters',assignee:'Greg Wallace',budget:140000,cost:52774.74,type:'Sitework',name:'730 Store Development - Parking Lot Striping',start:'2026-03-15',effortDays:180,pct:0,carryover:false},
+  {id:7478,status:'Active',store:'012 Weimar',region:'Region 07',assignee:'Steven McCormick',budget:2000,cost:0,type:'Internal Team Maintenance',name:'012 Weimar - Store Maintenance and Repair',start:'2026-08-01',effortDays:60,pct:0,carryover:false},
+  {id:3551,status:'Active',store:'122 Canyon Lake',region:'Region 07',assignee:'Jeff Schaefer',budget:12000000,cost:566089.58,type:'New Facility',name:'122 Canyon Lake - New Store',start:'2026-01-12',effortDays:394,pct:0,carryover:false},
   {id:6554,status:'Active',store:'096 El Campo',region:'Region 04',assignee:'Steven McCormick',budget:2000,cost:800,type:'Internal Team Maintenance',name:'096 El Campo - Store Maintenance and Repair',start:'2026-06-11',effortDays:120,pct:0,carryover:false},
   {id:4475,status:'Active',store:'900 Corporate',region:'Headquarters',assignee:'Greg Wallace',budget:325000,cost:135479.75,type:'HVAC',name:'900 Headquarters - HVAC - RTU System Replacement',start:'2026-08-14',effortDays:5,pct:0,carryover:false},
-  {id:6884,status:'Active',store:'066 Alice',region:'Region 04',assignee:'Carlos Garcia',budget:34264.3,cost:0,type:'Alarms',name:'066 Alice - Burglar & Fire Alarm Re - Wire in Flex Conduit',start:'2026-07-06',effortDays:20,pct:0,carryover:false},
 
   /* POST-CONSTRUCTION */
-  {id:3584,status:'Post-Construction',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:110000,cost:96258.28,type:'Lighting',name:'066 Alice - LED Retro',start:'2026-03-01',effortDays:210,pct:0,carryover:false},
-  {id:7247,status:'Post-Construction',store:'950 Rio Truss',region:'Region 05',assignee:'Steven McCormick',budget:10000,cost:2955.23,type:'HVAC',name:'950 Rio Truss - HVAC Split System Replacement',start:'2026-07-29',effortDays:30,pct:0,carryover:false},
-  {id:980,status:'Post-Construction',store:'121 New Caney',region:'Region 01',assignee:'Carlos Garcia',budget:11000000,cost:10127689.69,type:'New Facility',name:'121 New Caney - New Store',start:'2025-06-01',effortDays:270,pct:0,carryover:true},
+  {id:7247,status:'Post-Construction',store:'950 Rio Truss',region:'Region 05',assignee:'Steven McCormick',budget:10000,cost:7949.46,type:'HVAC',name:'950 Rio Truss - HVAC Split System Replacement',start:'2026-07-29',effortDays:30,pct:0,carryover:false},
   {id:4970,status:'Post-Construction',store:'950 Rio Truss',region:'Region 05',assignee:'Leeland Weiss',budget:9865,cost:30924.72,type:'Doors',name:'950 Rio Truss - Freight Door Replacement',start:'2026-02-02',effortDays:210,pct:0,carryover:false},
-  {id:6587,status:'Post-Construction',store:'034 Bryan',region:'Region 01',assignee:'Steven McCormick',budget:2000,cost:2764.42,type:'Lighting',name:'034 Bryan - Store Maintenance and Repair',start:'2026-06-12',effortDays:60,pct:0,carryover:false},
+  {id:6884,status:'Post-Construction',store:'066 Alice',region:'Region 04',assignee:'Carlos Garcia',budget:34264.3,cost:36553,type:'Alarms',name:'066 Alice - Burglar & Fire Alarm Re - Wire in Flex Conduit',start:'2026-07-06',effortDays:20,pct:0,carryover:false},
 
   /* CLOSED */
   {id:4046,status:'Closed',store:'090 Okmulgee',region:'Region 02',assignee:'Kyle Miller',budget:8000,cost:14576.57,type:'Signage',name:'090 Okmulgee - Signage Upgrade',start:'2026-03-02',effortDays:90,pct:100,carryover:false},
   {id:5234,status:'Closed',store:'043 Huntsville',region:'Region 01',assignee:'Kyle Miller',budget:30000,cost:8276.13,type:'Signage',name:'043 Huntville - Signage Project - Pylon',start:'2026-04-01',effortDays:60,pct:100,carryover:false},
   {id:6158,status:'Closed',store:'355 Pharr Reload',region:'Region 05',assignee:'Leeland Weiss',budget:1500,cost:975.52,type:'Other',name:'355 Pharr Reload - Store Maintenance and Repair',start:'2026-08-07',effortDays:30,pct:100,carryover:false},
+  {id:848,status:'Closed',store:'011 South Austin',region:'Region 08',assignee:'Steven McCormick',budget:40000,cost:1495.11,type:'Lighting',name:'011 S Austin - Parking Lot Lighting',start:'2027-03-01',effortDays:60,pct:100,carryover:false},
   {id:5300,status:'Closed',store:'109 Aransas Pass',region:'Region 04',assignee:'Kyle Miller',budget:30000,cost:9175.31,type:'Signage',name:'109 Aransa Pass - Signage Project - Pylon',start:'2026-03-27',effortDays:60,pct:100,carryover:false},
   {id:3980,status:'Closed',store:'057 Tomball',region:'Region 03',assignee:'Kyle Miller',budget:8000,cost:8519.51,type:'Signage',name:'057 Tomball - Pylon Sign',start:'2026-02-01',effortDays:90,pct:100,carryover:false},
   {id:5069,status:'Closed',store:'028 Baytown',region:'Region 03',assignee:'Steven McCormick',budget:12000,cost:10110.55,type:'HVAC',name:'028 Baytown - HVAC - SPIT SYSTEM',start:'2026-02-01',effortDays:60,pct:100,carryover:false},
@@ -421,6 +424,7 @@ const projects = [
   {id:5861,status:'Closed',store:'074 Bee Cave',region:'Region 08',assignee:'Steven McCormick',budget:2000,cost:1113.25,type:'Internal Team Maintenance',name:'074 Bee Cave - Store Maintenance and Repair',start:'2026-05-01',effortDays:30,pct:100,carryover:false},
   {id:6686,status:'Closed',store:'039 Longview',region:'Region 01',assignee:'Steven McCormick',budget:73000,cost:70278.51,type:'Plumbing',name:'039 Longview - Septic',start:'2026-06-01',effortDays:90,pct:100,carryover:false},
   {id:3651,status:'Closed',store:'103 San Benito',region:'Region 05',assignee:'Leeland Weiss',budget:110000,cost:107326.21,type:'Lighting',name:'103 San Benito - LED Retro',start:'2026-04-01',effortDays:60,pct:100,carryover:false},
+  {id:3584,status:'Closed',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:110000,cost:111596.56,type:'Lighting',name:'066 Alice - LED Retro',start:'2026-03-01',effortDays:210,pct:100,carryover:false},
   {id:846,status:'Closed',store:'011 South Austin',region:'Region 08',assignee:'Steven McCormick',budget:15000,cost:14058.46,type:'Metal Work',name:'011 S Austin - Cut Shed',start:'2026-03-01',effortDays:90,pct:100,carryover:false},
   {id:3652,status:'Closed',store:'087 Fort Stockton',region:'Region 06',assignee:'Leeland Weiss',budget:110000,cost:96101.84,type:'Lighting',name:'087 Fort Stockton - LED Retro',start:'2026-03-01',effortDays:60,pct:100,carryover:false},
   {id:5828,status:'Closed',store:'006 Bastrop',region:'Region 08',assignee:'Steven McCormick',budget:2000,cost:9757.46,type:'Other',name:'006 Bastrop - Store Maintenance and Repair',start:'2026-05-01',effortDays:30,pct:100,carryover:false},
@@ -451,7 +455,10 @@ const projects = [
   {id:5267,status:'Closed',store:'066 Alice',region:'Region 04',assignee:'Greg Wallace',budget:23500,cost:23395.72,type:'HVAC',name:'066 Alice - HVAC - Split System 02 Replacement',start:'2026-04-15',effortDays:4,pct:100,carryover:false},
   {id:5036,status:'Closed',store:'068 Plainview',region:'Region 06',assignee:'Leeland Weiss',budget:25000,cost:18686.1,type:'Other',name:'068 Plainview - Store Closing',start:'2026-02-28',effortDays:60,pct:100,carryover:false},
   {id:1147,status:'Closed',store:'109 Aransas Pass',region:'Region 04',assignee:'Leeland Weiss',budget:52000,cost:87983.33,type:'Metal Work',name:'109 Aransas Pass - Warehouse Metal',start:'2026-04-01',effortDays:90,pct:100,carryover:false},
+  {id:7346,status:'Closed',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:5000,cost:1473.33,type:'Racking Inspection',name:'115 Midlothian - Racking Inspection',start:'2026-08-01',effortDays:30,pct:100,carryover:false},
   {id:5201,status:'Closed',store:'035 Odessa',region:'Region 06',assignee:'Leeland Weiss',budget:35510.88,cost:40040.88,type:'HVAC',name:'035 Odessa - HVAC - Split System Replacement',start:'2026-04-01',effortDays:30,pct:100,carryover:false},
+  {id:980,status:'Closed',store:'121 New Caney',region:'Region 01',assignee:'Carlos Garcia',budget:11000000,cost:10089802.01,type:'New Facility',name:'121 New Caney - New Store',start:'2025-06-01',effortDays:270,pct:100,carryover:true},
+  {id:6587,status:'Closed',store:'034 Bryan',region:'Region 01',assignee:'Steven McCormick',budget:2000,cost:4252.86,type:'Lighting',name:'034 Bryan - Store Maintenance and Repair',start:'2026-06-12',effortDays:60,pct:100,carryover:false},
   {id:1187,status:'Closed',store:'029 S Corpus Christi',region:'Region 04',assignee:'Kyle Miller',budget:45000,cost:48215.37,type:'Signage',name:'029 S. Corpus - Signage Upgrade',start:'2026-03-01',effortDays:90,pct:100,carryover:false},
   {id:4739,status:'Closed',store:'019 Midland',region:'Region 06',assignee:'Greg Wallace',budget:32415.46,cost:33012.78,type:'Alarms',name:'019 Midland - INS - Nitrogen Generator',start:'2026-01-30',effortDays:90,pct:100,carryover:false},
   {id:4805,status:'Closed',store:'060 Brenham',region:'Region 01',assignee:'Steven McCormick',budget:43000,cost:42136.75,type:'Sitework',name:'060 Brenham - Sitework - Demo Old Print Shop',start:'2026-03-01',effortDays:90,pct:100,carryover:false},
@@ -460,122 +467,126 @@ const projects = [
   {id:1346,status:'Closed',store:'359 Burnet Reload',region:'Distribution',assignee:'Carlos Garcia',budget:7500,cost:2604,type:'Sitework',name:'359 Burnet Distribution - Warehouse Dock Modification',start:'2025-03-01',effortDays:30,pct:100,carryover:true},
   {id:2396,status:'Closed',store:'057 Tomball',region:'Region 03',assignee:'Steven McCormick',budget:5000,cost:3955.68,type:'Racking Inspection',name:'057 Tomball - Racking Inspection',start:'2026-01-12',effortDays:30,pct:100,carryover:false},
   {id:3650,status:'Closed',store:'100 Edinburg',region:'Region 05',assignee:'Leeland Weiss',budget:110000,cost:112013.6,type:'Lighting',name:'100 Edinburg - LED Retro',start:'2026-04-01',effortDays:60,pct:100,carryover:false},
-  {id:1130,status:'Closed',store:'025 NW San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:30000,cost:11907.5,type:'Doors',name:'025 NW San Antonio - Lifecycle Replacements',start:'2026-04-01',effortDays:200,pct:100,carryover:false},
   {id:1134,status:'Closed',store:'050 SC San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:30000,cost:11907.5,type:'Doors',name:'050 SC San Anonio - Lifecycle Replacements',start:'2026-08-03',effortDays:90,pct:100,carryover:false},
+  {id:1130,status:'Closed',store:'025 NW San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:30000,cost:11907.5,type:'Doors',name:'025 NW San Antonio - Lifecycle Replacements',start:'2026-04-01',effortDays:200,pct:100,carryover:false},
   {id:5399,status:'Closed',store:'029 S Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:5000,cost:495.8,type:'Racking Inspection',name:'029 S Corpus Christi - Racking Inspection',start:'2026-06-01',effortDays:60,pct:100,carryover:false},
   {id:6719,status:'Closed',store:'750 Real Estate',region:'Headquarters',assignee:'Carlos Garcia',budget:6594.91,cost:6594.9,type:'Sitework',name:'750 Gil Property - Sitework - Dumpster Pad Repairs',start:'2026-06-29',effortDays:14,pct:100,carryover:false},
   {id:1374,status:'Closed',store:'039 Longview',region:'Region 01',assignee:'Steven McCormick',budget:35000,cost:57509.1,type:'Metal Work',name:'039 Longview - pole shed Roof',start:'2026-08-01',effortDays:60,pct:100,carryover:false},
   {id:6620,status:'Closed',store:'052 Cleburne',region:'Region 02',assignee:'Steven McCormick',budget:5000,cost:5432.36,type:'Racking',name:'052 cleburne - Racking Inspection',start:'2026-06-15',effortDays:30,pct:100,carryover:false},
   {id:6621,status:'Closed',store:'052 Cleburne',region:'Region 02',assignee:'Steven McCormick',budget:2000,cost:6592.13,type:'Internal Team Maintenance',name:'052 Cleburne - Store Maintenance and Repair',start:'2026-06-15',effortDays:30,pct:100,carryover:false},
   {id:5894,status:'Closed',store:'074 Bee Cave',region:'Region 08',assignee:'Steven McCormick',budget:5000,cost:291.45,type:'Racking',name:'074 Bee cave - Racking Inspection',start:'2026-05-01',effortDays:30,pct:100,carryover:false},
+  {id:6785,status:'Closed',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:2000,cost:1532.47,type:'Internal Team Maintenance',name:'115 Midlothian - Store Maintenance and Repair',start:'2026-06-01',effortDays:120,pct:100,carryover:false},
   {id:5498,status:'Closed',store:'030 San Angelo',region:'Region 06',assignee:'Leeland Weiss',budget:1200,cost:982.22,type:'Racking Inspection',name:'030 San Angelo - Racking Inspection',start:'2026-06-10',effortDays:60,pct:100,carryover:false},
+  {id:5003,status:'Closed',store:'111 Floresville',region:'Region 07',assignee:'Leeland Weiss',budget:5000,cost:1490.08,type:'Racking Inspection',name:'111 Floresville - Racking Inspection',start:'2026-02-18',effortDays:190,pct:100,carryover:false},
 
   /* PRE-CONSTRUCTION */
   {id:1133,status:'Pre-Construction',store:'044 Kerrville',region:'Region 07',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Doors',name:'044 Kerrville - Lifecycle Replacements',start:'2026-07-01',effortDays:90,pct:0,carryover:false},
-  {id:2429,status:'Pre-Construction',store:'024 Pasadena',region:'Region 03',assignee:'Greg Wallace',budget:78000,cost:3680.5,type:'Alarms',name:'024 Pasadena - Burglar & Fire Alarm',start:'2026-09-14',effortDays:30,pct:0,carryover:false},
-  {id:4574,status:'Pre-Construction',store:'359 Burnet Reload',region:'Distribution',assignee:'Greg Wallace',budget:40100,cost:0,type:'Sitework',name:'359 Burnet - Parking Lot Striping',start:'2026-01-19',effortDays:14,pct:0,carryover:false},
+  {id:5102,status:'Pre-Construction',store:'047 Waco',region:'Region 02',assignee:'Steven McCormick',budget:35000,cost:0,type:'Other',name:'047 Waco - Fence',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'Jeff Metzler advised we keep pushing on this repair — the back fence is partially laying down and most of the fence posts are rusted out.  ·  8/10/26 meeting: Per Ron, do the back side of the fence.'},
+  {id:2429,status:'Pre-Construction',store:'024 Pasadena',region:'Region 03',assignee:'Greg Wallace',budget:78000,cost:5709.97,type:'Alarms',name:'024 Pasadena - Burglar & Fire Alarm',start:'2026-09-14',effortDays:30,pct:0,carryover:false},
+  {id:6191,status:'Pre-Construction',store:'017 N Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Sitework',name:'017 N Corpus Christi - Sitework - Drainage Plan',start:'2026-08-03',effortDays:90,pct:0,carryover:false,notes:'Water ponding on the base in front of the cantilever rack. Regrading the area will cost $9,100.  ·  8/10/26 meeting: Go forward with regrading the area holding water.'},
   {id:1129,status:'Pre-Construction',store:'016 New Braunfels',region:'Region 07',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Doors',name:'016 New Braunfels - Lifecycle Replacements',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
   {id:1128,status:'Pre-Construction',store:'013 Richwood',region:'Region 04',assignee:'Steven McCormick',budget:45000,cost:0,type:'Doors',name:'013 Richwood - Lifecycle Replacements',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
   {id:1126,status:'Pre-Construction',store:'011 South Austin',region:'Region 08',assignee:'Steven McCormick',budget:30000,cost:0,type:'Doors',name:'011 South Austin - Lifecycle Replacements',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
   {id:1131,status:'Pre-Construction',store:'015 Harlingen',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Doors',name:'015 Harlingen - Lifecycle Replacements',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
   {id:1123,status:'Pre-Construction',store:'003 Brazoria',region:'Region 04',assignee:'Steven McCormick',budget:45000,cost:0,type:'Doors',name:'003 Brazoria - Lifecycle Replacements',start:'2026-04-01',effortDays:90,pct:0,carryover:false},
-  {id:6290,status:'Pre-Construction',store:'043 Huntsville',region:'Region 01',assignee:'Steven McCormick',budget:5000,cost:202.34,type:'Racking Inspection',name:'043 Huntsville - Racking Inspection',start:'2026-03-19',effortDays:120,pct:0,carryover:false},
-  {id:1153,status:'Pre-Construction',store:'013 Richwood',region:'Region 04',assignee:'Greg Wallace',budget:78000,cost:3680.5,type:'Alarms',name:'013 Richwood - Burglar & Fire Alarm',start:'2026-08-10',effortDays:30,pct:0,carryover:false},
+  {id:6290,status:'Pre-Construction',store:'043 Huntsville',region:'Region 01',assignee:'Steven McCormick',budget:5000,cost:604.34,type:'Racking Inspection',name:'043 Huntsville - Racking Inspection',start:'2026-03-19',effortDays:120,pct:0,carryover:false},
+  {id:7181,status:'Pre-Construction',store:'730 Store Development',region:'Headquarters',assignee:'Steven McCormick',budget:73610,cost:0,type:'Racking',name:'Racking Order 2026',start:'2026-07-01',effortDays:120,pct:0,carryover:false},
+  {id:1153,status:'Pre-Construction',store:'013 Richwood',region:'Region 04',assignee:'Greg Wallace',budget:78000,cost:5071.51,type:'Alarms',name:'013 Richwood - Burglar & Fire Alarm',start:'2026-08-10',effortDays:30,pct:0,carryover:false},
   {id:3221,status:'Pre-Construction',store:'055 Georgetown',region:'Region 08',assignee:'Steven McCormick',budget:5000,cost:0,type:'Racking Inspection',name:'055 Georgetown - Racking Inspection',start:'2025-09-01',effortDays:90,pct:0,carryover:true},
   {id:4508,status:'Pre-Construction',store:'103 San Benito',region:'Region 05',assignee:'Leeland Weiss',budget:60000,cost:0,type:'Metal Work',name:'103 San Benito - Rusted R - Panel - Yard Side',start:'2026-02-02',effortDays:190,pct:0,carryover:false},
   {id:5432,status:'Pre-Construction',store:'018 Abilene',region:'Region 02',assignee:'Leeland Weiss',budget:1200,cost:0,type:'Internal Team Maintenance',name:'018 Abilene - Store Maintenance and Repair',start:'2026-06-08',effortDays:60,pct:0,carryover:false},
   {id:5531,status:'Pre-Construction',store:'086 Alpine',region:'Region 06',assignee:'Leeland Weiss',budget:1200,cost:0,type:'Racking Inspection',name:'086 Alpine - Racking Inspection',start:'2026-06-12',effortDays:30,pct:0,carryover:false},
-  {id:6389,status:'Pre-Construction',store:'087 Fort Stockton',region:'Region 06',assignee:'Leeland Weiss',budget:2000,cost:2619.03,type:'Other',name:'087 Fort Stockton - Store Maintenance and Repair',start:'2026-08-25',effortDays:60,pct:0,carryover:false},
-  {id:5960,status:'Pre-Construction',store:'015 Harlingen',region:'Region 05',assignee:'Leeland Weiss',budget:3500,cost:0,type:'Internal Team Maintenance',name:'015 Harlingen - Store Maintenance and Repair',start:'2026-07-28',effortDays:30,pct:0,carryover:false},
   {id:6126,status:'Pre-Construction',store:'033 Pharr',region:'Region 05',assignee:'Leeland Weiss',budget:1500,cost:0,type:'Other',name:'033 Pharr - Store Maintenance and Repair',start:'2026-08-07',effortDays:30,pct:0,carryover:false},
   {id:6356,status:'Pre-Construction',store:'120 Lockhart',region:'Region 07',assignee:'Steven McCormick',budget:5000,cost:0,type:'Racking',name:'120 Lochhart - Racking Inspection',start:'2026-05-11',effortDays:200,pct:0,carryover:false},
+  {id:6389,status:'Pre-Construction',store:'087 Fort Stockton',region:'Region 06',assignee:'Leeland Weiss',budget:2000,cost:2619.03,type:'Other',name:'087 Fort Stockton - Store Maintenance and Repair',start:'2026-08-25',effortDays:60,pct:0,carryover:false},
+  {id:7412,status:'Pre-Construction',store:'123 Reno',region:'Region 02',assignee:'Jeff Schaefer',budget:9530000,cost:0,type:'New Facility',name:'123 Reno - New Store',start:'2026-08-17',effortDays:488,pct:0,carryover:true,carryLabel:'2026\u201127 carry'},
+  {id:7313,status:'Pre-Construction',store:'038 Rosenberg',region:'Region 03',assignee:'Steven McCormick',budget:6000,cost:5953.75,type:'Doors',name:'038 Rosenburg - Lifecycle retro - mod kit',start:'2026-08-01',effortDays:30,pct:0,carryover:false},
+  {id:5960,status:'Pre-Construction',store:'015 Harlingen',region:'Region 05',assignee:'Leeland Weiss',budget:3500,cost:1784.88,type:'Internal Team Maintenance',name:'015 Harlingen - Store Maintenance and Repair',start:'2026-07-28',effortDays:30,pct:0,carryover:false},
   {id:6488,status:'Pre-Construction',store:'044 Kerrville',region:'Region 07',assignee:'Leeland Weiss',budget:2500,cost:0,type:'Racking Inspection',name:'044 Kerrville - Racking Inspection',start:'2026-09-01',effortDays:60,pct:0,carryover:false},
   {id:6422,status:'Pre-Construction',store:'087 Fort Stockton',region:'Region 06',assignee:'Leeland Weiss',budget:2500,cost:0,type:'Racking Inspection',name:'087 Fort Stockton - Racking Inspection',start:'2026-08-26',effortDays:60,pct:0,carryover:false},
   {id:6455,status:'Pre-Construction',store:'044 Kerrville',region:'Region 07',assignee:'Leeland Weiss',budget:2000,cost:3618,type:'Other',name:'044 Kerrville - Store Maintenance and Repair',start:'2026-08-31',effortDays:60,pct:0,carryover:false},
-  {id:5927,status:'Pre-Construction',store:'015 Harlingen',region:'Region 05',assignee:'Leeland Weiss',budget:5000,cost:1858.53,type:'Racking Inspection',name:'015 Harlingen - Racking Inspection',start:'2026-07-27',effortDays:30,pct:0,carryover:false},
   {id:7115,status:'Pre-Construction',store:'084 Hobbs',region:'Region 06',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Internal Team Maintenance',name:'084 Hobbs - Store Maintenance and Repair',start:'2026-09-28',effortDays:30,pct:0,carryover:false},
   {id:7148,status:'Pre-Construction',store:'084 Hobbs',region:'Region 06',assignee:'Leeland Weiss',budget:1500,cost:0,type:'Racking Inspection',name:'084 Hobbs - Racking Inspection',start:'2026-09-28',effortDays:30,pct:0,carryover:false},
   {id:5465,status:'Pre-Construction',store:'018 Abilene',region:'Region 02',assignee:'Leeland Weiss',budget:1200,cost:0,type:'Racking Inspection',name:'018 Abilene - Racking Inspection',start:'2026-06-09',effortDays:60,pct:0,carryover:false},
   {id:1124,status:'Pre-Construction',store:'007 Brownwood',region:'Region 02',assignee:'Steven McCormick',budget:45000,cost:0,type:'Doors',name:'007 Brownwood - Lifecycle Replacements',start:'2027-04-01',effortDays:90,pct:0,carryover:false},
-  {id:5993,status:'Pre-Construction',store:'103 San Benito',region:'Region 05',assignee:'Leeland Weiss',budget:5000,cost:1858.53,type:'Racking Inspection',name:'103 San Benito - Racking Inspection',start:'2026-07-29',effortDays:30,pct:0,carryover:false},
-  {id:6026,status:'Pre-Construction',store:'103 San Benito',region:'Region 05',assignee:'Leeland Weiss',budget:3500,cost:0,type:'Internal Team Maintenance',name:'103 San Benito - Store Maintenance and Repair',start:'2026-07-30',effortDays:30,pct:0,carryover:false},
+  {id:6026,status:'Pre-Construction',store:'103 San Benito',region:'Region 05',assignee:'Leeland Weiss',budget:3500,cost:3404.94,type:'Internal Team Maintenance',name:'103 San Benito - Store Maintenance and Repair',start:'2026-07-30',effortDays:30,pct:0,carryover:false},
+  {id:6257,status:'Pre-Construction',store:'016 New Braunfels',region:'Region 07',assignee:'Leeland Weiss',budget:20000,cost:0,type:'Sitework',name:'016 New Braunfels - Base work freight truck exit',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Looking at lower insurance requirements for this work so we don\'t have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray\'s contractor (does not meet insurance requirements). Work to be done on Sunday.'},
   {id:6059,status:'Pre-Construction',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:1500,cost:0,type:'Racking Inspection',name:'037 Brownsville - Racking Inspection',start:'2026-07-31',effortDays:30,pct:0,carryover:false},
   {id:6125,status:'Pre-Construction',store:'033 Pharr',region:'Region 05',assignee:'Leeland Weiss',budget:1500,cost:0,type:'Racking Inspection',name:'033 Pharr - Racking Inspection',start:'2026-08-03',effortDays:30,pct:0,carryover:false},
-  {id:5003,status:'Pre-Construction',store:'111 Floresville',region:'Region 07',assignee:'Leeland Weiss',budget:5000,cost:1490.08,type:'Racking Inspection',name:'111 Floresville - Racking Inspection',start:'2026-02-18',effortDays:190,pct:0,carryover:false},
   {id:6092,status:'Pre-Construction',store:'093 Weslaco',region:'Region 05',assignee:'Leeland Weiss',budget:1500,cost:0,type:'Racking Inspection',name:'093 Weslaco - Racking Inspection',start:'2026-08-03',effortDays:30,pct:0,carryover:false},
   {id:6950,status:'Pre-Construction',store:'035 Odessa',region:'Region 06',assignee:'Leeland Weiss',budget:1200,cost:0,type:'Racking Inspection',name:'035 Odessa - Racking Inspection',start:'2026-09-21',effortDays:90,pct:0,carryover:false},
   {id:7083,status:'Pre-Construction',store:'063 Gainesville',region:'Region 02',assignee:'Steven McCormick',budget:10000,cost:4064.82,type:'HVAC',name:'063 Gainsville - HVAC Split System Replacement',start:'2026-07-01',effortDays:60,pct:0,carryover:false},
   {id:7280,status:'Pre-Construction',store:'042 Las Cruces',region:'Region 06',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Doors',name:'042 Las Cruces - Freight Door Replacement',start:'2026-08-03',effortDays:60,pct:0,carryover:false},
+  {id:5927,status:'Pre-Construction',store:'015 Harlingen',region:'Region 05',assignee:'Leeland Weiss',budget:5000,cost:2373.09,type:'Racking Inspection',name:'015 Harlingen - Racking Inspection',start:'2026-07-27',effortDays:30,pct:0,carryover:false},
   {id:6951,status:'Pre-Construction',store:'035 Odessa',region:'Region 06',assignee:'Leeland Weiss',budget:1200,cost:0,type:'Internal Team Maintenance',name:'035 Odessa - Store Maintenance and Repair',start:'2026-09-24',effortDays:90,pct:0,carryover:false},
   {id:6983,status:'Pre-Construction',store:'019 Midland',region:'Region 06',assignee:'Leeland Weiss',budget:1200,cost:0,type:'Racking Inspection',name:'019 Midland - Racking Inspection',start:'2026-09-26',effortDays:90,pct:0,carryover:false},
+  {id:5993,status:'Pre-Construction',store:'103 San Benito',region:'Region 05',assignee:'Leeland Weiss',budget:5000,cost:2982.79,type:'Racking Inspection',name:'103 San Benito - Racking Inspection',start:'2026-07-29',effortDays:30,pct:0,carryover:false},
   {id:7016,status:'Pre-Construction',store:'119 Lubbock',region:'Region 06',assignee:'Leeland Weiss',budget:1200,cost:402,type:'Racking Inspection',name:'119 Lubbock - Racking Inspection',start:'2026-09-21',effortDays:90,pct:0,carryover:false},
 
   /* BUDGET PLAN */
-  {id:7181,status:'Budget Plan',store:'730 Store Development',region:'Headquarters',assignee:'Steven McCormick',budget:50000,cost:0,type:'Racking',name:'Racking Order 2026',start:'2026-07-01',effortDays:120,pct:0,carryover:false},
-  {id:3749,status:'Budget Plan',store:'061 Mt. Pleasant',region:'Region 01',assignee:'Steven McCormick',budget:30000,cost:0,type:'Sitework',name:'061 Mount Pleasant - Sitework - Asphalt Patches',start:'2026-03-01',effortDays:90,pct:0,carryover:false},
+  {id:7380,status:'Budget Plan',store:'008 Stephenville',region:'Region 02',assignee:'Kyle Miller',budget:6000,cost:0,type:'Racking',name:'008 Stephenville - A - Frame Rack',start:'2026-08-17',effortDays:90,pct:0,carryover:false},
+  {id:7379,status:'Budget Plan',store:'018 Abilene',region:'Region 02',assignee:'Kyle Miller',budget:6000,cost:0,type:'Racking',name:'018 Abilene - A - Frame Rack',start:'2026-08-17',effortDays:90,pct:0,carryover:false},
   {id:6521,status:'Budget Plan',store:'113 Montgomery',region:'Region 03',assignee:'Steven McCormick',budget:2000,cost:0,type:'Internal Team Maintenance',name:'113 Montgomery - Store Maintenance and Repair',start:'2026-05-15',effortDays:120,pct:0,carryover:false},
-  {id:4410,status:'Budget Plan',store:'730 Store Development',region:'Headquarters',assignee:'Chet Lange',budget:1200000,cost:-1885809.15,type:'Contingency',name:'730 Store Development - Contingency',start:'2026-01-01',effortDays:364,pct:0,carryover:false},
-  {id:6785,status:'Budget Plan',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:2000,cost:0,type:'Internal Team Maintenance',name:'115 Midlothian - Store Maintenance and Repair',start:'2026-06-01',effortDays:120,pct:0,carryover:false},
+  {id:1250,status:'Budget Plan',store:'027 SE San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:100000,cost:0,type:'Sitework',name:'027 SE San Antonio - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:200,pct:0,carryover:false,notes:'Paused — Corey wanted an onsite meeting. Budget was $100K; repairs came in at $52K.  ·  8/10/26 meeting: Per Ron, look at repairs along the entryway and warehouse entrances.'},
+  {id:800,status:'Budget Plan',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Sitework',name:'037 Brownsville - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false,notes:'Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future.'},
+  {id:4410,status:'Budget Plan',store:'730 Store Development',region:'Headquarters',assignee:'Chet Lange',budget:1200000,cost:-1865309.15,type:'Contingency',name:'730 Store Development - Contingency',start:'2026-01-01',effortDays:364,pct:0,carryover:false},
 
   /* BUDGET REQUEST */
-  {id:5102,status:'Budget Request',store:'047 Waco',region:'Region 02',assignee:'Steven McCormick',budget:35000,cost:0,type:'Other',name:'047 Waco - Fence',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'Jeff Metzler advised we keep pushing on this repair \u2014 the back fence is partially laying down and most of the fence posts are rusted out.  ·  8/10/26 meeting: Per Ron, do the back side of the fence.'},
-  {id:6818,status:'Budget Request',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'066 Alice - Sitework - Asphalt Repairs',start:'2026-09-01',effortDays:60,pct:0,carryover:false,notes:'Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.'},
-  {id:6257,status:'Budget Request',store:'016 New Braunfels',region:'Region 07',assignee:'Carlos Garcia',budget:20000,cost:0,type:'Sitework',name:'016 New Braunfels - Base work freight truck exit',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Looking at lower insurance requirements for this work so we don\'t have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray\'s contractor (does not meet insurance requirements). Work to be done on Sunday.'},
-  {id:7049,status:'Budget Request',store:'114 Alvin',region:'Region 03',assignee:'Steven McCormick',budget:156156.38,cost:0,type:'HVAC',name:'114 Alvin - HVAC - RTU Replacement',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'HVAC systems were installed before coils were coated for coastal areas. Techs say units are almost beyond repair \u2014 running on 1 compressor or with leaking coils.  ·  8/10/26 meeting: Hold to early 2027 — per team, try to limp the system through 2026.'},
-  {id:6653,status:'Budget Request',store:'359 Burnet Reload',region:'Distribution',assignee:'Carlos Garcia',budget:60890.63,cost:0,type:'Sitework',name:'359 Mc Reload - Sitework - Base work',start:'2026-06-01',effortDays:120,pct:0,carryover:false,notes:'Luis requested base work to repair worn areas, mostly in drainage areas.  ·  8/10/26 meeting: Per Waylon, hold and review again at 2027 budget review.'},
-  {id:1250,status:'Budget Request',store:'027 SE San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:100000,cost:0,type:'Sitework',name:'027 SE San Antonio - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:200,pct:0,carryover:false,notes:'Paused \u2014 Corey wanted an onsite meeting. Budget was $100K; repairs came in at $52K.  ·  8/10/26 meeting: Per Ron, look at repairs along the entryway and warehouse entrances.'},
-  {id:4937,status:'Budget Request',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:10059.13,cost:0,type:'Sitework',name:'115 Midlothian - Sitework - Yard Erosion',start:'2026-03-30',effortDays:90,pct:0,carryover:false,notes:'Ron asked we not move forward with the $11K landscaping quote. He eventually wants concrete cloth put down. Our teams are allocated to other projects \u2014 considering bringing in dirt since the stores have corrugated drain pipe at the end of the gutters.  ·  8/10/26 meeting: Team to get a quote to bring in dirt for erosion areas; lay concrete cloth after dirt is placed.'},
-  {id:4904,status:'Budget Request',store:'038 Rosenberg',region:'Region 03',assignee:'Steven McCormick',budget:15000,cost:0,type:'Sitework',name:'038 Rosenberg - Sitework - Concrete Repairs',start:'2026-03-01',effortDays:30,pct:0,carryover:false,notes:'500 sq ft of concrete repairs needed on site. Submitted by S. McCormick during site survey.  ·  8/10/26 meeting: Leave alone until 2027.'},
+  {id:6818,status:'Budget Request',store:'066 Alice',region:'Region 04',assignee:'Leeland Weiss',budget:113990.96,cost:0,type:'Sitework',name:'066 Alice - Sitework - Asphalt Repairs',start:'2026-09-01',effortDays:60,pct:0,carryover:false,notes:'Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.'},
+  {id:4937,status:'Budget Request',store:'115 Midlothian',region:'Region 02',assignee:'Steven McCormick',budget:10059.13,cost:0,type:'Sitework',name:'115 Midlothian - Sitework - Yard Erosion',start:'2026-03-30',effortDays:90,pct:0,carryover:false,notes:'Ron asked we not move forward with the $11K landscaping quote. He eventually wants concrete cloth put down. Our teams are allocated to other projects — considering bringing in dirt since the stores have corrugated drain pipe at the end of the gutters.  ·  8/10/26 meeting: Team to get a quote to bring in dirt for erosion areas; lay concrete cloth after dirt is placed.'},
   {id:6752,status:'Budget Request',store:'050 SC San Antonio',region:'Region 07',assignee:'Leeland Weiss',budget:50000,cost:0,type:'Sitework',name:'050 SC San Antonio - Sitework - Asphalt Repairs',start:'2026-10-26',effortDays:60,pct:0,carryover:false,notes:'Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.  ·  8/10/26 meeting: Have Leeland get a quote for the trouble areas and send to Ron.'},
-  {id:800,status:'Budget Request',store:'037 Brownsville',region:'Region 05',assignee:'Leeland Weiss',budget:30000,cost:0,type:'Sitework',name:'037 Brownsville - Sitework - Asphalt Repairs',start:'2026-04-01',effortDays:90,pct:0,carryover:false,notes:'Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future.'},
-  {id:792,status:'Budget Request',store:'040 Beeville',region:'Region 04',assignee:'Leeland Weiss',budget:12800,cost:0,type:'Metal Work',name:'040 Beeville - Replace Damaged R - Panel',start:'2026-07-01',effortDays:60,pct:0,carryover:false,notes:'Could not find the 40\' R-panel originally requested in 2023. Wall appears to have been pushed out then reattached (not really an issue). Front of the warehouse and doors are very rough. Leeland got a quote to make these repairs: $62K.  ·  8/10/26 meeting: Push to 2027 budget review.'},
-  {id:6191,status:'Budget Request',store:'017 N Corpus Christi',region:'Region 04',assignee:'Leeland Weiss',budget:10000,cost:0,type:'Sitework',name:'017 N Corpus Christi - Sitework - Drainage Plan',start:'2026-08-03',effortDays:90,pct:0,carryover:false,notes:'Water ponding on the base in front of the cantilever rack. Regrading the area will cost $9,100.  ·  8/10/26 meeting: Go forward with regrading the area holding water.'},
+  {id:3749,status:'Budget Request',store:'061 Mt. Pleasant',region:'Region 01',assignee:'Steven McCormick',budget:30000,cost:0,type:'Sitework',name:'061 Mount Pleasant - Sitework - Asphalt Patches',start:'2026-03-01',effortDays:90,pct:0,carryover:false,notes:'Revised scope discussed at 8/10/26 budget meeting — look at entryway through the gate, push to 2027.'},
   {id:'PENDING-071',status:'Budget Request',store:'071 Nacogdoches',region:'Unknown',assignee:'Unassigned',budget:0,cost:0,type:'Sitework',name:'071 Nacogdoches - Asphalt Repairs',start:'2026-08-10',effortDays:60,pct:0,carryover:false,notes:'New request from 8/10/26 budget meeting — asphalt repairs, look at entryway to warehouse. Awaiting Fexa project ID, region, assignee, and budget estimate.'},
 ];
 
 const contingencyLog = [
-  {name:'060 Brenham Demo - Asbestos Remediation',detail:'Additional Cost Associated with Asbestos Remediation',department:null,projected:17136.75,amount:17136.75},
-  {name:'359 Burnet - Dock Plate Purchase',detail:'',department:null,projected:7200,amount:7200},
-  {name:'028 Baytown -Split System Replacement',detail:'Unplanned Spend',department:null,projected:10110.55,amount:10110.55},
-  {name:'019 Midland - Nitrogen System',detail:'Contingency Spend - 33,012.78',department:null,projected:33012.78,amount:33012.78},
-  {name:'033 Pharr- Sitework - Concrete Washout',detail:'Original Budget - $30,000 - Actual Cost $7,350 - $22,650 Under Budget',department:null,projected:-22650,amount:-22650},
-  {name:'122 Canyon Lake - New Store',detail:'Projected 2026 Spend - $7,636,364 - Revised Spend - $5,000,000 - Budget Wend down from $12M to $11M - Start Date Pushed Back',department:null,projected:-2636364,amount:-2636364},
-  {name:'055 Georgetown, 070 San Marcos, 093 Weslaco, 069 Austin 290 West, 096 El Campo, 098 Cleveland, 101 Universal City, 007 Brownwood, 062 Austin Manchaca, 074 Bee Cave - Lifecycle Door Replacements',detail:'Original Budget $360,000 - Ron and Waylon Request We Remove from Plan',department:null,projected:-360000,amount:-360000},
-  {name:'735 Fleet - 4 Slide Trucks - 5 24\' TA Trucks - Special Pricing',detail:'9 Replacement Trucks Sourced through Special Purchase - 1 Box Truck to Replace Lease',department:null,projected:1208227,amount:1208227},
-  {name:'Stihl Aisle Credits to Contingency',detail:'Stihl Aisle Credits to Contingency at $8,000 Each - 008, 011, 013, 016, 027, 030, 033, 035, 053, 055, 090, 093, 098, 111, and 118',department:null,projected:-128000,amount:-128000},
-  {name:'359 Burnet Distribution - Unplanned Forklift Purchase',detail:'Purchas Rental Unit For Container Offload - $36,000 8\' Forks With Anti Slip Surface - $5,000',department:null,projected:43790,amount:43790},
-  {name:'Daytime Run of Randy Robot - No Reprogram Required',detail:'',department:null,projected:-44000,amount:-44000},
-  {name:'Remove New Alarm Systems required for Randy Robot Reprogram',detail:'Company moved to Daytime Run',department:null,projected:-576000,amount:-576000},
-  {name:'103 San Benito - Lighting',detail:'Original Budget $110,000 - Actual Spend - $107,329.21 - $2,673.79 Under Budget',department:null,projected:-2673.79,amount:-2673.79},
-  {name:'Racking Inspection/Repairs - 004, 006, 008, 016, 017, 029, 030, 034, 037, 040, 047, 049, 050, 052, 057, 101, 109, 117, 359',detail:'Most Likely Qualifies as expense, will track against budget to be safe',department:null,projected:94346.83,amount:94346.83},
-  {name:'121 New Caney - Spend Under 2026 Budget',detail:'Original Budget $3,277,763 - Actual Spend 2,578,142 = -699,620.50 Under Budget',department:null,projected:-699620.5,amount:-699620.5},
-  {name:'109 Aransas Pass - Metal Work',detail:'Original Budget - $52,000 - Actual Spend - $87,983.33 - $35.983.33 Over Budget',department:null,projected:35983.33,amount:35983.33},
-  {name:'017 North Corpus - Sitework - Asphalt Repairs',detail:'Original Budget 60,890.63 - Actual Spend - $47,257.12 - $13,633.50 Under Budget',department:null,projected:-13633.5,amount:-13633.5},
-  {name:'017 N Corpus - Burglar & Fire Alarm',detail:'Original Budget - $78,000 - Actual Spend - $79,653.08 - $1,653.08 Over Budget',department:null,projected:1653.08,amount:1653.08},
-  {name:'089 Mission - Burglar & Fire Alarm',detail:'Original Budget 78,000 - Actual Spend $77,965.07 - $34.93 Under Budget',department:null,projected:-34.93,amount:-34.93},
-  {name:'066 Allice - HVAC - Replace Spilt System',detail:'Unbudgeted Replacement - $23,395.72',department:null,projected:23395.72,amount:23395.72},
-  {name:'087 Fort Stockton - LED Retro',detail:'Original Budget $110,000 - Actual Spend $96,101.84 - $13,989.20 Under Budget',department:null,projected:-13989.2,amount:-13989.2},
-  {name:'068 Plainview - Close Store',detail:'$18,686.10 Unbudgeted Spend',department:null,projected:18686.1,amount:18686.1},
-  {name:'087 Fort Stockton - Sitework - Asphalt Repairs',detail:'Original Budget $45,000 - Actual Spend $52,900.80 - $7,900.80 Over Budget',department:null,projected:7900.8,amount:7900.8},
-  {name:'900 Headquarters - HVAC - RTU and Split System Replacement',detail:'Decided to replace 2 Units at $541,919 - Original Budget was $325,000',department:null,projected:216919,amount:216919},
-  {name:'356 Midland Dist. - Ramp Construction and Building Demo',detail:'Original Budget $220,000 - Projected Spend - $287,276.29',department:null,projected:62106.29,amount:62106.29},
-  {name:'015 Harlingen - HVAC - RTU System Replacement',detail:'Original Budget - $50,000 - Actual Cost - $44,433.67 - $5,566.33',department:null,projected:-5566.33,amount:-5566.33},
-  {name:'060 Brenham - Sitework - Asphalt Repairs',detail:'Original Budget - $20,000 - Additional Work Approved 411,240.80',department:null,projected:391240.8,amount:391240.8},
-  {name:'108 Rio Grand City - Sitework',detail:'Original Budget - $85,000 - Actual Spend - $91,804.80 - $6,804.80 Over Budget',department:null,projected:6804.8,amount:6804.8},
-  {name:'011 South Austin - Cut Shed',detail:'Original Budget $15,000 - Actual Spend $14,058.46 - $941.44 Under Budget',department:null,projected:-941.44,amount:-941.44},
-  {name:'007 Brownwood - Cut Shed',detail:'Original Budget $15,000 - Actual Spend $12,400.76 - $2,599.24 Under Budget',department:null,projected:-2599.24,amount:-2599.24},
-  {name:'029, 057, 090, 084, 060, 088, 114, 043, 109 Signage',detail:'151,000 Budget - Actual Spend - 133,288 - $17,711.22 Under Budget',department:null,projected:-17711.22,amount:-17711.22},
-  {name:'015 Store - Burglar & Fire Alarm',detail:'Original Budget $78,000 - Actual Spend $83,407.41 - $5,407.41 Over Budget',department:null,projected:5407.41,amount:5407.41},
-  {name:'043 Huntsville - Sitework - Washout Fence Line',detail:'Original Budget - $24,000 - Actual Spend - $34,812.93 - $10812.93 Over Budget',department:null,projected:10812.93,amount:10812.93},
-  {name:'100 Edinburg - LED Retro',detail:'Original Budget $110,000 - Actual Spend $112,013.16 - $2,013.16 Over Budget',department:null,projected:2013.16,amount:2013.16},
-  {name:'735 Fleet - YTD Delivery Balance',detail:'Budget $2,777,000 - Actual Cost $2,639,937.98 - $137,062.02 Under Budget',department:null,projected:-137062.02,amount:-137062.02},
-  {name:'035 Odessa - Replace 2 Split Systems',detail:'Unplanned Spend',department:null,projected:40040.88,amount:40040.88},
-  {name:'039 Longview - Replace Septic System',detail:'Unplanned Spend',department:null,projected:70559.51,amount:70559.51},
-  {name:'066 Alice - Burglar & Fire Alarm',detail:'Unplanned Spend - Wire Chewed up By Rodents - Rewire In Flex Conduit',department:null,projected:34264.3,amount:34264.3},
-  {name:'025 NW San Antonio - Lifecycle Replacements',detail:'Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget',department:null,projected:-18092.5,amount:-18092.5},
-  {name:'050 SC San Anonio - Lifecycle Replacements',detail:'Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget',department:null,projected:-18092.5,amount:-18092.5},
-  {name:'123 Reno Springtown - Civil - ARC - MEP Design',detail:'Unplanned Spend',department:null,projected:396000,amount:396000},
-  {name:'730 Store Development - Racking Invetory',detail:'Backfill Standard inventory and ship Specialize parts',department:null,projected:73610,amount:73610},
+  {name:'008 Stephenville - A- Frame Rack',detail:'Unplanned Spend - Approved RVW',department:null,projected:null,amount:5700},
+  {name:'018 Abilene - A- Frame Rack',detail:'Unplanned Spend - Approved RVW',department:null,projected:null,amount:5700},
+  {name:'017 North Corpus - Sitework - Grading - Cantilever Rack',detail:'Unplanned Spend - Approved Budget Review - WW & RVW',department:null,projected:null,amount:9100},
+  {name:'060 Brenham Demo - Asbestos Remediation',detail:'Additional Cost Associated with Asbestos Remediation',department:null,projected:null,amount:17136.75},
+  {name:'359 Burnet - Dock Plate Purchase',detail:'',department:null,projected:null,amount:7200},
+  {name:'028 Baytown -Split System Replacement',detail:'Unplanned Spend',department:null,projected:null,amount:10110.55},
+  {name:'019 Midland - Nitrogen System',detail:'Contingency Spend - 33,012.78',department:null,projected:null,amount:33012.78},
+  {name:'033 Pharr- Sitework - Concrete Washout',detail:'Original Budget - $30,000 - Actual Cost $7,350 - $22,650 Under Budget',department:null,projected:null,amount:-22650},
+  {name:'122 Canyon Lake - New Store',detail:'Projected 2026 Spend - $7,636,364 - Revised Spend - $5,000,000 - Budget Wend down from $12M to $11M - Start Date Pushed Back',department:null,projected:null,amount:-2636364},
+  {name:'055 Georgetown, 070 San Marcos, 093 Weslaco, 069 Austin 290 West, 096 El Campo, 098 Cleveland, 101 Universal City, 007 Brownwood, 062 Austin Manchaca, 074 Bee Cave - Lifecycle Door Replacements',detail:'Original Budget $360,000 - Ron and Waylon Request We Remove from Plan',department:null,projected:null,amount:-360000},
+  {name:'735 Fleet - 4 Slide Trucks - 5 24\' TA Trucks - Special Pricing',detail:'9 Replacement Trucks Sourced through Special Purchase - 1 Box Truck to Replace Lease',department:null,projected:null,amount:1208227},
+  {name:'Stihl Aisle Credits to Contingency',detail:'Stihl Aisle Credits to Contingency at $8,000 Each - 008, 011, 013, 016, 027, 030, 033, 035, 053, 055, 090, 093, 098, 111, and 118',department:null,projected:null,amount:-128000},
+  {name:'359 Burnet Distribution - Unplanned Forklift Purchase',detail:'Purchas Rental Unit For Container Offload - $36,000 8\' Forks With Anti Slip Surface - $5,000',department:null,projected:null,amount:43790},
+  {name:'Daytime Run of Randy Robot - No Reprogram Required',detail:'',department:null,projected:null,amount:-44000},
+  {name:'Remove New Alarm Systems required for Randy Robot Reprogram',detail:'Company moved to Daytime Run',department:null,projected:null,amount:-576000},
+  {name:'011 S. Austin - Parking Lot Lights',detail:'Original Budget - $40,000 - Actual Cost - $1,495.11 Under Budget-$38,504.89',department:null,projected:null,amount:-38504.89},
+  {name:'066 Alice - LED Retro',detail:'Original Budget - $110,000 - Actual Spend - $111,596.56 - Over Budget +$1,596.56',department:null,projected:null,amount:1596.56},
+  {name:'Racking Inspection/Repairs - 004, 006, 008, 016, 017, 029, 030, 034, 037, 040, 047, 049, 050, 052, 057, 101, 109, 111, 117, 359',detail:'Most Likely Qualifies as expense, will track against budget to be safe',department:null,projected:null,amount:95836.91},
+  {name:'103 San Benito - Lighting',detail:'Original Budget $110,000 - Actual Spend - $107,329.21 - $2,673.79 Under Budget',department:null,projected:null,amount:-2673.79},
+  {name:'121 New Caney - Spend Under 2026 Budget',detail:'Original Budget $3,277,763 - Actual Spend 2,578,142 = -699,620.50 Under Budget',department:null,projected:null,amount:-699620.5},
+  {name:'109 Aransas Pass - Metal Work',detail:'Original Budget - $52,000 - Actual Spend - $87,983.33 - $35.983.33 Over Budget',department:null,projected:null,amount:35983.33},
+  {name:'017 North Corpus - Sitework - Asphalt Repairs',detail:'Original Budget 60,890.63 - Actual Spend - $47,257.12 - $13,633.50 Under Budget',department:null,projected:null,amount:-13633.5},
+  {name:'017 N Corpus - Burglar & Fire Alarm',detail:'Original Budget - $78,000 - Actual Spend - $79,653.08 - $1,653.08 Over Budget',department:null,projected:null,amount:1653.08},
+  {name:'089 Mission - Burglar & Fire Alarm',detail:'Original Budget 78,000 - Actual Spend $77,965.07 - $34.93 Under Budget',department:null,projected:null,amount:-34.93},
+  {name:'066 Allice - HVAC - Replace Spilt System',detail:'Unbudgeted Replacement - $23,395.72',department:null,projected:null,amount:23395.72},
+  {name:'087 Fort Stockton - LED Retro',detail:'Original Budget $110,000 - Actual Spend $96,101.84 - $13,989.20 Under Budget',department:null,projected:null,amount:-13989.2},
+  {name:'068 Plainview - Close Store',detail:'$18,686.10 Unbudgeted Spend',department:null,projected:null,amount:18686.1},
+  {name:'087 Fort Stockton - Sitework - Asphalt Repairs',detail:'Original Budget $45,000 - Actual Spend $52,900.80 - $7,900.80 Over Budget',department:null,projected:null,amount:7900.8},
+  {name:'900 Headquarters - HVAC - RTU and Split System Replacement',detail:'Decided to replace 2 Units at $541,919 - Original Budget was $325,000',department:null,projected:null,amount:216919},
+  {name:'356 Midland Dist. - Ramp Construction and Building Demo',detail:'Original Budget $220,000 - Projected Spend - $287,276.29',department:null,projected:null,amount:62106.29},
+  {name:'015 Harlingen - HVAC - RTU System Replacement',detail:'Original Budget - $50,000 - Actual Cost - $44,433.67 - $5,566.33',department:null,projected:null,amount:-5566.33},
+  {name:'060 Brenham - Sitework - Asphalt Repairs',detail:'Original Budget - $20,000 - Additional Work Approved 411,240.80',department:null,projected:null,amount:391240.8},
+  {name:'108 Rio Grand City - Sitework',detail:'Original Budget - $85,000 - Actual Spend - $91,804.80 - $6,804.80 Over Budget',department:null,projected:null,amount:6804.8},
+  {name:'011 South Austin - Cut Shed',detail:'Original Budget $15,000 - Actual Spend $14,058.46 - $941.44 Under Budget',department:null,projected:null,amount:-941.44},
+  {name:'007 Brownwood - Cut Shed',detail:'Original Budget $15,000 - Actual Spend $12,400.76 - $2,599.24 Under Budget',department:null,projected:null,amount:-2599.24},
+  {name:'029, 057, 090, 084, 060, 088, 114, 043, 109 Signage',detail:'151,000 Budget - Actual Spend - 133,288 - $17,711.22 Under Budget',department:null,projected:null,amount:-17711.22},
+  {name:'015 Store - Burglar & Fire Alarm',detail:'Original Budget $78,000 - Actual Spend $83,407.41 - $5,407.41 Over Budget',department:null,projected:null,amount:5407.41},
+  {name:'043 Huntsville - Sitework - Washout Fence Line',detail:'Original Budget - $24,000 - Actual Spend - $34,812.93 - $10812.93 Over Budget',department:null,projected:null,amount:10812.93},
+  {name:'100 Edinburg - LED Retro',detail:'Original Budget $110,000 - Actual Spend $112,013.16 - $2,013.16 Over Budget',department:null,projected:null,amount:2013.16},
+  {name:'735 Fleet - YTD Delivery Balance',detail:'Budget $2,777,000 - Actual Cost $2,639,937.98 - $137,062.02 Under Budget',department:null,projected:null,amount:-137062.02},
+  {name:'035 Odessa - Replace 2 Split Systems',detail:'Unplanned Spend',department:null,projected:null,amount:40040.88},
+  {name:'039 Longview - Replace Septic System',detail:'Unplanned Spend',department:null,projected:null,amount:70559.51},
+  {name:'066 Alice - Burglar & Fire Alarm',detail:'Unplanned Spend - Wire Chewed up By Rodents - Rewire In Flex Conduit',department:null,projected:null,amount:34264.3},
+  {name:'730 Store Development - Racking Invetory',detail:'Backfill Standard inventory and ship Specialize parts',department:null,projected:null,amount:66097.45},
+  {name:'025 NW San Antonio - Lifecycle Replacements',detail:'Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget',department:null,projected:null,amount:-18092.5},
+  {name:'050 SC San Anonio - Lifecycle Replacements',detail:'Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget',department:null,projected:null,amount:-18092.5},
+  {name:'123 Reno Springtown - Civil - ARC - MEP Design',detail:'Unplanned Spend',department:null,projected:null,amount:396000},
 ];
 
 /* Budget meeting notes — chronological log, fed manually. Each entry: {date:'YYYY-MM-DD', text:'...'} */
@@ -589,7 +600,7 @@ function projCompl(p){if(!p.start||!p.effortDays)return'—';const d=new Date(ne
 function fmt$(v){if(v==null||isNaN(v))return'—';const neg=v<0,av=Math.abs(v),s=neg?'-':'';if(av>=1e6)return s+'$'+(av/1e6).toFixed(1)+'M';if(av>=1000)return s+'$'+Math.round(av/1000)+'K';return s+'$'+Math.round(av);}
 function rem(p){return p.budget-(p.cost||0);}
 function remCell(p){const r=rem(p);return `<td class="${r<0?'rem-neg':'rem-pos'}">${fmt$(r)}</td>`;}
-function coPill(p){return p.carryover?` <span class="co-pill">2025 carry</span>`:'';}
+function coPill(p){return p.carryover?` <span class="co-pill">${p.carryLabel||'2025 carry'}</span>`:'';}
 function fexaUrl(id){return `https://mccoys.fexa.io/main/index#project/${id}`;}
 function sBadge(s){const m={'Active':'s-active','Pre-Construction':'s-pre','Budget Plan':'s-budget','Budget Request':'s-req','Post-Construction':'s-post','Closed':'s-closed','Sourcing':'s-sourcing'};return `<span class="badge ${m[s]||'s-budget'}">${s}</span>`;}
 function pctCell(v){const c=v===100?'pf-done':v>0?'pf-active':'pf-none';return `<td>${v}%<span class="pbar-wrap"><span class="pbar-fill ${c}" style="width:${Math.max(v,2)}%;"></span></span></td>`;}
@@ -600,7 +611,7 @@ const shA={'Steven McCormick':'S. McCormick','Leeland Weiss':'L. Weiss','Kyle Mi
 
 function renderExec(){
   const yearStart=new Date('2026-01-01');
-  const today=new Date('2026-08-05');
+  const today=new Date('2026-08-20');
   const dayOfYear=Math.round((today-yearStart)/86400000)+1;
   const yearPct=Math.round(dayOfYear/365*100);
   const totalProjects=projects.length;
@@ -931,6 +942,11 @@ function exportBudgetRequestsCSV(){
 
 function fmtNoteDate(d){const dt=new Date(d+'T00:00:00');return MO[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();}
 
+function toggleNote(key){
+  document.getElementById('note-body-'+key).classList.toggle('open');
+  document.getElementById('note-chev-'+key).classList.toggle('open');
+}
+
 function renderMeetingNotes(){
   const list=document.getElementById('meetingnotes-list');
   if(!meetingNotes.length){
@@ -938,10 +954,15 @@ function renderMeetingNotes(){
     return;
   }
   const sorted=[...meetingNotes].sort((a,b)=>b.date.localeCompare(a.date));
-  list.innerHTML=sorted.map(n=>`
+  list.innerHTML=sorted.map((n,i)=>`
     <div class="note-card">
-      <div class="note-date">${fmtNoteDate(n.date)}</div>
-      <div class="note-text">${n.text}</div>
+      <div class="note-header" onclick="toggleNote(${i})">
+        <span class="note-date">${fmtNoteDate(n.date)}</span>
+        <span class="chevron${i===0?' open':''}" id="note-chev-${i}">&#9660;</span>
+      </div>
+      <div class="note-body${i===0?' open':''}" id="note-body-${i}">
+        <div class="note-text">${n.text}</div>
+      </div>
     </div>`).join('');
 }
 
