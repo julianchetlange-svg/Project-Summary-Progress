@@ -159,16 +159,16 @@
 <!-- EXEC TAB -->
 <div id="tab-exec" class="tab-panel active">
   <div class="metric-grid metric-grid-5">
-    <div class="mc"><div class="mc-label">Total projects</div><div class="mc-val">133</div><div class="mc-sub">2026 program</div></div>
+    <div class="mc"><div class="mc-label">Total projects</div><div class="mc-val" id="m-total">—</div><div class="mc-sub">2026 program (excl. budget requests)</div></div>
     <div class="mc"><div class="mc-label">Active</div><div class="mc-val" style="color:#1B5C2E;" id="m-active">—</div><div class="mc-sub">In construction</div></div>
     <div class="mc"><div class="mc-label">Pre-construction</div><div class="mc-val" style="color:#4a8c5c;" id="m-pre">—</div><div class="mc-sub">Queued up</div></div>
     <div class="mc"><div class="mc-label">Budget plan</div><div class="mc-val" style="color:#5c4a00;" id="m-plan">—</div><div class="mc-sub">Planned, not approved</div></div>
     <div class="mc"><div class="mc-label">Complete YTD</div><div class="mc-val" style="color:#1B5C2E;" id="closed-ytd-val">—</div><div class="mc-sub" id="closed-ytd-sub">Closed + post-construction</div></div>
   </div>
   <div class="metric-grid metric-grid-3">
-    <div class="mc"><div class="mc-label">Total program budget</div><div class="mc-val">$37.8M</div><div class="mc-sub">All statuses combined</div></div>
-    <div class="mc"><div class="mc-label">Cost to date</div><div class="mc-val">$11.2M</div><div class="mc-sub">Incl. 2025 carryover spend</div></div>
-    <div class="mc"><div class="mc-label">Budget remaining</div><div class="mc-val" style="color:#1B5C2E;">$26.6M</div><div class="mc-sub">Program-wide</div></div>
+    <div class="mc"><div class="mc-label">Total program budget</div><div class="mc-val" id="m-total-budget">—</div><div class="mc-sub">Excl. budget requests (not yet approved)</div></div>
+    <div class="mc"><div class="mc-label">Cost to date</div><div class="mc-val" id="m-total-cost">—</div><div class="mc-sub">Incl. 2025 carryover spend</div></div>
+    <div class="mc"><div class="mc-label">Budget remaining</div><div class="mc-val" style="color:#1B5C2E;" id="m-total-remaining">—</div><div class="mc-sub">Program-wide</div></div>
   </div>
   <div class="metric-grid" style="grid-template-columns:1fr 1fr;">
     <div class="mc">
@@ -615,7 +615,15 @@ function renderExec(){
   const today=new Date('2026-08-27');
   const dayOfYear=Math.round((today-yearStart)/86400000)+1;
   const yearPct=Math.round(dayOfYear/365*100);
-  const totalProjects=projects.length;
+  const approved=projects.filter(p=>p.status!=='Budget Request');
+  const totalProjects=approved.length;
+  document.getElementById('m-total').textContent=totalProjects;
+
+  const totalBudget=approved.reduce((s,p)=>s+p.budget,0);
+  const totalCost=approved.reduce((s,p)=>s+(p.cost||0),0);
+  document.getElementById('m-total-budget').textContent=fmt$(totalBudget);
+  document.getElementById('m-total-cost').textContent=fmt$(totalCost);
+  document.getElementById('m-total-remaining').textContent=fmt$(totalBudget-totalCost);
 
   document.getElementById('m-active').textContent=projects.filter(p=>p.status==='Active').length;
   document.getElementById('m-pre').textContent=projects.filter(p=>p.status==='Pre-Construction').length;
