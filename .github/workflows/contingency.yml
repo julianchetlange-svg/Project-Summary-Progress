@@ -1,10 +1,12 @@
 name: Thursday 11am – contingency + publish
 
-# GitHub cron runs in UTC. These times cover 11:05–11:25am Central in both CST and CDT;
-# the script ignores runs outside the Thursday 11:00–12:30 CT window. At 11:25 it publishes even if the contingency email is late.
 on:
+  # Started by the Gmail Apps Script as soon as Fexa's email is uploaded.
+  repository_dispatch:
+    types: [fexa-contingency]
+  # Backstop (UTC; covers both CST and CDT). At 11:25am CT, publishes with last week's log if the contingency export hasn't arrived.
   schedule:
-    - cron: "5,15,25 16,17 * * 4"
+    - cron: "25 16,17 * * 4"
   workflow_dispatch:
     inputs:
       as_of:
@@ -23,10 +25,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  publish:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check out private inbox
+        uses: actions/checkout@v4
+        with:
+          repository: julianchetlange-svg/Project-Summary-Inbox
+          token: ${{ secrets.INBOX_TOKEN }}
+          path: inbox
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -34,22 +42,17 @@ jobs:
           cache-dependency-path: scripts/requirements.txt
       - run: pip install -r scripts/requirements.txt
       - id: run
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: |
           ARGS=""
-          if [ "${{ github.event_name }}" = "schedule" ]; then ARGS="--scheduled"; fi
-          if [ -n "${{ inputs.as_of }}" ]; then ARGS="$ARGS --as-of ${{ inputs.as_of }}"; fi
-          if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          case "${{ github.event_name }}" in
+            schedule) ARGS="--scheduled" ;;
+            repository_dispatch) ARGS="--thursday-only --as-of ${{ github.event.client_payload.date }}" ;;
+            workflow_dispatch)
+              if [ -n "${{ inputs.as_of }}" ]; then ARGS="--as-of ${{ inputs.as_of }}"; fi
+              if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi ;;
+          esac
           python scripts/fexa_report.py contingency $ARGS
-      - uses: actions/upload-artifact@v4
-        if: hashFiles('data/raw/**') != ''
-        with:
-          name: fexa-contingency-export-${{ github.run_id }}
-          path: data/raw/
-          retention-days: 90
-      - name: Commit and publish report
+      - name: Commit report data
         if: steps.run.outputs.changed == 'true'
         run: |
           git config user.name "project-report-bot"
@@ -57,3 +60,11 @@ jobs:
           git add -A data meeting-notes index.html
           git diff --cached --quiet || git commit -m "${{ steps.run.outputs.message }}"
           git pull --rebase origin main && git push
+      - name: Queue emails for Gmail
+        if: steps.run.outputs.changed == 'true'
+        working-directory: inbox
+        run: |
+          git config user.name "project-report-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A outbox
+          git diff --cached --quiet || (git commit -m "Queue email: ${{ steps.run.outputs.message }}" && git pull --rebase && git push)

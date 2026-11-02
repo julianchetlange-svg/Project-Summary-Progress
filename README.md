@@ -2,17 +2,27 @@
 
 `index.html` is the McCoy's Building Supply Store Development Project Summary Report, published with GitHub Pages. Every Thursday it rebuilds itself from two Fexa report emails sent to **mccoysfleet@gmail.com**.
 
+## How the pieces fit
+
+```
+Fexa ──email──▶ mccoysfleet@gmail.com ──Apps Script (every 5 min)──▶ private repo Project-Summary-Inbox
+                         ▲                                                   │ starts workflow
+                         └──── sends emails left in outbox/ ◀── GitHub Actions (this repo) ──▶ index.html → GitHub Pages
+```
+
+No Gmail password is stored anywhere. The Apps Script runs inside the Gmail account, and one GitHub token (stored in the script and as a repo secret) lets the two sides talk. Raw Fexa exports stay in the **private** inbox repo; only the report goes to this public repo.
+
 ## Weekly timeline (Thursday, Central time)
 
 | Time | What happens |
 |---|---|
-| **5:00** | Fexa emails **2026 Project Report - Module** (`.xls`). |
-| **5:10–6:40** | *Thursday 5am – module export* workflow reads it, cleans it, compares it with the published report and emails **chet.lange@mccoys.com** the projects that **closed** since last week, with budget, final cost, over/under and ready-to-paste contingency-log wording. It also lists other changes and anything that needs a look. If the email hasn't arrived by 6:40 you get an alert instead. |
+| **5:00** | Fexa emails **2026 Project Report - Module**. Within ~5 min the Apps Script uploads it and starts *Thursday 5am – module export*. |
+| **~5:10** | The workflow cleans the export, compares it with the published report and queues an email to **chet.lange@mccoys.com**. That email lists projects that **closed** since last week, with budget, final cost, over/under and ready-to-paste contingency-log wording, plus other changes and anything that needs a look. Gmail sends it on the next 5-minute pass. If nothing arrives by 6:40 you get an alert instead. |
 | **5:00–11:00** | Chet updates the contingency log in Fexa. |
-| **11:00** | Fexa emails **Current Budget Year Contingency** (`.xls`). |
-| **11:05–11:25** | *Thursday 11am – contingency + publish* workflow merges it with the 5am data, rebuilds `index.html`, commits it to `main` (Pages republishes within a minute or two) and emails a short confirmation with the contingency changes. If the contingency email is late, it publishes at 11:25 with last week's log and says so. |
+| **11:00** | Fexa emails **Current Budget Year Contingency**; it's uploaded and *Thursday 11am – contingency + publish* starts. |
+| **~11:10** | The report is rebuilt and committed to `main`, Pages republishes within a minute or two, and a short confirmation email (contingency changes) follows. If the contingency export hasn't arrived by 11:25, it publishes with last week's log and says so. |
 
-GitHub's scheduler can start runs a few minutes late at busy times. The schedule leaves room for that, but a delayed run can push publication past 11:30.
+Fexa exports that arrive on other days are uploaded but not processed automatically. To use one, run the workflow by hand with that date.
 
 ## Cleaning rules applied every week
 
@@ -36,31 +46,38 @@ Column headers are detected by name pattern, and the header row is found automat
 
 ## Running it manually
 
-Go to **Actions**, pick a workflow, then **Run workflow**. Enter the report date (`YYYY-MM-DD`) when you're catching up on an earlier Thursday. Use **force** to reprocess an email or republish a date.
+Go to **Actions**, pick a workflow, then **Run workflow**. Enter the report date (`YYYY-MM-DD`, the date the Fexa email arrived) when catching up or using an off-day export. Use **force** to reprocess an export or republish a date.
 
 ## One-time setup
 
-1. Turn on 2-Step Verification for **mccoysfleet@gmail.com**, then create an app password at <https://myaccount.google.com/apppasswords>.
-2. In Gmail settings, under **Forwarding and POP/IMAP**, make sure **IMAP is enabled**.
-3. In this repo go to **Settings → Secrets and variables → Actions → New repository secret** and add:
-   - `GMAIL_USER` = `mccoysfleet@gmail.com`
-   - `GMAIL_APP_PASSWORD` = the 16-character app password
-4. Under **Settings → Actions → General → Workflow permissions**, choose **Read and write permissions**.
+1. **Create the private inbox repo.** On GitHub choose **New repository**, name it `Project-Summary-Inbox`, set it to **Private** and tick **Add a README file**.
+2. **Create one access token.** Go to GitHub **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**:
+   - Repository access: **Only select repositories**, then pick `Project-Summary-Progress` and `Project-Summary-Inbox`.
+   - Permissions: **Contents → Read and write** (nothing else).
+   - Expiration: the longest offered. Put a reminder on your calendar to renew it, since everything stops when it expires.
+3. **Give the token to this repo.** In `Project-Summary-Progress` go to **Settings → Secrets and variables → Actions → New repository secret**, name it `INBOX_TOKEN` and paste the token. Then under **Settings → Actions → General → Workflow permissions**, choose **Read and write permissions**.
+4. **Install the Gmail script.** Signed in as **mccoysfleet@gmail.com**, open <https://script.google.com> and choose **New project**:
+   - Replace the code with the contents of `apps-script/Code.gs`.
+   - Under **Project Settings → Script properties**, add `GITHUB_TOKEN` and paste the same token.
+   - In the editor, pick `setup` and click **Run**, then approve the Gmail and external-request permissions. It checks the token, then starts the 5-minute schedule.
+
+   Only Fexa emails received after `setup` runs are handed off.
 
 ## Files
 
 | Path | Purpose |
 |---|---|
 | `index.html` | The published report (self-contained; Chart.js from cdnjs). |
-| `scripts/fexa_report.py` | All logic: Gmail fetch, cleaning, diff, render, emails. |
+| `scripts/fexa_report.py` | All logic: reading exports, cleaning, diff, render, composing emails. |
+| `apps-script/Code.gs` | Runs in the mccoysfleet Gmail account: uploads Fexa attachments, sends queued emails. |
 | `config.json` | Recipients, PM roster, standing removals/overrides, time windows. |
 | `data/projects.json`, `data/contingency_log.json` | Data behind the last published report, including notes. |
 | `data/staging/` | Thursday 5am results waiting for the 11am publish. |
 | `data/snapshots/` | Per-week status/budget/cost per project, kept for future duration and on-time metrics. |
-| `data/runs.json`, `data/meta.json` | Which emails were processed and when the report was last published. |
+| `data/runs.json`, `data/meta.json` | Which exports were processed and when the report was last published. |
 | `meeting-notes/` | One file per budget meeting. |
 
-Raw Fexa exports are not committed (this repo is public); each run keeps them as a downloadable artifact for 90 days.
+Raw Fexa exports and outgoing emails live in the private `Project-Summary-Inbox` repo, not here.
 
 ## Local test
 
@@ -69,4 +86,4 @@ pip install -r scripts/requirements.txt
 python scripts/fexa_report.py module --file "2026 Project Report - Module.xls" --as-of 2026-11-05 --no-email
 python scripts/fexa_report.py contingency --file "Current Budget Year Contingency.xls" --as-of 2026-11-05 --no-email
 ```
-`--no-email` writes the emails to `out/` instead of sending them.
+`--no-email` writes the emails to `out/` instead of queuing them in the inbox.

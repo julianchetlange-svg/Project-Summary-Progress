@@ -2,25 +2,27 @@
 """
 McCoy's Project Summary Report — weekly automation.
 
+Inputs arrive through a private "inbox" repo (see apps-script/Code.gs); emails
+go out the same way.
+
 Commands
-  module       Thursday ~5am CT. Pull "2026 Project Report - Module" from Gmail,
+  module       Thursday ~5am CT. Read "2026 Project Report - Module",
                clean it, diff against the published report, stage the result and
                email Chet the closed projects with their over/under.
-  contingency  Thursday ~11am CT. Pull "Current Budget Year Contingency", merge
+  contingency  Thursday ~11am CT. Read "Current Budget Year Contingency", merge
                with the staged module data, render index.html and record a
                snapshot. The workflow then commits and pushes.
   render       Re-render index.html from data/ (after hand edits to notes etc.).
 
 Local/testing flags
-  --file PATH      use a local .xls/.xlsx instead of Gmail
+  --file PATH      use a local .xls/.xlsx instead of the inbox
   --as-of DATE     override the report date (YYYY-MM-DD)
   --no-email       write emails to out/ instead of sending
   --scheduled      only act inside the configured Central-time window
-  --force          reprocess an email that was already handled
+  --force          reprocess an export that was already handled
+  --thursday-only  (upload-triggered runs) ignore exports received on other days
 """
-import argparse, base64, datetime as dt, email, html, imaplib, json, os, re, smtplib, sys
-from email.message import EmailMessage
-from email.utils import parsedate_to_datetime
+import argparse, datetime as dt, html, json, os, re, sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -467,58 +469,33 @@ def render(projects, log, as_of):
     path.write_text(h)
 
 
-# ───────────────────────── Gmail (IMAP in, SMTP out) ─────────────────────────
-def creds():
-    u, p = os.environ.get("GMAIL_USER", CFG["mailbox"]), os.environ.get("GMAIL_APP_PASSWORD")
-    if not p:
-        sys.exit("GMAIL_APP_PASSWORD is not set (add it as a repository secret).")
-    return u, p
+# ─────────────── private inbox repo (files in, emails out) ───────────────
+# A Google Apps Script in the mccoysfleet@gmail.com account uploads each Fexa
+# attachment to <inbox>/incoming/<kind>/<YYYY-MM-DD>_<HHmmss>_<gmail id>.<ext>
+# and sends any email this script leaves in <inbox>/outbox/.
+INBOX = Path(os.environ.get("INBOX_DIR", ROOT / "inbox"))
 
 
-def fetch_latest(subject, since):
-    """Newest Fexa email whose subject contains `subject`, received on/after `since` (date)."""
-    user, pw = creds()
-    M = imaplib.IMAP4_SSL("imap.gmail.com")
-    M.login(user, pw)
-    M.select('"[Gmail]/All Mail"', readonly=True)
-    q = f'from:{CFG["fexa_sender"]} subject:"{subject}" has:attachment after:{since:%Y/%m/%d}'
-    typ, data = M.search(None, "X-GM-RAW", f'"{q}"')
-    best = None
-    for num_ in (data[0].split() if data and data[0] else []):
-        typ, msg_data = M.fetch(num_, "(RFC822)")
-        msg = email.message_from_bytes(msg_data[0][1])
-        when = parsedate_to_datetime(msg["Date"]).astimezone(TZ)
-        if when.date() < since:
-            continue
-        for part in msg.walk():
-            fn = part.get_filename() or ""
-            if fn.lower().endswith((".xls", ".xlsx", ".csv")):
-                cand = (when, msg["Message-ID"], fn, part.get_payload(decode=True))
-                if not best or cand[0] > best[0]:
-                    best = cand
-    M.logout()
-    return best
+def find_export(kind, as_of):
+    """Newest uploaded attachment of this kind received on the report date."""
+    d = INBOX / "incoming" / kind
+    files = sorted(f for f in d.glob(f"{as_of}_*") if f.suffix.lower() in (".xls", ".xlsx", ".csv")) if d.exists() else []
+    return files[-1] if files else None
 
 
-def send(subject, html_body, attachments=(), no_email=False):
+def send(subject, html_body, no_email=False):
+    slug = re.sub(r"[^\w]+", "_", subject)[:60]
     if no_email:
         OUT.mkdir(exist_ok=True)
-        f = OUT / (re.sub(r"[^\w]+", "_", subject)[:60] + ".html")
+        f = OUT / f"{slug}.html"
         f.write_text(html_body)
         print(f"[no-email] wrote {f}")
         return
-    user, pw = creds()
-    m = EmailMessage()
-    m["From"], m["To"], m["Subject"] = user, ", ".join(CFG["notify_to"]), subject
-    m.set_content("This email is best viewed in an HTML-capable client.")
-    m.add_alternative(html_body, subtype="html")
-    for name, data, mime in attachments:
-        main, sub_ = mime.split("/")
-        m.add_attachment(data, maintype=main, subtype=sub_, filename=name)
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-        s.login(user, pw)
-        s.send_message(m)
-    print(f"emailed: {subject}")
+    box = INBOX / "outbox"
+    box.mkdir(parents=True, exist_ok=True)
+    f = box / f"{now_ct():%Y%m%d-%H%M%S}_{slug}.json"
+    f.write_text(json.dumps({"to": CFG["notify_to"], "subject": subject, "html": html_body}, ensure_ascii=False))
+    print(f"queued email for Gmail: {subject}")
 
 
 # ───────────────────────── email bodies ─────────────────────────
@@ -638,23 +615,18 @@ def publish_email(as_of, log_added, log_changed, log_removed, ledger, log_net, n
 
 
 # ───────────────────────── commands ─────────────────────────
-def get_input(args, subject, since):
-    """Returns (path, message_id, received) or None."""
+def get_input(args, kind, as_of):
+    """Returns (path, key, received), "done" if already handled, or None if not uploaded yet."""
     if args.file:
         return Path(args.file), f"local:{Path(args.file).name}", now_ct().isoformat()
-    got = fetch_latest(subject, since)
-    if not got:
+    f = find_export(kind, as_of)
+    if not f:
         return None
-    when, mid, fn, data = got
     runs = load("runs.json", {"processed": {}})
-    if mid in runs["processed"] and not args.force:
-        print(f"Already processed {mid} ({fn}) — nothing to do.")
+    if f.name in runs["processed"] and not args.force:
+        print(f"Already processed {f.name} — nothing to do.")
         return "done"
-    raw_dir = DATA / "raw" / when.date().isoformat()
-    raw_dir.mkdir(parents=True, exist_ok=True)
-    p = raw_dir / fn
-    p.write_bytes(data)
-    return p, mid, when.isoformat()
+    return f, f.name, f.name[:10]
 
 
 def mark_processed(mid, kind, received):
@@ -678,14 +650,17 @@ def cmd_module(args):
     if args.scheduled and not in_window(w["start"], w["end"]):
         print("Outside the Thursday module window — skipping.")
         return
-    got = get_input(args, CFG["module_subject"], dt.date.fromisoformat(as_of))
+    if args.thursday_only and dt.date.fromisoformat(as_of).weekday() != 3:
+        print(f"{as_of} is not a Thursday — file kept in the inbox; run the workflow manually with this date to use it.")
+        return
+    got = get_input(args, "module", as_of)
     if got == "done":
         return
     if not got:
         if args.scheduled and now_ct().strftime("%H:%M") >= w["alert_after"] and not load("staging/alerted_module.json"):
             send(f"Fexa module export not received ({as_of})",
                  f'<div style="{CSS}"><p>The <b>2026 Project Report - Module</b> email from Fexa had not arrived '
-                 f'in {CFG["mailbox"]} by {w["alert_after"]} CT. The 11am run will still publish using last '
+                 f'in {CFG["mailbox"]} (or had not been uploaded) by {w["alert_after"]} CT. The 11am run will still publish using last '
                  f'week\'s project data plus the new contingency log. To catch up, run the <i>Thursday 5am – '
                  f'module export</i> workflow manually once the email arrives.</p></div>', no_email=args.no_email)
             save("staging/alerted_module.json", {"as_of": as_of})
@@ -700,7 +675,7 @@ def cmd_module(args):
     d = diff_projects(prior, projects)
     cid = CFG["contingency_project_id"]
     ledger = next((p["cost"] for p in projects if p["id"] == cid), None)
-    save("staging/module.json", {"as_of": as_of, "source": str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path),
+    save("staging/module.json", {"as_of": as_of, "source": path.name,
                                  "message_id": mid, "received": received, "ledger_net_drawn": ledger,
                                  "flags": flags, "removed": removed, "inferred": inferred, "projects": projects})
     # draft preview: today's project data + last week's contingency log
@@ -717,11 +692,14 @@ def cmd_contingency(args):
     if args.scheduled and not in_window(w["start"], w["end"]):
         print("Outside the Thursday contingency window — skipping.")
         return
+    if args.thursday_only and dt.date.fromisoformat(as_of).weekday() != 3:
+        print(f"{as_of} is not a Thursday — file kept in the inbox; run the workflow manually with this date to use it.")
+        return
     meta = load("meta.json", {"as_of": "2026-10-23"})
     if args.scheduled and meta.get("as_of") == as_of and not args.force:
         print(f"Report already published for {as_of}.")
         return
-    got = get_input(args, CFG["contingency_subject"], dt.date.fromisoformat(as_of))
+    got = get_input(args, "contingency", as_of)
     if got == "done":
         return
     notes = []
@@ -787,6 +765,7 @@ def main():
     ap.add_argument("--no-email", action="store_true")
     ap.add_argument("--scheduled", action="store_true")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--thursday-only", action="store_true", help="ignore uploads not received on a Thursday")
     a = ap.parse_args()
     {"module": cmd_module, "contingency": cmd_contingency, "render": cmd_render}[a.command](a)
 
