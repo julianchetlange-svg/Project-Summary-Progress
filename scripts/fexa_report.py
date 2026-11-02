@@ -522,11 +522,23 @@ def var_cell(budget, cost):
     pct = f" ({abs(v) / budget * 100:.0f}%)" if budget else ""
     return f'<span style="color:{col};font-weight:600;">{money(abs(v))} {word}{pct}</span>'
 
-def contingency_line(p):
-    v = p["budget"] - p["cost"]
-    word = "Under" if v >= 0 else "Over"
-    return (f"Original Budget {money(p['budget'])} - Actual Spend {money(p['cost'])} - "
-            f"{money(abs(v))} {word} Budget")
+def logged_for(p, log):
+    """Contingency-log lines already booked for this project (matched on name)."""
+    k = log_key(p["name"])
+    return [l for l in log if log_key(l["name"]) == k]
+
+
+def contingency_line(p, log=()):
+    over = p["cost"] - p["budget"]                     # + = over budget (draw), - = under (return)
+    booked = sum(l["amount"] for l in logged_for(p, log))
+    word = "Over" if over > 0 else "Under"
+    base = (f"Original Budget {money(p['budget'])} - Actual Spend {money(p['cost'])} - "
+            f"{money(abs(over))} {word} Budget")
+    if not booked:
+        return base, over
+    adj = round(over - booked, 2)
+    return (f"{base} - {money(booked, True)} already in log - "
+            f"{'no further entry needed' if abs(adj) < 0.01 else 'add ' + money(adj, True)}"), adj
 
 def h2(t):
     return f'<h3 style="color:#1B5C2E;margin:18px 0 4px;font-size:15px;">{esc(t)}</h3>'
@@ -535,7 +547,7 @@ def bullets(items):
     return "<ul style='margin:4px 0 12px;padding-left:18px;'>" + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
 
 
-def module_email(d, flags, removed, inferred, as_of, prior_as_of):
+def module_email(d, flags, removed, inferred, as_of, prior_as_of, log=()):
     parts = [f'<div style="{CSS}">',
              f'<div style="background:#1B5C2E;color:#F5C400;padding:10px 14px;font-weight:700;font-size:16px;">'
              f'McCoy\'s Project Summary — weekly closeout check ({as_of})</div>',
@@ -545,14 +557,23 @@ def module_email(d, flags, removed, inferred, as_of, prior_as_of):
 
     parts.append(h2(f"Closed since last report ({len(d['closed'])})"))
     if d["closed"]:
-        rows = [[plink(p), esc(p["name"]) + (' <span style="background:#F5C400;font-size:10px;padding:1px 5px;'
-                 'border-radius:8px;">carryover — includes prior-year spend</span>' if p["carryover"] else ""),
-                 esc(p["assignee"]), money(p["budget"]), money(p["cost"]), var_cell(p["budget"], p["cost"]),
-                 f'<span style="font-size:11px;color:#555;">{esc(contingency_line(p))}</span>'] for p in d["closed"]]
+        rows = []
+        for p in d["closed"]:
+            text, adj = contingency_line(p, log)
+            booked = logged_for(p, log)
+            note = "".join(f'<div style="font-size:11px;color:#7a5500;">Already in log: {esc(l["detail"] or l["name"])} '
+                           f'({money(l["amount"], True)})</div>' for l in booked)
+            rows.append([plink(p), esc(p["name"]) + (' <span style="background:#F5C400;font-size:10px;padding:1px 5px;'
+                         'border-radius:8px;">carryover — includes prior-year spend</span>' if p["carryover"] else ""),
+                         esc(p["assignee"]), money(p["budget"]), money(p["cost"]), var_cell(p["budget"], p["cost"]),
+                         f'<b>{money(adj, True)}</b>' if abs(adj) >= 0.01 else "—",
+                         f'<span style="font-size:11px;color:#555;">{esc(text)}</span>{note}'])
         tb, tc = sum(p["budget"] for p in d["closed"]), sum(p["cost"] for p in d["closed"])
-        rows.append(["", "<b>Total</b>", "", f"<b>{money(tb)}</b>", f"<b>{money(tc)}</b>", var_cell(tb, tc), ""])
-        parts.append(table(["ID", "Project", "PM", "Budget", "Final cost", "Over / under", "Contingency log wording"],
-                           rows, right=(3, 4)))
+        rows.append(["", "<b>Total</b>", "", f"<b>{money(tb)}</b>", f"<b>{money(tc)}</b>", var_cell(tb, tc), "", ""])
+        parts.append(table(["ID", "Project", "PM", "Budget", "Final cost", "Over / under", "Log entry (+draw / −return)",
+                            "Contingency log wording"], rows, right=(3, 4, 6)))
+        parts.append('<p style="font-size:11px;color:#555;">Log entry = over/under minus anything already booked in '
+                     'the contingency log for that project. Carryover projects: enter only the 2026 portion.</p>')
     else:
         parts.append("<p>No projects moved to Closed this week.</p>")
 
@@ -679,7 +700,7 @@ def cmd_module(args):
                                  "message_id": mid, "received": received, "ledger_net_drawn": ledger,
                                  "flags": flags, "removed": removed, "inferred": inferred, "projects": projects})
     # draft preview: today's project data + last week's contingency log
-    body = module_email(d, flags, removed, inferred, as_of, meta["as_of"])
+    body = module_email(d, flags, removed, inferred, as_of, meta["as_of"], load("contingency_log.json", []))
     n = len(d["closed"])
     send(f"Projects closed this week: {n} — McCoy's report {as_of}", body, no_email=args.no_email)
     mark_processed(mid, "module", received)
@@ -732,6 +753,14 @@ def cmd_contingency(args):
         raise SystemExit(f"Contingency project {cid} missing from project data.")
     cproj["cost"] = log_net                      # contingency log is authoritative over the ledger
     added, changed, removed_l = diff_log(prior_log, log)
+    groups = {}
+    for l in log:
+        groups.setdefault(log_key(l["name"]), []).append(l)
+    for g in groups.values():
+        if len(g) > 1 and any(l in added for l in g):
+            notes.append(f"'{g[0]['name']}' now has {len(g)} lines in the contingency log "
+                         f"({', '.join(money(l['amount'], True) for l in g)}; net {money(sum(l['amount'] for l in g), True)}). "
+                         "Check it isn't counted twice.")
 
     render(projects, log, as_of)
     save("projects.json", projects)
