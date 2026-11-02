@@ -1,0 +1,380 @@
+[
+ {
+  "name": "047 Waco - Fence Install",
+  "detail": "",
+  "department": null,
+  "projected": null,
+  "amount": 17069.29
+ },
+ {
+  "name": "008 Stephenville - A- Frame Rack",
+  "detail": "Unplanned Spend - Approved RVW",
+  "department": null,
+  "projected": null,
+  "amount": 5700
+ },
+ {
+  "name": "018 Abilene - A- Frame Rack",
+  "detail": "Unplanned Spend - Approved RVW",
+  "department": null,
+  "projected": null,
+  "amount": 5700
+ },
+ {
+  "name": "017 North Corpus - Sitework - Grading - Cantilever Rack",
+  "detail": "Unplanned Spend - Approved Budget Review - WW & RVW",
+  "department": null,
+  "projected": null,
+  "amount": 9100
+ },
+ {
+  "name": "060 Brenham Demo - Asbestos Remediation",
+  "detail": "Additional Cost Associated with Asbestos Remediation",
+  "department": null,
+  "projected": null,
+  "amount": 17136.75
+ },
+ {
+  "name": "359 Burnet - Dock Plate Purchase",
+  "detail": "",
+  "department": null,
+  "projected": null,
+  "amount": 7200
+ },
+ {
+  "name": "028 Baytown -Split System Replacement",
+  "detail": "Unplanned Spend",
+  "department": null,
+  "projected": null,
+  "amount": 10110.55
+ },
+ {
+  "name": "019 Midland - Nitrogen System",
+  "detail": "Contingency Spend - 33,012.78",
+  "department": null,
+  "projected": null,
+  "amount": 33012.78
+ },
+ {
+  "name": "033 Pharr- Sitework - Concrete Washout",
+  "detail": "Original Budget - $30,000 - Actual Cost $7,350 - $22,650 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -22650
+ },
+ {
+  "name": "122 Canyon Lake - New Store",
+  "detail": "Projected 2026 Spend - $7,636,364 - Revised Spend - $5,000,000 - Budget Wend down from $12M to $11M - Start Date Pushed Back",
+  "department": null,
+  "projected": null,
+  "amount": -2636364
+ },
+ {
+  "name": "055 Georgetown, 070 San Marcos, 093 Weslaco, 069 Austin 290 West, 096 El Campo, 098 Cleveland, 101 Universal City, 007 Brownwood, 062 Austin Manchaca, 074 Bee Cave - Lifecycle Door Replacements",
+  "detail": "Original Budget $360,000 - Ron and Waylon Request We Remove from Plan",
+  "department": null,
+  "projected": null,
+  "amount": -360000
+ },
+ {
+  "name": "735 Fleet - 4 Slide Trucks - 5 24' TA Trucks - Special Pricing",
+  "detail": "9 Replacement Trucks Sourced through Special Purchase - 1 Box Truck to Replace Lease",
+  "department": null,
+  "projected": null,
+  "amount": 1208227
+ },
+ {
+  "name": "Stihl Aisle Credits to Contingency",
+  "detail": "Stihl Aisle Credits to Contingency at $8,000 Each - 008, 011, 013, 016, 027, 030, 033, 035, 053, 055, 090, 093, 098, 111, and 118",
+  "department": null,
+  "projected": null,
+  "amount": -128000
+ },
+ {
+  "name": "359 Burnet Distribution - Unplanned Forklift Purchase",
+  "detail": "Purchas Rental Unit For Container Offload - $36,000 8' Forks With Anti Slip Surface - $5,000",
+  "department": null,
+  "projected": null,
+  "amount": 43790
+ },
+ {
+  "name": "Daytime Run of Randy Robot - No Reprogram Required",
+  "detail": "",
+  "department": null,
+  "projected": null,
+  "amount": -44000
+ },
+ {
+  "name": "Remove New Alarm Systems required for Randy Robot Reprogram",
+  "detail": "Company moved to Daytime Run",
+  "department": null,
+  "projected": null,
+  "amount": -576000
+ },
+ {
+  "name": "011 S. Austin - Parking Lot Lights",
+  "detail": "Original Budget - $40,000 - Actual Cost - $1,495.11 Under Budget-$38,504.89",
+  "department": null,
+  "projected": null,
+  "amount": -38504.89
+ },
+ {
+  "name": "066 Alice - LED Retro",
+  "detail": "Original Budget - $110,000 - Actual Spend - $111,596.56 - Over Budget +$1,596.56",
+  "department": null,
+  "projected": null,
+  "amount": 1596.56
+ },
+ {
+  "name": "Racking Inspection/Repairs - 004, 006, 008, 015, 016, 017, 018, 029, 030, 034, 037, 040, 043, 044, 047, 049, 050, 052, 057, 063, 087, 090, 101, 103,109, 111, 117, 119, 359",
+  "detail": "Most Likely Qualifies as expense, will track against budget to be safe",
+  "department": null,
+  "projected": null,
+  "amount": 98819.7
+ },
+ {
+  "name": "103 San Benito - Lighting",
+  "detail": "Original Budget $110,000 - Actual Spend - $107,329.21 - $2,673.79 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -2673.79
+ },
+ {
+  "name": "121 New Caney - Spend Under 2026 Budget",
+  "detail": "Original Budget $3,277,763 - Actual Spend 2,578,142 = -699,620.50 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -699620.5
+ },
+ {
+  "name": "109 Aransas Pass - Metal Work",
+  "detail": "Original Budget - $52,000 - Actual Spend - $87,983.33 - $35.983.33 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 35983.33
+ },
+ {
+  "name": "017 North Corpus - Sitework - Asphalt Repairs",
+  "detail": "Original Budget 60,890.63 - Actual Spend - $47,257.12 - $13,633.50 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -13633.5
+ },
+ {
+  "name": "017 N Corpus - Burglar & Fire Alarm",
+  "detail": "Original Budget - $78,000 - Actual Spend - $79,653.08 - $1,653.08 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 1653.08
+ },
+ {
+  "name": "089 Mission - Burglar & Fire Alarm",
+  "detail": "Original Budget 78,000 - Actual Spend $77,965.07 - $34.93 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -34.93
+ },
+ {
+  "name": "066 Allice - HVAC - Replace Spilt System",
+  "detail": "Unbudgeted Replacement - $23,395.72",
+  "department": null,
+  "projected": null,
+  "amount": 23395.72
+ },
+ {
+  "name": "087 Fort Stockton - LED Retro",
+  "detail": "Original Budget $110,000 - Actual Spend $96,101.84 - $13,989.20 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -13989.2
+ },
+ {
+  "name": "068 Plainview - Close Store",
+  "detail": "$18,686.10 Unbudgeted Spend",
+  "department": null,
+  "projected": null,
+  "amount": 18686.1
+ },
+ {
+  "name": "087 Fort Stockton - Sitework - Asphalt Repairs",
+  "detail": "Original Budget $45,000 - Actual Spend $52,900.80 - $7,900.80 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 7900.8
+ },
+ {
+  "name": "060 Brenham - Sitework - Asphalt Repairs",
+  "detail": "Original Budget - $20,000 - Additional Work Approved 411,240.80",
+  "department": null,
+  "projected": null,
+  "amount": 446238.87
+ },
+ {
+  "name": "356 Midland Dist. - Ramp Construction and Building Demo",
+  "detail": "Original Budget $220,000 - Projected Spend - $287,276.29",
+  "department": null,
+  "projected": null,
+  "amount": 62106.29
+ },
+ {
+  "name": "015 Harlingen - HVAC - RTU System Replacement",
+  "detail": "Original Budget - $50,000 - Actual Cost - $44,433.67 - $5,566.33",
+  "department": null,
+  "projected": null,
+  "amount": -5566.33
+ },
+ {
+  "name": "900 Headquarters - HVAC - RTU and Split System Replacement",
+  "detail": "Decided to replace 2 Units at $541,919 - Original Budget was $325,000",
+  "department": null,
+  "projected": null,
+  "amount": 233665.85
+ },
+ {
+  "name": "108 Rio Grand City - Sitework",
+  "detail": "Original Budget - $85,000 - Actual Spend - $91,804.80 - $6,804.80 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 6804.8
+ },
+ {
+  "name": "011 South Austin - Cut Shed",
+  "detail": "Original Budget $15,000 - Actual Spend $14,058.46 - $941.44 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -941.44
+ },
+ {
+  "name": "007 Brownwood - Cut Shed",
+  "detail": "Original Budget $15,000 - Actual Spend $12,400.76 - $2,599.24 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -2599.24
+ },
+ {
+  "name": "029, 057, 063, 090, 084, 060, 088, 114, 043, 109 Signage",
+  "detail": "151,000 Budget - Actual Spend - 133,288 - $12,711.22 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -12711.22
+ },
+ {
+  "name": "015 Store - Burglar & Fire Alarm",
+  "detail": "Original Budget $78,000 - Actual Spend $83,407.41 - $5,407.41 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 5407.41
+ },
+ {
+  "name": "043 Huntsville - Sitework - Washout Fence Line",
+  "detail": "Original Budget - $24,000 - Actual Spend - $34,812.93 - $10812.93 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 10812.93
+ },
+ {
+  "name": "100 Edinburg - LED Retro",
+  "detail": "Original Budget $110,000 - Actual Spend $112,013.16 - $2,013.16 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 2013.16
+ },
+ {
+  "name": "735 Fleet - YTD Delivery Balance",
+  "detail": "Budget $2,777,000 - Actual Cost $2,639,937.98 - $137,062.02 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -137062.02
+ },
+ {
+  "name": "035 Odessa - Replace 2 Split Systems",
+  "detail": "Unplanned Spend",
+  "department": null,
+  "projected": null,
+  "amount": 40040.88
+ },
+ {
+  "name": "039 Longview - Replace Septic System",
+  "detail": "Unplanned Spend",
+  "department": null,
+  "projected": null,
+  "amount": 70559.51
+ },
+ {
+  "name": "066 Alice - Burglar & Fire Alarm",
+  "detail": "Unplanned Spend - Wire Chewed up By Rodents - Rewire In Flex Conduit",
+  "department": null,
+  "projected": null,
+  "amount": 36553
+ },
+ {
+  "name": "730 Store Development - Racking Invetory",
+  "detail": "Backfill Standard inventory and ship Specialize parts",
+  "department": null,
+  "projected": null,
+  "amount": 66097.45
+ },
+ {
+  "name": "025 NW San Antonio - Lifecycle Replacements",
+  "detail": "Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -18092.5
+ },
+ {
+  "name": "050 SC San Anonio - Lifecycle Replacements",
+  "detail": "Original Budget $30,000 - Actual Spend $11,907.50 - Retrofit Versus New Door - $18,092.50 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -18092.5
+ },
+ {
+  "name": "123 Reno Springtown - Civil - ARC - MEP Design",
+  "detail": "Unplanned Spend",
+  "department": null,
+  "projected": null,
+  "amount": 396000
+ },
+ {
+  "name": "063 Gainesville - HVAC - Split System",
+  "detail": "",
+  "department": null,
+  "projected": null,
+  "amount": 9488.41
+ },
+ {
+  "name": "013 Richwood - Burglar & Fire Alarm",
+  "detail": "Budgetr - $78,000 - Actual - $81,258.42 +$3,258.42 (over)",
+  "department": null,
+  "projected": null,
+  "amount": 3258.42
+ },
+ {
+  "name": "042 Las Cruces - Freight Door",
+  "detail": "Not in Budget - 8,735.69",
+  "department": null,
+  "projected": null,
+  "amount": 8735.69
+ },
+ {
+  "name": "061 Mount Pleasant - Sitework - Asphalt Patches",
+  "detail": "Original Budget - $30,000 - Revised Estimate Approved - $98,000 - $68,000 Over Budget",
+  "department": null,
+  "projected": null,
+  "amount": 68000
+ },
+ {
+  "name": "359 Burnet Distribution - Sitework",
+  "detail": "Budget 60,890.63 - Cost $37,213.10 - Variance -$23,677.53 (under)",
+  "department": null,
+  "projected": null,
+  "amount": -23677.53
+ },
+ {
+  "name": "007 Brownwood - Lifecycle Replacements Doors",
+  "detail": "Budget - $45,000 - Cost - $26,790.72 - Variance -$18,209.28 (under)",
+  "department": null,
+  "projected": null,
+  "amount": -18209.28
+ }
+]

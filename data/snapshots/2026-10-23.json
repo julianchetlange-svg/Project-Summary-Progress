@@ -1,0 +1,884 @@
+{
+ "800": {
+  "status": "Post-Construction",
+  "budget": 30000,
+  "cost": 25395.45,
+  "assignee": "Leeland Weiss"
+ },
+ "819": {
+  "status": "Closed",
+  "budget": 15000,
+  "cost": 12400.76,
+  "assignee": "Steven McCormick"
+ },
+ "846": {
+  "status": "Closed",
+  "budget": 15000,
+  "cost": 14058.46,
+  "assignee": "Steven McCormick"
+ },
+ "848": {
+  "status": "Closed",
+  "budget": 40000,
+  "cost": 1495.11,
+  "assignee": "Steven McCormick"
+ },
+ "980": {
+  "status": "Closed",
+  "budget": 11000000,
+  "cost": 10089802.01,
+  "assignee": "Carlos Garcia"
+ },
+ "1123": {
+  "status": "Post-Construction",
+  "budget": 45000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "1124": {
+  "status": "Closed",
+  "budget": 45000,
+  "cost": 26790.72,
+  "assignee": "Steven McCormick"
+ },
+ "1128": {
+  "status": "Post-Construction",
+  "budget": 45000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "1129": {
+  "status": "Active",
+  "budget": 30000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "1130": {
+  "status": "Closed",
+  "budget": 30000,
+  "cost": 11907.5,
+  "assignee": "Leeland Weiss"
+ },
+ "1131": {
+  "status": "Pre-Construction",
+  "budget": 30000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "1133": {
+  "status": "Pre-Construction",
+  "budget": 30000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "1134": {
+  "status": "Closed",
+  "budget": 30000,
+  "cost": 11907.5,
+  "assignee": "Leeland Weiss"
+ },
+ "1147": {
+  "status": "Closed",
+  "budget": 52000,
+  "cost": 87983.33,
+  "assignee": "Leeland Weiss"
+ },
+ "1153": {
+  "status": "Closed",
+  "budget": 78000,
+  "cost": 81258.42,
+  "assignee": "Greg Wallace"
+ },
+ "1187": {
+  "status": "Closed",
+  "budget": 45000,
+  "cost": 48215.37,
+  "assignee": "Kyle Miller"
+ },
+ "1219": {
+  "status": "Closed",
+  "budget": 411240.8,
+  "cost": 446238.87,
+  "assignee": "Steven McCormick"
+ },
+ "1346": {
+  "status": "Closed",
+  "budget": 7500,
+  "cost": 2604,
+  "assignee": "Carlos Garcia"
+ },
+ "1363": {
+  "status": "Closed",
+  "budget": 60890.63,
+  "cost": 47257.12,
+  "assignee": "Leeland Weiss"
+ },
+ "1374": {
+  "status": "Closed",
+  "budget": 35000,
+  "cost": 57509.1,
+  "assignee": "Steven McCormick"
+ },
+ "1571": {
+  "status": "Closed",
+  "budget": 78000,
+  "cost": 83407.41,
+  "assignee": "Greg Wallace"
+ },
+ "1604": {
+  "status": "Closed",
+  "budget": 78000,
+  "cost": 79653.08,
+  "assignee": "Greg Wallace"
+ },
+ "1835": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 8225.41,
+  "assignee": "Steven McCormick"
+ },
+ "1901": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 13183.99,
+  "assignee": "Steven McCormick"
+ },
+ "2165": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 4518.48,
+  "assignee": "Leeland Weiss"
+ },
+ "2297": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 5304.91,
+  "assignee": "Steven McCormick"
+ },
+ "2330": {
+  "status": "Closed",
+  "budget": 3236.17,
+  "cost": 2784.47,
+  "assignee": "Carlos Garcia"
+ },
+ "2396": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 3955.68,
+  "assignee": "Steven McCormick"
+ },
+ "2429": {
+  "status": "Active",
+  "budget": 78000,
+  "cost": 8410.81,
+  "assignee": "Greg Wallace"
+ },
+ "2433": {
+  "status": "Closed",
+  "budget": 78000,
+  "cost": 77965.07,
+  "assignee": "Greg Wallace"
+ },
+ "3057": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 5263.52,
+  "assignee": "Leeland Weiss"
+ },
+ "3221": {
+  "status": "Pre-Construction",
+  "budget": 5000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "3320": {
+  "status": "Closed",
+  "budget": 30000,
+  "cost": 7350,
+  "assignee": "Leeland Weiss"
+ },
+ "3419": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 22941.01,
+  "assignee": "Steven McCormick"
+ },
+ "3551": {
+  "status": "Active",
+  "budget": 11000000,
+  "cost": 1542946.53,
+  "assignee": "Jeff Schaefer"
+ },
+ "3584": {
+  "status": "Closed",
+  "budget": 110000,
+  "cost": 111596.56,
+  "assignee": "Leeland Weiss"
+ },
+ "3650": {
+  "status": "Closed",
+  "budget": 110000,
+  "cost": 112013.6,
+  "assignee": "Leeland Weiss"
+ },
+ "3651": {
+  "status": "Closed",
+  "budget": 110000,
+  "cost": 107326.21,
+  "assignee": "Leeland Weiss"
+ },
+ "3652": {
+  "status": "Closed",
+  "budget": 110000,
+  "cost": 96101.84,
+  "assignee": "Leeland Weiss"
+ },
+ "3749": {
+  "status": "Post-Construction",
+  "budget": 30000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "3782": {
+  "status": "Closed",
+  "budget": 45000,
+  "cost": 52900.8,
+  "assignee": "Leeland Weiss"
+ },
+ "3947": {
+  "status": "Closed",
+  "budget": 220000,
+  "cost": 282106.29,
+  "assignee": "Leeland Weiss"
+ },
+ "3980": {
+  "status": "Closed",
+  "budget": 8000,
+  "cost": 8519.51,
+  "assignee": "Kyle Miller"
+ },
+ "4013": {
+  "status": "Closed",
+  "budget": 85000,
+  "cost": 91804.8,
+  "assignee": "Leeland Weiss"
+ },
+ "4046": {
+  "status": "Closed",
+  "budget": 8000,
+  "cost": 14576.57,
+  "assignee": "Kyle Miller"
+ },
+ "4080": {
+  "status": "Active",
+  "budget": 140000,
+  "cost": 78609.23,
+  "assignee": "Greg Wallace"
+ },
+ "4376": {
+  "status": "Closed",
+  "budget": 10000,
+  "cost": 6395.05,
+  "assignee": "Kyle Miller"
+ },
+ "4377": {
+  "status": "Closed",
+  "budget": 25000,
+  "cost": 13836.58,
+  "assignee": "Kyle Miller"
+ },
+ "4378": {
+  "status": "Closed",
+  "budget": 25000,
+  "cost": 11383.3,
+  "assignee": "Kyle Miller"
+ },
+ "4379": {
+  "status": "Closed",
+  "budget": 10000,
+  "cost": 12910.96,
+  "assignee": "Kyle Miller"
+ },
+ "4410": {
+  "status": "Budget Plan",
+  "budget": 1200000,
+  "cost": -1761558.54,
+  "assignee": "Chet Lange"
+ },
+ "4442": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 2689.38,
+  "assignee": "Leeland Weiss"
+ },
+ "4443": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 4716.8,
+  "assignee": "Leeland Weiss"
+ },
+ "4475": {
+  "status": "Closed",
+  "budget": 325000,
+  "cost": 558665.85,
+  "assignee": "Greg Wallace"
+ },
+ "4508": {
+  "status": "Post-Construction",
+  "budget": 60000,
+  "cost": 137953.83,
+  "assignee": "Leeland Weiss"
+ },
+ "4542": {
+  "status": "Closed",
+  "budget": 50000,
+  "cost": 44433.67,
+  "assignee": "Leeland Weiss"
+ },
+ "4543": {
+  "status": "Closed",
+  "budget": 24000,
+  "cost": 34812.93,
+  "assignee": "Steven McCormick"
+ },
+ "4739": {
+  "status": "Closed",
+  "budget": 32415.46,
+  "cost": 33012.78,
+  "assignee": "Greg Wallace"
+ },
+ "4805": {
+  "status": "Closed",
+  "budget": 43000,
+  "cost": 42136.75,
+  "assignee": "Steven McCormick"
+ },
+ "4970": {
+  "status": "Post-Construction",
+  "budget": 9865,
+  "cost": 30924.72,
+  "assignee": "Leeland Weiss"
+ },
+ "5003": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1490.08,
+  "assignee": "Leeland Weiss"
+ },
+ "5036": {
+  "status": "Closed",
+  "budget": 25000,
+  "cost": 18686.1,
+  "assignee": "Leeland Weiss"
+ },
+ "5069": {
+  "status": "Closed",
+  "budget": 12000,
+  "cost": 10110.55,
+  "assignee": "Steven McCormick"
+ },
+ "5102": {
+  "status": "Closed",
+  "budget": 35000,
+  "cost": 17069.29,
+  "assignee": "Steven McCormick"
+ },
+ "5168": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 5640.06,
+  "assignee": "Leeland Weiss"
+ },
+ "5201": {
+  "status": "Closed",
+  "budget": 35510.88,
+  "cost": 40040.88,
+  "assignee": "Leeland Weiss"
+ },
+ "5234": {
+  "status": "Closed",
+  "budget": 30000,
+  "cost": 8276.13,
+  "assignee": "Kyle Miller"
+ },
+ "5267": {
+  "status": "Closed",
+  "budget": 23500,
+  "cost": 23395.72,
+  "assignee": "Greg Wallace"
+ },
+ "5300": {
+  "status": "Closed",
+  "budget": 30000,
+  "cost": 9175.31,
+  "assignee": "Kyle Miller"
+ },
+ "5366": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 852.24,
+  "assignee": "Leeland Weiss"
+ },
+ "5399": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 495.8,
+  "assignee": "Leeland Weiss"
+ },
+ "5400": {
+  "status": "Closed",
+  "budget": 1200,
+  "cost": 836.16,
+  "assignee": "Leeland Weiss"
+ },
+ "5432": {
+  "status": "Closed",
+  "budget": 1200,
+  "cost": 558.78,
+  "assignee": "Leeland Weiss"
+ },
+ "5465": {
+  "status": "Closed",
+  "budget": 1200,
+  "cost": 285.42,
+  "assignee": "Leeland Weiss"
+ },
+ "5498": {
+  "status": "Closed",
+  "budget": 1200,
+  "cost": 982.22,
+  "assignee": "Leeland Weiss"
+ },
+ "5531": {
+  "status": "Pre-Construction",
+  "budget": 1200,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "5729": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1809,
+  "assignee": "Steven McCormick"
+ },
+ "5762": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 402,
+  "assignee": "Steven McCormick"
+ },
+ "5795": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1881.36,
+  "assignee": "Steven McCormick"
+ },
+ "5828": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 9757.46,
+  "assignee": "Steven McCormick"
+ },
+ "5861": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 1113.25,
+  "assignee": "Steven McCormick"
+ },
+ "5894": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 291.45,
+  "assignee": "Steven McCormick"
+ },
+ "5927": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 2373.09,
+  "assignee": "Leeland Weiss"
+ },
+ "5960": {
+  "status": "Closed",
+  "budget": 3500,
+  "cost": 1784.88,
+  "assignee": "Leeland Weiss"
+ },
+ "5993": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 2982.79,
+  "assignee": "Leeland Weiss"
+ },
+ "6026": {
+  "status": "Closed",
+  "budget": 3500,
+  "cost": 3193.22,
+  "assignee": "Leeland Weiss"
+ },
+ "6059": {
+  "status": "Closed",
+  "budget": 1500,
+  "cost": 163.48,
+  "assignee": "Leeland Weiss"
+ },
+ "6092": {
+  "status": "Closed",
+  "budget": 1500,
+  "cost": 64.32,
+  "assignee": "Leeland Weiss"
+ },
+ "6125": {
+  "status": "Closed",
+  "budget": 1500,
+  "cost": 3957.02,
+  "assignee": "Leeland Weiss"
+ },
+ "6158": {
+  "status": "Closed",
+  "budget": 1500,
+  "cost": 975.52,
+  "assignee": "Leeland Weiss"
+ },
+ "6191": {
+  "status": "Post-Construction",
+  "budget": 10000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "6257": {
+  "status": "Pre-Construction",
+  "budget": 20000,
+  "cost": 0,
+  "assignee": "Carlos Garcia"
+ },
+ "6290": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 604.34,
+  "assignee": "Steven McCormick"
+ },
+ "6323": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 5215.95,
+  "assignee": "Steven McCormick"
+ },
+ "6356": {
+  "status": "Pre-Construction",
+  "budget": 5000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "6389": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 3294.39,
+  "assignee": "Leeland Weiss"
+ },
+ "6422": {
+  "status": "Closed",
+  "budget": 2500,
+  "cost": 940.68,
+  "assignee": "Leeland Weiss"
+ },
+ "6455": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 5012.94,
+  "assignee": "Leeland Weiss"
+ },
+ "6488": {
+  "status": "Closed",
+  "budget": 2500,
+  "cost": 1187.24,
+  "assignee": "Leeland Weiss"
+ },
+ "6521": {
+  "status": "Budget Plan",
+  "budget": 2000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "6554": {
+  "status": "Active",
+  "budget": 2000,
+  "cost": 800,
+  "assignee": "Steven McCormick"
+ },
+ "6587": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 4252.86,
+  "assignee": "Steven McCormick"
+ },
+ "6620": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 5432.36,
+  "assignee": "Steven McCormick"
+ },
+ "6621": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 6592.13,
+  "assignee": "Steven McCormick"
+ },
+ "6686": {
+  "status": "Closed",
+  "budget": 73000,
+  "cost": 70278.51,
+  "assignee": "Steven McCormick"
+ },
+ "6719": {
+  "status": "Closed",
+  "budget": 6594.91,
+  "cost": 6594.9,
+  "assignee": "Carlos Garcia"
+ },
+ "6752": {
+  "status": "Pre-Construction",
+  "budget": 60000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "6785": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 1532.47,
+  "assignee": "Steven McCormick"
+ },
+ "6818": {
+  "status": "Pre-Construction",
+  "budget": 113990.96,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "6884": {
+  "status": "Closed",
+  "budget": 34264.3,
+  "cost": 36553,
+  "assignee": "Carlos Garcia"
+ },
+ "6917": {
+  "status": "Post-Construction",
+  "budget": 97000,
+  "cost": 210930.78,
+  "assignee": "Leeland Weiss"
+ },
+ "6950": {
+  "status": "Pre-Construction",
+  "budget": 1200,
+  "cost": 6549.25,
+  "assignee": "Leeland Weiss"
+ },
+ "6951": {
+  "status": "Pre-Construction",
+  "budget": 1200,
+  "cost": 972.84,
+  "assignee": "Leeland Weiss"
+ },
+ "6983": {
+  "status": "Post-Construction",
+  "budget": 1200,
+  "cost": 3485.34,
+  "assignee": "Leeland Weiss"
+ },
+ "7016": {
+  "status": "Closed",
+  "budget": 1200,
+  "cost": 868.32,
+  "assignee": "Leeland Weiss"
+ },
+ "7083": {
+  "status": "Closed",
+  "budget": 10000,
+  "cost": 9488.41,
+  "assignee": "Steven McCormick"
+ },
+ "7115": {
+  "status": "Active",
+  "budget": 10000,
+  "cost": 3009.96,
+  "assignee": "Leeland Weiss"
+ },
+ "7148": {
+  "status": "Pre-Construction",
+  "budget": 1500,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "7181": {
+  "status": "Active",
+  "budget": 73610,
+  "cost": 7012.33,
+  "assignee": "Steven McCormick"
+ },
+ "7247": {
+  "status": "Closed",
+  "budget": 10000,
+  "cost": 8841.91,
+  "assignee": "Steven McCormick"
+ },
+ "7280": {
+  "status": "Closed",
+  "budget": 10000,
+  "cost": 8735.69,
+  "assignee": "Leeland Weiss"
+ },
+ "7313": {
+  "status": "Closed",
+  "budget": 6000,
+  "cost": 5953.75,
+  "assignee": "Steven McCormick"
+ },
+ "7346": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1473.33,
+  "assignee": "Steven McCormick"
+ },
+ "7379": {
+  "status": "Active",
+  "budget": 6000,
+  "cost": 0,
+  "assignee": "Kyle Miller"
+ },
+ "7380": {
+  "status": "Active",
+  "budget": 6000,
+  "cost": 0,
+  "assignee": "Kyle Miller"
+ },
+ "7412": {
+  "status": "Pre-Construction",
+  "budget": 9530000,
+  "cost": 3420,
+  "assignee": "Jeff Schaefer"
+ },
+ "7478": {
+  "status": "Active",
+  "budget": 2000,
+  "cost": 117.65,
+  "assignee": "Steven McCormick"
+ },
+ "7511": {
+  "status": "Active",
+  "budget": 6000,
+  "cost": 5151.45,
+  "assignee": "Kyle Miller"
+ },
+ "7610": {
+  "status": "Closed",
+  "budget": 2500,
+  "cost": 4108.44,
+  "assignee": "Leeland Weiss"
+ },
+ "7643": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1851.21,
+  "assignee": "Steven McCormick"
+ },
+ "7676": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 6840.03,
+  "assignee": "Steven McCormick"
+ },
+ "7709": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 3819,
+  "assignee": "Steven McCormick"
+ },
+ "7742": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1431.12,
+  "assignee": "Steven McCormick"
+ },
+ "7775": {
+  "status": "Closed",
+  "budget": 2000,
+  "cost": 3889.35,
+  "assignee": "Steven McCormick"
+ },
+ "7808": {
+  "status": "Closed",
+  "budget": 5000,
+  "cost": 1206,
+  "assignee": "Steven McCormick"
+ },
+ "7841": {
+  "status": "Pre-Construction",
+  "budget": 2000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "7874": {
+  "status": "Pre-Construction",
+  "budget": 1200,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "8039": {
+  "status": "Pre-Construction",
+  "budget": 9500,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "8171": {
+  "status": "Closed",
+  "budget": 7002.69,
+  "cost": 7002.69,
+  "assignee": "Carlos Garcia"
+ },
+ "8534": {
+  "status": "Pre-Construction",
+  "budget": 3500,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "8535": {
+  "status": "Pre-Construction",
+  "budget": 5000,
+  "cost": 2423.43,
+  "assignee": "Leeland Weiss"
+ },
+ "8567": {
+  "status": "Pre-Construction",
+  "budget": 5000,
+  "cost": 0,
+  "assignee": "Leeland Weiss"
+ },
+ "8633": {
+  "status": "Pre-Construction",
+  "budget": 2000,
+  "cost": 534.44,
+  "assignee": "Steven McCormick"
+ },
+ "8666": {
+  "status": "Pre-Construction",
+  "budget": 5000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "8699": {
+  "status": "Pre-Construction",
+  "budget": 5000,
+  "cost": 0,
+  "assignee": "Steven McCormick"
+ },
+ "8798": {
+  "status": "Closed",
+  "budget": 60890.63,
+  "cost": 37213.1,
+  "assignee": "Steven McCormick"
+ },
+ "PENDING-071": {
+  "status": "Budget Request",
+  "budget": 0,
+  "cost": 0,
+  "assignee": "Unassigned"
+ }
+}

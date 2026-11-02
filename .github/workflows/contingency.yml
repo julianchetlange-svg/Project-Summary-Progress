@@ -1,0 +1,59 @@
+name: Thursday 11am – contingency + publish
+
+# GitHub cron runs in UTC. These times cover 11:05–11:25am Central in both CST and CDT;
+# the script ignores runs outside the Thursday 11:00–12:30 CT window. At 11:25 it publishes even if the contingency email is late.
+on:
+  schedule:
+    - cron: "5,15,25 16,17 * * 4"
+  workflow_dispatch:
+    inputs:
+      as_of:
+        description: "Report date YYYY-MM-DD (blank = today)"
+        required: false
+      force:
+        description: "Republish even if this date was already published"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-report
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - run: pip install -r scripts/requirements.txt
+      - id: run
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event_name }}" = "schedule" ]; then ARGS="--scheduled"; fi
+          if [ -n "${{ inputs.as_of }}" ]; then ARGS="$ARGS --as-of ${{ inputs.as_of }}"; fi
+          if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          python scripts/fexa_report.py contingency $ARGS
+      - uses: actions/upload-artifact@v4
+        if: hashFiles('data/raw/**') != ''
+        with:
+          name: fexa-contingency-export-${{ github.run_id }}
+          path: data/raw/
+          retention-days: 90
+      - name: Commit and publish report
+        if: steps.run.outputs.changed == 'true'
+        run: |
+          git config user.name "project-report-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data meeting-notes index.html
+          git diff --cached --quiet || git commit -m "${{ steps.run.outputs.message }}"
+          git pull --rebase origin main && git push

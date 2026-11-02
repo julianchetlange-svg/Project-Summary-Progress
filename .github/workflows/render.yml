@@ -1,0 +1,36 @@
+name: Re-render report after manual edits
+
+# Runs when meeting notes or project notes are edited on GitHub, so index.html picks them up.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "meeting-notes/**"
+      - "data/projects.json"
+      - "data/contingency_log.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-report
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r scripts/requirements.txt
+      - id: run
+        run: python scripts/fexa_report.py render
+      - name: Commit
+        run: |
+          git config user.name "project-report-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || (git commit -m "${{ steps.run.outputs.message }}" && git pull --rebase origin main && git push)
