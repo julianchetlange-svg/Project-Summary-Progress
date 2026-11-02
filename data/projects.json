@@ -1,12 +1,27 @@
 [
  {
+  "id": 4410,
+  "status": "Budget Plan",
+  "store": "730 Store Development",
+  "region": "Headquarters",
+  "assignee": "Chet Lange",
+  "budget": 1200000,
+  "cost": -1761558.54,
+  "type": "Contingency",
+  "name": "730 Store Development - Contingency",
+  "start": "2026-01-01",
+  "effortDays": 364,
+  "pct": 92,
+  "carryover": false
+ },
+ {
   "id": 7380,
   "status": "Active",
   "store": "008 Stephenville",
   "region": "Region 02",
   "assignee": "Kyle Miller",
   "budget": 6000,
-  "cost": 0,
+  "cost": 5547.56,
   "type": "Racking",
   "name": "008 Stephenville - A - Frame Rack",
   "start": "2026-08-17",
@@ -21,7 +36,7 @@
   "region": "Region 02",
   "assignee": "Kyle Miller",
   "budget": 6000,
-  "cost": 0,
+  "cost": 5547.56,
   "type": "Racking",
   "name": "018 Abilene - A - Frame Rack",
   "start": "2026-08-17",
@@ -41,7 +56,7 @@
   "name": "730 - Racking Order 2026",
   "start": "2026-07-01",
   "effortDays": 120,
-  "pct": 0,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -72,7 +87,7 @@
   "name": "024 Pasadena - Burglar & Fire Alarm",
   "start": "2026-09-14",
   "effortDays": 30,
-  "pct": 0,
+  "pct": 63,
   "carryover": false
  },
  {
@@ -102,7 +117,7 @@
   "name": "730 Store Development - Parking Lot Striping",
   "start": "2026-03-15",
   "effortDays": 280,
-  "pct": 0,
+  "pct": 80,
   "carryover": false
  },
  {
@@ -117,7 +132,7 @@
   "name": "012 Weimar - Store Maintenance and Repair",
   "start": "2026-08-01",
   "effortDays": 60,
-  "pct": 0,
+  "pct": 87,
   "carryover": false
  },
  {
@@ -132,7 +147,7 @@
   "name": "096 El Campo - Store Maintenance and Repair",
   "start": "2026-06-11",
   "effortDays": 120,
-  "pct": 0,
+  "pct": 12,
   "carryover": false
  },
  {
@@ -142,12 +157,12 @@
   "region": "Region 07",
   "assignee": "Jeff Schaefer",
   "budget": 11000000,
-  "cost": 1542946.53,
+  "cost": 1546966.53,
   "type": "New Facility",
   "name": "122 Canyon Lake - New Store",
   "start": "2026-01-12",
   "effortDays": 394,
-  "pct": 0,
+  "pct": 11,
   "carryover": true,
   "carryLabel": "2026‑27 carry"
  },
@@ -158,12 +173,348 @@
   "region": "Region 06",
   "assignee": "Leeland Weiss",
   "budget": 10000,
-  "cost": 3009.96,
+  "cost": 21268.8,
   "type": "Internal Team Maintenance",
   "name": "084 Hobbs - Store Maintenance and Repair",
   "start": "2026-09-28",
   "effortDays": 30,
+  "pct": 100,
+  "carryover": false
+ },
+ {
+  "id": 1133,
+  "status": "Active",
+  "store": "044 Kerrville",
+  "region": "Region 07",
+  "assignee": "Leeland Weiss",
+  "budget": 30000,
+  "cost": 0,
+  "type": "Doors",
+  "name": "044 Kerrville - Lifecycle Replacements",
+  "start": "2026-07-01",
+  "effortDays": 90,
   "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 6752,
+  "status": "Active",
+  "store": "050 SC San Antonio",
+  "region": "Region 07",
+  "assignee": "Leeland Weiss",
+  "budget": 60000,
+  "cost": 0,
+  "type": "Sitework",
+  "name": "050 SC San Antonio - Sitework - Asphalt Repairs",
+  "start": "2026-10-26",
+  "effortDays": 60,
+  "pct": 0,
+  "carryover": false,
+  "requestDate": "2026-07-28",
+  "notes": "Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.  ·  8/10/26 meeting: Have Leeland get a quote for the trouble areas and send to Ron.  ·  9/10/26 meeting: Will re-quote for just the small back area (22x34); rest of scope moves to 2027.  ·  9/21/26 meeting: Review quotes.  ·  10/12/26 meeting: Review revised second quote."
+ },
+ {
+  "id": 6818,
+  "status": "Pre-Construction",
+  "store": "066 Alice",
+  "region": "Region 04",
+  "assignee": "Leeland Weiss",
+  "budget": 113990.96,
+  "cost": 0,
+  "type": "Sitework",
+  "name": "066 Alice - Sitework - Asphalt Repairs",
+  "start": "2026-09-01",
+  "effortDays": 60,
+  "pct": 0,
+  "carryover": false,
+  "requestDate": "2026-07-08",
+  "notes": "Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.  ·  9/10/26 meeting: Did $500K of concrete work in 2021; sent clarification to the team. Try to patch at lower cost and push to 2027.  ·  10/12/26 meeting: Revised quotes for review."
+ },
+ {
+  "id": 1131,
+  "status": "Pre-Construction",
+  "store": "015 Harlingen",
+  "region": "Region 05",
+  "assignee": "Leeland Weiss",
+  "budget": 30000,
+  "cost": 0,
+  "type": "Doors",
+  "name": "015 Harlingen - Lifecycle Replacements",
+  "start": "2026-04-01",
+  "effortDays": 210,
+  "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 3221,
+  "status": "Pre-Construction",
+  "store": "055 Georgetown",
+  "region": "Region 08",
+  "assignee": "Steven McCormick",
+  "budget": 5000,
+  "cost": 0,
+  "type": "Racking Inspection",
+  "name": "055 Georgetown - Racking Inspection",
+  "start": "2025-09-01",
+  "effortDays": 90,
+  "pct": 33,
+  "carryover": true
+ },
+ {
+  "id": 5531,
+  "status": "Pre-Construction",
+  "store": "086 Alpine",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 1200,
+  "cost": 0,
+  "type": "Racking Inspection",
+  "name": "086 Alpine - Racking Inspection",
+  "start": "2026-06-12",
+  "effortDays": 30,
+  "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 6356,
+  "status": "Pre-Construction",
+  "store": "120 Lockhart",
+  "region": "Region 07",
+  "assignee": "Steven McCormick",
+  "budget": 5000,
+  "cost": 0,
+  "type": "Racking",
+  "name": "120 Lochhart - Racking Inspection",
+  "start": "2026-05-11",
+  "effortDays": 200,
+  "pct": 50,
+  "carryover": false
+ },
+ {
+  "id": 7841,
+  "status": "Pre-Construction",
+  "store": "041 Laredo",
+  "region": "Region 05",
+  "assignee": "Leeland Weiss",
+  "budget": 2000,
+  "cost": 0,
+  "type": "Internal Team Maintenance",
+  "name": "041 Laredo - Store Maintenance and Repair",
+  "start": "2026-10-19",
+  "effortDays": 30,
+  "pct": 50,
+  "carryover": false
+ },
+ {
+  "id": 7148,
+  "status": "Pre-Construction",
+  "store": "084 Hobbs",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 1500,
+  "cost": 0,
+  "type": "Racking Inspection",
+  "name": "084 Hobbs - Racking Inspection",
+  "start": "2026-09-28",
+  "effortDays": 30,
+  "pct": 66,
+  "carryover": false
+ },
+ {
+  "id": 6257,
+  "status": "Pre-Construction",
+  "store": "016 New Braunfels",
+  "region": "Region 07",
+  "assignee": "Carlos Garcia",
+  "budget": 20000,
+  "cost": 0,
+  "type": "Sitework",
+  "name": "016 New Braunfels - Base work freight truck exit",
+  "start": "2026-06-01",
+  "effortDays": 120,
+  "pct": 0,
+  "carryover": false,
+  "notes": "Looking at lower insurance requirements for this work so we don't have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray's contractor (does not meet insurance requirements). Work to be done on Sunday."
+ },
+ {
+  "id": 6950,
+  "status": "Pre-Construction",
+  "store": "035 Odessa",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 1200,
+  "cost": 6549.25,
+  "type": "Racking Inspection",
+  "name": "035 Odessa - Racking Inspection",
+  "start": "2026-09-21",
+  "effortDays": 90,
+  "pct": 75,
+  "carryover": false
+ },
+ {
+  "id": 6951,
+  "status": "Pre-Construction",
+  "store": "035 Odessa",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 1200,
+  "cost": 972.84,
+  "type": "Internal Team Maintenance",
+  "name": "035 Odessa - Store Maintenance and Repair",
+  "start": "2026-09-24",
+  "effortDays": 90,
+  "pct": 50,
+  "carryover": false
+ },
+ {
+  "id": 8666,
+  "status": "Pre-Construction",
+  "store": "039 Longview",
+  "region": "Region 01",
+  "assignee": "Steven McCormick",
+  "budget": 5000,
+  "cost": 0,
+  "type": "Racking Inspection",
+  "name": "039 Longview - Racking Inspection",
+  "start": "2026-10-01",
+  "effortDays": 31,
+  "pct": 25,
+  "carryover": false
+ },
+ {
+  "id": 8534,
+  "status": "Pre-Construction",
+  "store": "042 Las Cruces",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 3500,
+  "cost": 0,
+  "type": "Internal Team Maintenance",
+  "name": "042 Las Cruces - Store Maintenance and Repair",
+  "start": "2026-11-02",
+  "effortDays": 30,
+  "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 8699,
+  "status": "Pre-Construction",
+  "store": "049 Tyler",
+  "region": "Region 01",
+  "assignee": "Steven McCormick",
+  "budget": 5000,
+  "cost": 0,
+  "type": "Racking Inspection",
+  "name": "049 Tyler - Racking Inspection",
+  "start": "2026-10-01",
+  "effortDays": 31,
+  "pct": 25,
+  "carryover": false
+ },
+ {
+  "id": 7874,
+  "status": "Pre-Construction",
+  "store": "041 Laredo",
+  "region": "Region 05",
+  "assignee": "Leeland Weiss",
+  "budget": 1200,
+  "cost": 0,
+  "type": "Racking Inspection",
+  "name": "041 Laredo - Racking Inspection",
+  "start": "2026-10-19",
+  "effortDays": 30,
+  "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 7412,
+  "status": "Pre-Construction",
+  "store": "123 Springtown",
+  "region": "Region 02",
+  "assignee": "Jeff Schaefer",
+  "budget": 9530000,
+  "cost": 3420,
+  "type": "New Facility",
+  "name": "123 Springtown (fka Reno) - New Store",
+  "start": "2026-08-17",
+  "effortDays": 488,
+  "pct": 0,
+  "carryover": true,
+  "carryLabel": "2026‑27 carry"
+ },
+ {
+  "id": 8535,
+  "status": "Pre-Construction",
+  "store": "091 Carlsbad",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 5000,
+  "cost": 2423.43,
+  "type": "Racking Inspection",
+  "name": "091 Carlsbad - Racking Inspection",
+  "start": "2026-11-06",
+  "effortDays": 30,
+  "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 8633,
+  "status": "Pre-Construction",
+  "store": "039 Longview",
+  "region": "Region 01",
+  "assignee": "Steven McCormick",
+  "budget": 2000,
+  "cost": 534.44,
+  "type": "Internal Team Maintenance",
+  "name": "039 Longview - Store Maintenance and Repair",
+  "start": "2026-10-01",
+  "effortDays": 30,
+  "pct": 12,
+  "carryover": false
+ },
+ {
+  "id": 8567,
+  "status": "Pre-Construction",
+  "store": "091 Carlsbad",
+  "region": "Region 06",
+  "assignee": "Leeland Weiss",
+  "budget": 5000,
+  "cost": 0,
+  "type": "Internal Team Maintenance",
+  "name": "091 Carlsbad - Store Maintenance and Repair",
+  "start": "2026-11-09",
+  "effortDays": 30,
+  "pct": 0,
+  "carryover": false
+ },
+ {
+  "id": 8039,
+  "status": "Pre-Construction",
+  "store": "119 Lubbock",
+  "region": "Region 06",
+  "assignee": "Steven McCormick",
+  "budget": 9500,
+  "cost": 0,
+  "type": "Lighting",
+  "name": "119 Lubbock - Store Maintenance and Repair",
+  "start": "2026-09-01",
+  "effortDays": 50,
+  "pct": 31,
+  "carryover": false
+ },
+ {
+  "id": 6521,
+  "status": "Budget Plan",
+  "store": "113 Montgomery",
+  "region": "Region 03",
+  "assignee": "Steven McCormick",
+  "budget": 2000,
+  "cost": 0,
+  "type": "Internal Team Maintenance",
+  "name": "113 Montgomery - Store Maintenance and Repair",
+  "start": "2026-05-15",
+  "effortDays": 120,
+  "pct": 6,
   "carryover": false
  },
  {
@@ -178,7 +529,7 @@
   "name": "013 Richwood - Lifecycle Replacements",
   "start": "2026-04-01",
   "effortDays": 90,
-  "pct": 0,
+  "pct": 100,
   "carryover": false
  },
  {
@@ -193,7 +544,7 @@
   "name": "003 Brazoria - Lifecycle Replacements",
   "start": "2026-04-01",
   "effortDays": 90,
-  "pct": 0,
+  "pct": 100,
   "carryover": false
  },
  {
@@ -205,10 +556,10 @@
   "budget": 60000,
   "cost": 137953.83,
   "type": "Metal Work",
-  "name": "103 San Benito - Rusted R - Panel - Yard Side",
+  "name": "103 San Benito - Rusted R-Panel - Yard Side",
   "start": "2026-02-02",
   "effortDays": 190,
-  "pct": 0,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -223,25 +574,9 @@
   "name": "017 N Corpus Christi - Sitework - Drainage Plan",
   "start": "2026-08-03",
   "effortDays": 90,
-  "pct": 0,
+  "pct": 41,
   "carryover": false,
   "notes": "Water ponding on the base in front of the cantilever rack. Regrading the area will cost $9,100.  ·  8/10/26 meeting: Go forward with regrading the area holding water."
- },
- {
-  "id": 800,
-  "status": "Post-Construction",
-  "store": "037 Brownsville",
-  "region": "Region 05",
-  "assignee": "Leeland Weiss",
-  "budget": 30000,
-  "cost": 25395.45,
-  "type": "Sitework",
-  "name": "037 Brownsville - Sitework - Asphalt Repairs",
-  "start": "2026-04-01",
-  "effortDays": 210,
-  "pct": 0,
-  "carryover": false,
-  "notes": "Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future."
  },
  {
   "id": 4970,
@@ -255,7 +590,7 @@
   "name": "950 Rio Truss - Freight Door Replacement",
   "start": "2026-02-02",
   "effortDays": 270,
-  "pct": 0,
+  "pct": 37,
   "carryover": false
  },
  {
@@ -267,28 +602,11 @@
   "budget": 97000,
   "cost": 210930.78,
   "type": "Doors",
-  "name": "950 Rio Truss - Lean - To Cover for MiTek Saw",
+  "name": "950 Rio Truss - Lean-To Cover for MiTek Saw",
   "start": "2026-07-06",
   "effortDays": 60,
-  "pct": 0,
+  "pct": 50,
   "carryover": false
- },
- {
-  "id": 3749,
-  "status": "Post-Construction",
-  "store": "061 Mt. Pleasant",
-  "region": "Region 01",
-  "assignee": "Steven McCormick",
-  "budget": 30000,
-  "cost": 0,
-  "type": "Sitework",
-  "name": "061 Mount Pleasant - Sitework - Asphalt Patches",
-  "start": "2026-03-01",
-  "effortDays": 90,
-  "pct": 0,
-  "carryover": false,
-  "requestDate": "2026-08-20",
-  "notes": "Revised scope discussed at 8/10/26 budget meeting — look at entryway through the gate, push to 2027.  ·  9/10/26 meeting: Do the whole scope — parking lot ($67K) + entrance ($34K). Keep existing 1/2' metal plate. Capitalize as capex.  ·  9/21/26 meeting: Review quotes."
  },
  {
   "id": 6983,
@@ -302,8 +620,56 @@
   "name": "019 Midland - Racking Inspection",
   "start": "2026-09-26",
   "effortDays": 90,
-  "pct": 0,
+  "pct": 75,
   "carryover": false
+ },
+ {
+  "id": 1153,
+  "status": "Post-Construction",
+  "store": "013 Richwood",
+  "region": "Region 04",
+  "assignee": "Greg Wallace",
+  "budget": 78000,
+  "cost": 81426.21,
+  "type": "Alarms",
+  "name": "013 Richwood - Burglar & Fire Alarm",
+  "start": "2026-08-10",
+  "effortDays": 30,
+  "pct": 50,
+  "carryover": false
+ },
+ {
+  "id": 800,
+  "status": "Closed",
+  "store": "037 Brownsville",
+  "region": "Region 05",
+  "assignee": "Leeland Weiss",
+  "budget": 30000,
+  "cost": 25395.45,
+  "type": "Sitework",
+  "name": "037 Brownsville - Sitework - Asphalt Repairs",
+  "start": "2026-04-01",
+  "effortDays": 210,
+  "pct": 66,
+  "carryover": false,
+  "notes": "Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future."
+ },
+ {
+  "id": 3749,
+  "status": "Closed",
+  "store": "061 Mt. Pleasant",
+  "region": "Region 01",
+  "assignee": "Steven McCormick",
+  "budget": 30000,
+  "cost": 112305.54,
+  "type": "Sitework",
+  "name": "061 Mount Pleasant - Sitework - Asphalt Patches",
+  "start": "2026-03-01",
+  "effortDays": 90,
+  "pct": 58,
+  "carryover": false,
+  "requestDate": "2026-08-20",
+  "notes": "Revised scope discussed at 8/10/26 budget meeting — look at entryway through the gate, push to 2027.  ·  9/10/26 meeting: Do the whole scope — parking lot ($67K) + entrance ($34K). Keep existing 1/2' metal plate. Capitalize as capex.  ·  9/21/26 meeting: Review quotes."
  },
  {
   "id": 4377,
@@ -377,7 +743,7 @@
   "name": "011 S Austin - Parking Lot Lighting",
   "start": "2027-03-01",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 80,
   "carryover": false
  },
  {
@@ -392,7 +758,7 @@
   "name": "359 Burnet - Yard Repairs",
   "start": "2026-10-01",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 16,
   "carryover": false
  },
  {
@@ -482,7 +848,7 @@
   "name": "043 Huntsville - Sitework - Washout Fence Line",
   "start": "2026-02-02",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 83,
   "carryover": false
  },
  {
@@ -524,10 +890,10 @@
   "budget": 34264.3,
   "cost": 36553,
   "type": "Alarms",
-  "name": "066 Alice - Burglar & Fire Alarm Re - Wire in Flex Conduit",
+  "name": "066 Alice - Burglar & Fire Alarm Re-Wire in Flex Conduit",
   "start": "2026-07-06",
   "effortDays": 20,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -557,7 +923,7 @@
   "name": "074 Bee Cave - Store Maintenance and Repair",
   "start": "2026-05-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 93,
   "carryover": false
  },
  {
@@ -572,7 +938,7 @@
   "name": "087 Fort Stockton - Store Maintenance and Repair",
   "start": "2026-08-25",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 91,
   "carryover": false
  },
  {
@@ -587,7 +953,7 @@
   "name": "039 Longview - Septic",
   "start": "2026-06-01",
   "effortDays": 90,
-  "pct": 100,
+  "pct": 25,
   "carryover": false
  },
  {
@@ -647,7 +1013,7 @@
   "name": "087 Fort Stockton - LED Retro",
   "start": "2026-03-01",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 25,
   "carryover": false
  },
  {
@@ -677,7 +1043,7 @@
   "name": "006 Bastrop - Store Maintenance and Repair",
   "start": "2026-05-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -692,7 +1058,7 @@
   "name": "089 Mission - Burglar & Fire Alarm",
   "start": "2026-04-15",
   "effortDays": 21,
-  "pct": 100,
+  "pct": 90,
   "carryover": false
  },
  {
@@ -752,7 +1118,7 @@
   "name": "016 New Braunfels - Racking Inspection",
   "start": "2026-04-27",
   "effortDays": 120,
-  "pct": 100,
+  "pct": 66,
   "carryover": false
  },
  {
@@ -782,7 +1148,7 @@
   "name": "033 Pharr - Sitework - Concrete Washout",
   "start": "2026-01-26",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 75,
   "carryover": true
  },
  {
@@ -797,7 +1163,7 @@
   "name": "109 Aransas Pass - Racking Inspection",
   "start": "2026-05-25",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -812,7 +1178,7 @@
   "name": "101 Universal City - Racking Inspection",
   "start": "2026-01-12",
   "effortDays": 120,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -887,7 +1253,7 @@
   "name": "356 Midland Distribution - Sitework - Ramp - Site Demo",
   "start": "2026-02-02",
   "effortDays": 120,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -902,7 +1268,7 @@
   "name": "108 Rio Grande City - Sitework - Asphalt failure",
   "start": "2026-01-01",
   "effortDays": 90,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -932,7 +1298,7 @@
   "name": "007 Brownwood - Cut Shed",
   "start": "2026-04-01",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 80,
   "carryover": false
  },
  {
@@ -947,7 +1313,7 @@
   "name": "087 Fort Stockton - Sitework - Asphalt Repairs",
   "start": "2026-04-06",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 66,
   "carryover": false
  },
  {
@@ -962,22 +1328,7 @@
   "name": "070 San Marcos - Warehouse Door Jamb",
   "start": "2026-01-19",
   "effortDays": 30,
-  "pct": 100,
-  "carryover": false
- },
- {
-  "id": 1153,
-  "status": "Closed",
-  "store": "013 Richwood",
-  "region": "Region 04",
-  "assignee": "Greg Wallace",
-  "budget": 78000,
-  "cost": 81258.42,
-  "type": "Alarms",
-  "name": "013 Richwood - Burglar & Fire Alarm",
-  "start": "2026-08-10",
-  "effortDays": 30,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -992,7 +1343,7 @@
   "name": "950 Rio Truss - HVAC Split System Replacement",
   "start": "2026-07-29",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1037,7 +1388,7 @@
   "name": "117 Liberty Hill - Racking Inspection",
   "start": "2026-05-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 75,
   "carryover": true
  },
  {
@@ -1082,7 +1433,7 @@
   "name": "037 Brownsville - Racking Inspection",
   "start": "2026-01-25",
   "effortDays": 120,
-  "pct": 100,
+  "pct": 4,
   "carryover": false
  },
  {
@@ -1097,7 +1448,7 @@
   "name": "040 Beeville - Racking Inspection",
   "start": "2026-04-27",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 33,
   "carryover": false
  },
  {
@@ -1127,7 +1478,7 @@
   "name": "017 N Corpus Christi - Racking Inspection",
   "start": "2026-06-04",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1142,7 +1493,7 @@
   "name": "090 Okmulgee - Racking Inspection",
   "start": "2026-09-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 33,
   "carryover": false
  },
  {
@@ -1202,7 +1553,7 @@
   "name": "109 Aransas Pass - Warehouse Metal",
   "start": "2026-04-01",
   "effortDays": 90,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -1217,7 +1568,7 @@
   "name": "018 Abilene - Store Maintenance and Repair",
   "start": "2026-06-08",
   "effortDays": 120,
-  "pct": 100,
+  "pct": 7,
   "carryover": false
  },
  {
@@ -1232,7 +1583,7 @@
   "name": "044 Kerrville - Store Maintenance and Repair",
   "start": "2026-08-31",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 90,
   "carryover": false
  },
  {
@@ -1247,7 +1598,7 @@
   "name": "115 Midlothian - Racking Inspection",
   "start": "2026-08-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -1262,7 +1613,7 @@
   "name": "035 Odessa - HVAC - Split System Replacement",
   "start": "2026-04-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1292,7 +1643,7 @@
   "name": "034 Bryan - Store Maintenance and Repair",
   "start": "2026-06-12",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 25,
   "carryover": false
  },
  {
@@ -1319,10 +1670,10 @@
   "budget": 32415.46,
   "cost": 33012.78,
   "type": "Alarms",
-  "name": "019 Midland - INS - Nitrogen Generator",
+  "name": "019 Midland - INS-Nitrogen Generator",
   "start": "2026-01-30",
   "effortDays": 90,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -1337,7 +1688,7 @@
   "name": "060 Brenham - Sitework - Demo Old Print Shop",
   "start": "2026-03-01",
   "effortDays": 90,
-  "pct": 100,
+  "pct": 33,
   "carryover": false
  },
  {
@@ -1352,7 +1703,7 @@
   "name": "008 StephenVille - Racking Inspection",
   "start": "2026-05-04",
   "effortDays": 120,
-  "pct": 100,
+  "pct": 66,
   "carryover": false
  },
  {
@@ -1367,7 +1718,7 @@
   "name": "015 Harlingen - Burglar & Fire Alarm",
   "start": "2026-06-01",
   "effortDays": 21,
-  "pct": 100,
+  "pct": 27,
   "carryover": false
  },
  {
@@ -1382,7 +1733,7 @@
   "name": "359 Burnet Distribution - Warehouse Dock Modification",
   "start": "2025-03-01",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 50,
   "carryover": true
  },
  {
@@ -1472,7 +1823,7 @@
   "name": "029 S Corpus Christi - Racking Inspection",
   "start": "2026-06-01",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1487,7 +1838,7 @@
   "name": "018 Abilene - Racking Inspection",
   "start": "2026-06-09",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1502,7 +1853,7 @@
   "name": "750 Gil Property - Sitework - Dumpster Pad Repairs",
   "start": "2026-06-29",
   "effortDays": 14,
-  "pct": 100,
+  "pct": 66,
   "carryover": false
  },
  {
@@ -1532,7 +1883,7 @@
   "name": "052 cleburne - Racking Inspection",
   "start": "2026-06-15",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 25,
   "carryover": false
  },
  {
@@ -1547,7 +1898,7 @@
   "name": "052 Cleburne - Store Maintenance and Repair",
   "start": "2026-06-15",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 12,
   "carryover": false
  },
  {
@@ -1562,7 +1913,7 @@
   "name": "103 San Benito - Racking Inspection",
   "start": "2026-07-29",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 66,
   "carryover": false
  },
  {
@@ -1637,7 +1988,7 @@
   "name": "030 San Angelo - Racking Inspection",
   "start": "2026-06-10",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1652,7 +2003,7 @@
   "name": "063 Gainsville - HVAC Split System Replacement",
   "start": "2026-07-01",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -1697,7 +2048,7 @@
   "name": "042 Las Cruces - Freight Door Replacement",
   "start": "2026-08-03",
   "effortDays": 60,
-  "pct": 100,
+  "pct": 33,
   "carryover": false
  },
  {
@@ -1712,7 +2063,7 @@
   "name": "015 Harlingen - Store Maintenance and Repair",
   "start": "2026-07-28",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 46,
   "carryover": false
  },
  {
@@ -1727,7 +2078,7 @@
   "name": "015 Harlingen - Racking Inspection",
   "start": "2026-07-27",
   "effortDays": 30,
-  "pct": 100,
+  "pct": 66,
   "carryover": false
  },
  {
@@ -1742,7 +2093,7 @@
   "name": "900 Headquarters - HVAC - RTU System Replacement",
   "start": "2026-08-14",
   "effortDays": 5,
-  "pct": 100,
+  "pct": 87,
   "carryover": false
  },
  {
@@ -1833,7 +2184,7 @@
   "name": "119 Lubbock - Racking Inspection",
   "start": "2026-09-21",
   "effortDays": 90,
-  "pct": 100,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -1848,358 +2199,7 @@
   "name": "111 Floresville - Racking Inspection",
   "start": "2026-10-19",
   "effortDays": 30,
-  "pct": 100,
-  "carryover": false
- },
- {
-  "id": 6818,
-  "status": "Pre-Construction",
-  "store": "066 Alice",
-  "region": "Region 04",
-  "assignee": "Leeland Weiss",
-  "budget": 113990.96,
-  "cost": 0,
-  "type": "Sitework",
-  "name": "066 Alice - Sitework - Asphalt Repairs",
-  "start": "2026-09-01",
-  "effortDays": 60,
-  "pct": 0,
-  "carryover": false,
-  "requestDate": "2026-07-08",
-  "notes": "Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.  ·  9/10/26 meeting: Did $500K of concrete work in 2021; sent clarification to the team. Try to patch at lower cost and push to 2027.  ·  10/12/26 meeting: Revised quotes for review."
- },
- {
-  "id": 1133,
-  "status": "Pre-Construction",
-  "store": "044 Kerrville",
-  "region": "Region 07",
-  "assignee": "Leeland Weiss",
-  "budget": 30000,
-  "cost": 0,
-  "type": "Doors",
-  "name": "044 Kerrville - Lifecycle Replacements",
-  "start": "2026-07-01",
-  "effortDays": 90,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 1131,
-  "status": "Pre-Construction",
-  "store": "015 Harlingen",
-  "region": "Region 05",
-  "assignee": "Leeland Weiss",
-  "budget": 30000,
-  "cost": 0,
-  "type": "Doors",
-  "name": "015 Harlingen - Lifecycle Replacements",
-  "start": "2026-04-01",
-  "effortDays": 210,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 3221,
-  "status": "Pre-Construction",
-  "store": "055 Georgetown",
-  "region": "Region 08",
-  "assignee": "Steven McCormick",
-  "budget": 5000,
-  "cost": 0,
-  "type": "Racking Inspection",
-  "name": "055 Georgetown - Racking Inspection",
-  "start": "2025-09-01",
-  "effortDays": 90,
-  "pct": 0,
-  "carryover": true
- },
- {
-  "id": 5531,
-  "status": "Pre-Construction",
-  "store": "086 Alpine",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 1200,
-  "cost": 0,
-  "type": "Racking Inspection",
-  "name": "086 Alpine - Racking Inspection",
-  "start": "2026-06-12",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 6356,
-  "status": "Pre-Construction",
-  "store": "120 Lockhart",
-  "region": "Region 07",
-  "assignee": "Steven McCormick",
-  "budget": 5000,
-  "cost": 0,
-  "type": "Racking",
-  "name": "120 Lochhart - Racking Inspection",
-  "start": "2026-05-11",
-  "effortDays": 200,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 7841,
-  "status": "Pre-Construction",
-  "store": "041 Laredo",
-  "region": "Region 05",
-  "assignee": "Leeland Weiss",
-  "budget": 2000,
-  "cost": 0,
-  "type": "Internal Team Maintenance",
-  "name": "041 Laredo - Store Maintenance and Repair",
-  "start": "2026-10-19",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 7148,
-  "status": "Pre-Construction",
-  "store": "084 Hobbs",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 1500,
-  "cost": 0,
-  "type": "Racking Inspection",
-  "name": "084 Hobbs - Racking Inspection",
-  "start": "2026-09-28",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 6752,
-  "status": "Pre-Construction",
-  "store": "050 SC San Antonio",
-  "region": "Region 07",
-  "assignee": "Leeland Weiss",
-  "budget": 60000,
-  "cost": 0,
-  "type": "Sitework",
-  "name": "050 SC San Antonio - Sitework - Asphalt Repairs",
-  "start": "2026-10-26",
-  "effortDays": 60,
-  "pct": 0,
-  "carryover": false,
-  "requestDate": "2026-07-28",
-  "notes": "Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.  ·  8/10/26 meeting: Have Leeland get a quote for the trouble areas and send to Ron.  ·  9/10/26 meeting: Will re-quote for just the small back area (22x34); rest of scope moves to 2027.  ·  9/21/26 meeting: Review quotes.  ·  10/12/26 meeting: Review revised second quote."
- },
- {
-  "id": 6257,
-  "status": "Pre-Construction",
-  "store": "016 New Braunfels",
-  "region": "Region 07",
-  "assignee": "Carlos Garcia",
-  "budget": 20000,
-  "cost": 0,
-  "type": "Sitework",
-  "name": "016 New Braunfels - Base work freight truck exit",
-  "start": "2026-06-01",
-  "effortDays": 120,
-  "pct": 0,
-  "carryover": false,
-  "notes": "Looking at lower insurance requirements for this work so we don't have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray's contractor (does not meet insurance requirements). Work to be done on Sunday."
- },
- {
-  "id": 6950,
-  "status": "Pre-Construction",
-  "store": "035 Odessa",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 1200,
-  "cost": 6549.25,
-  "type": "Racking Inspection",
-  "name": "035 Odessa - Racking Inspection",
-  "start": "2026-09-21",
-  "effortDays": 90,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 6951,
-  "status": "Pre-Construction",
-  "store": "035 Odessa",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 1200,
-  "cost": 972.84,
-  "type": "Internal Team Maintenance",
-  "name": "035 Odessa - Store Maintenance and Repair",
-  "start": "2026-09-24",
-  "effortDays": 90,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 8666,
-  "status": "Pre-Construction",
-  "store": "039 Longview",
-  "region": "Region 01",
-  "assignee": "Steven McCormick",
-  "budget": 5000,
-  "cost": 0,
-  "type": "Racking Inspection",
-  "name": "039 Longview - Racking Inspection",
-  "start": "2026-10-01",
-  "effortDays": 31,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 8534,
-  "status": "Pre-Construction",
-  "store": "042 Las Cruces",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 3500,
-  "cost": 0,
-  "type": "Internal Team Maintenance",
-  "name": "042 Las Cruces - Store Maintenance and Repair",
-  "start": "2026-11-02",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 8699,
-  "status": "Pre-Construction",
-  "store": "049 Tyler",
-  "region": "Region 01",
-  "assignee": "Steven McCormick",
-  "budget": 5000,
-  "cost": 0,
-  "type": "Racking Inspection",
-  "name": "049 Tyler - Racking Inspection",
-  "start": "2026-10-01",
-  "effortDays": 31,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 7874,
-  "status": "Pre-Construction",
-  "store": "041 Laredo",
-  "region": "Region 05",
-  "assignee": "Leeland Weiss",
-  "budget": 1200,
-  "cost": 0,
-  "type": "Racking Inspection",
-  "name": "041 Laredo - Racking Inspection",
-  "start": "2026-10-19",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 7412,
-  "status": "Pre-Construction",
-  "store": "123 Springtown",
-  "region": "Region 02",
-  "assignee": "Jeff Schaefer",
-  "budget": 9530000,
-  "cost": 3420,
-  "type": "New Facility",
-  "name": "123 Springtown (fka Reno) - New Store",
-  "start": "2026-08-17",
-  "effortDays": 488,
-  "pct": 0,
-  "carryover": true,
-  "carryLabel": "2026‑27 carry"
- },
- {
-  "id": 8535,
-  "status": "Pre-Construction",
-  "store": "091 Carlsbad",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 5000,
-  "cost": 2423.43,
-  "type": "Racking Inspection",
-  "name": "091 Carlsbad - Racking Inspection",
-  "start": "2026-11-06",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 8633,
-  "status": "Pre-Construction",
-  "store": "039 Longview",
-  "region": "Region 01",
-  "assignee": "Steven McCormick",
-  "budget": 2000,
-  "cost": 534.44,
-  "type": "Internal Team Maintenance",
-  "name": "039 Longview - Store Maintenance and Repair",
-  "start": "2026-10-01",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 8567,
-  "status": "Pre-Construction",
-  "store": "091 Carlsbad",
-  "region": "Region 06",
-  "assignee": "Leeland Weiss",
-  "budget": 5000,
-  "cost": 0,
-  "type": "Internal Team Maintenance",
-  "name": "091 Carlsbad - Store Maintenance and Repair",
-  "start": "2026-11-09",
-  "effortDays": 30,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 8039,
-  "status": "Pre-Construction",
-  "store": "119 Lubbock",
-  "region": "Region 06",
-  "assignee": "Steven McCormick",
-  "budget": 9500,
-  "cost": 0,
-  "type": "Lighting",
-  "name": "119 Lubbock - Store Maintenance and Repair",
-  "start": "2026-09-01",
-  "effortDays": 50,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 6521,
-  "status": "Budget Plan",
-  "store": "113 Montgomery",
-  "region": "Region 03",
-  "assignee": "Steven McCormick",
-  "budget": 2000,
-  "cost": 0,
-  "type": "Internal Team Maintenance",
-  "name": "113 Montgomery - Store Maintenance and Repair",
-  "start": "2026-05-15",
-  "effortDays": 120,
-  "pct": 0,
-  "carryover": false
- },
- {
-  "id": 4410,
-  "status": "Budget Plan",
-  "store": "730 Store Development",
-  "region": "Headquarters",
-  "assignee": "Chet Lange",
-  "budget": 1200000,
-  "cost": -1761558.54,
-  "type": "Contingency",
-  "name": "730 Store Development - Contingency",
-  "start": "2026-01-01",
-  "effortDays": 364,
-  "pct": 0,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -2218,5 +2218,21 @@
   "carryover": false,
   "requestDate": "2026-08-10",
   "notes": "New request from 8/10/26 budget meeting — asphalt repairs, look at entryway to warehouse. Awaiting Fexa project ID, region, assignee, and budget estimate.  ·  9/21/26 meeting: Quote still pending."
+ },
+ {
+  "id": 8864,
+  "status": "Budget Request",
+  "store": "450 McCoys Millworks",
+  "region": "Millwork",
+  "assignee": "Steven McCormick",
+  "budget": 16000,
+  "cost": 0,
+  "type": "HVAC",
+  "name": "Install new Large Fan",
+  "start": "2026-11-01",
+  "effortDays": 60,
+  "pct": 0,
+  "carryover": false,
+  "requestDate": "2026-11-02"
  }
 ]
