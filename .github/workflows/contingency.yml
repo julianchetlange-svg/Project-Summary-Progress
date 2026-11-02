@@ -1,0 +1,70 @@
+name: Thursday 11am – contingency + publish
+
+on:
+  # Started by the Gmail Apps Script as soon as Fexa's email is uploaded.
+  repository_dispatch:
+    types: [fexa-contingency]
+  # Backstop (UTC; covers both CST and CDT). At 11:25am CT, publishes with last week's log if the contingency export hasn't arrived.
+  schedule:
+    - cron: "25 16,17 * * 4"
+  workflow_dispatch:
+    inputs:
+      as_of:
+        description: "Report date YYYY-MM-DD (blank = today)"
+        required: false
+      force:
+        description: "Republish even if this date was already published"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-report
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out private inbox
+        uses: actions/checkout@v4
+        with:
+          repository: julianchetlange-svg/Project-Summary-Inbox
+          token: ${{ secrets.INBOX_TOKEN }}
+          path: inbox
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - run: pip install -r scripts/requirements.txt
+      - id: run
+        run: |
+          ARGS=""
+          case "${{ github.event_name }}" in
+            schedule) ARGS="--scheduled" ;;
+            repository_dispatch) ARGS="--thursday-only --as-of ${{ github.event.client_payload.date }}" ;;
+            workflow_dispatch)
+              if [ -n "${{ inputs.as_of }}" ]; then ARGS="--as-of ${{ inputs.as_of }}"; fi
+              if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi ;;
+          esac
+          python scripts/fexa_report.py contingency $ARGS
+      - name: Commit report data
+        if: steps.run.outputs.changed == 'true'
+        run: |
+          git config user.name "project-report-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data meeting-notes index.html
+          git diff --cached --quiet || git commit -m "${{ steps.run.outputs.message }}"
+          git pull --rebase origin main && git push
+      - name: Queue emails for Gmail
+        if: steps.run.outputs.changed == 'true'
+        working-directory: inbox
+        run: |
+          git config user.name "project-report-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A outbox
+          git diff --cached --quiet || (git commit -m "Queue email: ${{ steps.run.outputs.message }}" && git pull --rebase && git push)
