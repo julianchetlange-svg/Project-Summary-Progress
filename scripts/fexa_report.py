@@ -296,7 +296,8 @@ def parse_module(path, prior, as_of):
         p.update({k: v for k, v in CFG["overrides"].get(str(rid), {}).items() if not k.startswith("_")})
         out.append(p)
 
-        # data-quality checks
+        # data-quality checks (after overrides, so corrected values aren't re-flagged)
+        start = p["start"]
         if status == "Active" and start and int(start[:4]) > CFG["report_year"]:
             flags.append(f"{rid} {name}: Active but planned start is {start}.")
         if status == "Closed" and start and start > as_of:
