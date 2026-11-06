@@ -476,10 +476,13 @@ def render(projects, log, as_of):
 INBOX = Path(os.environ.get("INBOX_DIR", ROOT / "inbox"))
 
 
-def find_export(kind, as_of):
-    """Newest uploaded attachment of this kind received on the report date."""
+def find_export(kind, as_of, days=6):
+    """Newest uploaded attachment of this kind received on the report date or up to `days` after it
+    (so a late or resent Fexa email still counts toward that Thursday's report)."""
     d = INBOX / "incoming" / kind
-    files = sorted(f for f in d.glob(f"{as_of}_*") if f.suffix.lower() in (".xls", ".xlsx", ".csv")) if d.exists() else []
+    last = (dt.date.fromisoformat(as_of) + dt.timedelta(days=days)).isoformat()
+    files = sorted(f for f in d.glob("*_*") if f.suffix.lower() in (".xls", ".xlsx", ".csv")
+                   and as_of <= f.name[:10] <= last) if d.exists() else []
     return files[-1] if files else None
 
 

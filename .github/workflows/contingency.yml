@@ -4,9 +4,9 @@ on:
   # Started by the Gmail Apps Script as soon as Fexa's email is uploaded.
   repository_dispatch:
     types: [fexa-contingency]
-  # Backstop (UTC; covers both CST and CDT). At 11:25am CT, publishes with last week's log if the contingency export hasn't arrived.
+  # Backstop (UTC; covers both CST and CDT). From 11:25am CT, publishes with last week's log if the contingency export hasn't arrived. Repeats so a run GitHub starts late still lands on Thursday.
   schedule:
-    - cron: "25 16,17 * * 4"
+    - cron: "25,47 16-20 * * 4"
   workflow_dispatch:
     inputs:
       as_of:

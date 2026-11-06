@@ -4,9 +4,9 @@ on:
   # Started by the Gmail Apps Script as soon as Fexa's email is uploaded.
   repository_dispatch:
     types: [fexa-module]
-  # Backstop (UTC; covers both CST and CDT). Sends the 'export not received' alert at 6:40am CT if nothing arrived.
+  # Backstop (UTC; covers both CST and CDT). From 6:40am CT, sends the 'export not received' alert if nothing arrived.
   schedule:
-    - cron: "40 11,12 * * 4"
+    - cron: "40 11-14 * * 4"
   workflow_dispatch:
     inputs:
       as_of:
