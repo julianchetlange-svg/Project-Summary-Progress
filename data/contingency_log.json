@@ -383,5 +383,40 @@
   "department": null,
   "projected": null,
   "amount": 82305.54
+ },
+ {
+  "name": "103 San Benito - Rusted R-Panel - Yard Side",
+  "detail": "Budget - $60,000.00 Final Cost - $137,953.83 = $77,953.83 over (130%)",
+  "department": null,
+  "projected": null,
+  "amount": 77953.83
+ },
+ {
+  "name": "950 Rio Truss - Lean-To Cover for MiTek Saw - Added Compressor & Scope",
+  "detail": "Budget - $97,000.00 Final Cost - $210,930.78 = $113,930.78 over (117%) - Unplanned Item All spend goes to contingency",
+  "department": null,
+  "projected": null,
+  "amount": 210930.78
+ },
+ {
+  "name": "900 Headquarters - Hiking Trail",
+  "detail": "Hiking Trailer Approved to Install 2026, move from 2027 Budget",
+  "department": null,
+  "projected": null,
+  "amount": 65000
+ },
+ {
+  "name": "387 Window Delivery - Fleet Lifecycle",
+  "detail": "Replace 599008 (Transmission) Before 2027 Plan",
+  "department": null,
+  "projected": null,
+  "amount": 58000
+ },
+ {
+  "name": "763 Region 3 - Window Tech - Fleet Lifecycle",
+  "detail": "Replace 599027 (Transmission) From 2027 Plan",
+  "department": null,
+  "projected": null,
+  "amount": 58000
  }
 ]
