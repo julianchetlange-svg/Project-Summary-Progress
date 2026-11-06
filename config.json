@@ -23,7 +23,9 @@
   "restore_if_missing": [7412, 3551],
   "overrides": {
     "7412": {"name": "123 Springtown (fka Reno) - New Store", "carryover": true, "carryLabel": "2026‑27 carry"},
-    "3551": {"carryover": true, "carryLabel": "2026‑27 carry"}
+    "3551": {"carryover": true, "carryLabel": "2026‑27 carry"},
+    "848": {"start": "2026-03-01", "_why": "Fexa shows 2027; actual start was 2026 (Chet, 11/6/26). Remove once fixed in Fexa."},
+    "1124": {"start": "2026-04-01", "_why": "Fexa shows 2027; actual start was 2026 (Chet, 11/6/26). Remove once fixed in Fexa."}
   },
 
   "contingency_project_id": 4410,
