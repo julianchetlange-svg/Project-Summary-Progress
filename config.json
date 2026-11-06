@@ -7,10 +7,10 @@
   "module_subject": "Project Report - Module",
   "contingency_subject": "Current Budget Year Contingency",
 
-  "notify_to": ["chet.lange@mccoys.com"],
+  "notify_to": ["chet.lange@mccoys.com", "ray.gabriel@mccoys.com", "carlos.garcia@mccoys.com", "jeff.schaefer@mccoys.com"],
 
-  "module_window": {"start": "05:00", "alert_after": "06:30", "end": "07:30"},
-  "contingency_window": {"start": "11:00", "publish_by": "11:25", "end": "12:30"},
+  "module_window": {"start": "04:00", "alert_after": "06:30", "end": "23:59"},
+  "contingency_window": {"start": "11:00", "publish_by": "11:25", "end": "23:59"},
 
   "project_managers": [
     "Leeland Weiss", "Steven McCormick", "Carlos Garcia", "Greg Wallace",
