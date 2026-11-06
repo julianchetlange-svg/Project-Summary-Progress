@@ -26,7 +26,8 @@
     "3551": {"carryover": true, "carryLabel": "2026‑27 carry"},
     "848": {"start": "2026-03-01", "_why": "Fexa shows 2027; actual start was 2026 (Chet, 11/6/26). Remove once fixed in Fexa."},
     "1124": {"start": "2026-04-01", "_why": "Fexa shows 2027; actual start was 2026 (Chet, 11/6/26). Remove once fixed in Fexa."},
-    "2429": {"status": "Post-Construction", "_only_if_status": ["Active"], "_why": "Moved to Post-Construction per Chet 11/6/26; applies only while Fexa still shows Active."}
+    "2429": {"status": "Post-Construction", "_only_if_status": ["Active"], "_why": "Moved to Post-Construction per Chet 11/6/26; applies only while Fexa still shows Active."},
+    "8931": {"assignee": "Leeland Weiss", "_only_if_assignee": ["Carlos Garcia"], "_why": "Reassigned to Leeland Weiss per Chet 11/6/26; applies only while Fexa still shows Carlos Garcia."}
   },
 
   "contingency_project_id": 4410,

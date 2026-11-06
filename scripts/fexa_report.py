@@ -294,7 +294,8 @@ def parse_module(path, prior, as_of):
         if status == "Budget Request" and not p.get("requestDate"):
             p["requestDate"] = as_of
         ov = CFG["overrides"].get(str(rid), {})
-        if not ov.get("_only_if_status") or status in ov["_only_if_status"]:
+        # "_only_if_<field>": [values] -> apply only while Fexa still shows one of those values
+        if all(p.get(k[len("_only_if_"):]) in v for k, v in ov.items() if k.startswith("_only_if_")):
             p.update({k: v for k, v in ov.items() if not k.startswith("_")})
             status = p["status"]
         out.append(p)
