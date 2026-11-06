@@ -76,21 +76,6 @@
   "requestDate": "2026-08-27"
  },
  {
-  "id": 2429,
-  "status": "Active",
-  "store": "024 Pasadena",
-  "region": "Region 03",
-  "assignee": "Greg Wallace",
-  "budget": 78000,
-  "cost": 8410.81,
-  "type": "Alarms",
-  "name": "024 Pasadena - Burglar & Fire Alarm",
-  "start": "2026-09-14",
-  "effortDays": 30,
-  "pct": 63,
-  "carryover": false
- },
- {
   "id": 4080,
   "status": "Active",
   "store": "730 Store Development",
@@ -440,6 +425,21 @@
   "start": "2026-05-15",
   "effortDays": 120,
   "pct": 6,
+  "carryover": false
+ },
+ {
+  "id": 2429,
+  "status": "Post-Construction",
+  "store": "024 Pasadena",
+  "region": "Region 03",
+  "assignee": "Greg Wallace",
+  "budget": 78000,
+  "cost": 8410.81,
+  "type": "Alarms",
+  "name": "024 Pasadena - Burglar & Fire Alarm",
+  "start": "2026-09-14",
+  "effortDays": 30,
+  "pct": 63,
   "carryover": false
  },
  {

@@ -293,7 +293,10 @@ def parse_module(path, prior, as_of):
                 p[k] = pr[k]
         if status == "Budget Request" and not p.get("requestDate"):
             p["requestDate"] = as_of
-        p.update({k: v for k, v in CFG["overrides"].get(str(rid), {}).items() if not k.startswith("_")})
+        ov = CFG["overrides"].get(str(rid), {})
+        if not ov.get("_only_if_status") or status in ov["_only_if_status"]:
+            p.update({k: v for k, v in ov.items() if not k.startswith("_")})
+            status = p["status"]
         out.append(p)
 
         # data-quality checks (after overrides, so corrected values aren't re-flagged)
