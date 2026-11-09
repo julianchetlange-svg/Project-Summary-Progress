@@ -151,7 +151,7 @@
   "pct": 0,
   "carryover": false,
   "requestDate": "2026-07-28",
-  "notes": "Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.  ·  8/10/26 meeting: Have Leeland get a quote for the trouble areas and send to Ron.  ·  9/10/26 meeting: Will re-quote for just the small back area (22x34); rest of scope moves to 2027.  ·  9/21/26 meeting: Review quotes.  ·  10/12/26 meeting: Review revised second quote."
+  "notes": "Sitework requested by store manager Armando. $50K set as a placeholder; Leeland to get estimate.  ·  8/10/26 meeting: Have Leeland get a quote for the trouble areas and send to Ron.  ·  9/10/26 meeting: Will re-quote for just the small back area (22x34); rest of scope moves to 2027.  ·  9/21/26 meeting: Review quotes.  ·  10/12/26 meeting: Review revised second quote.  ·  11/9/26 meeting: Review revised second quote — project complete."
  },
  {
   "id": 8534,
@@ -213,7 +213,7 @@
   "pct": 0,
   "carryover": false,
   "requestDate": "2026-07-08",
-  "notes": "Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.  ·  9/10/26 meeting: Did $500K of concrete work in 2021; sent clarification to the team. Try to patch at lower cost and push to 2027.  ·  10/12/26 meeting: Revised quotes for review."
+  "notes": "Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.  ·  9/10/26 meeting: Did $500K of concrete work in 2021; sent clarification to the team. Try to patch at lower cost and push to 2027.  ·  10/12/26 meeting: Revised quotes for review.  ·  11/9/26 meeting: Project starts 11/17."
  },
  {
   "id": 1131,
@@ -319,7 +319,7 @@
   "effortDays": 120,
   "pct": 0,
   "carryover": false,
-  "notes": "Looking at lower insurance requirements for this work so we don't have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray's contractor (does not meet insurance requirements). Work to be done on Sunday."
+  "notes": "Looking at lower insurance requirements for this work so we don't have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray's contractor (does not meet insurance requirements). Work to be done on Sunday.  ·  11/9/26 meeting: Still looking for an additional quote — most recent came in at $7,700. Getting one more quote before using Ray's contractor; Leeland met with Kapbuilt on Friday."
  },
  {
   "id": 8666,
@@ -652,7 +652,7 @@
   "effortDays": 210,
   "pct": 66,
   "carryover": false,
-  "notes": "Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future."
+  "notes": "Under review since 2023. Team feedback: $30K to patch just the worst spot would be a bad spend given how bad the yard is overall. Considering pushing this and building a comprehensive plan for 2027.  ·  8/10/26 meeting: Look at entryway and areas where elevation changes; Ron to send pictures. Also look at pole sheds for our teams to repair in the future.  ·  11/9/26 meeting: Project complete."
  },
  {
   "id": 3749,
@@ -669,7 +669,7 @@
   "pct": 58,
   "carryover": false,
   "requestDate": "2026-08-20",
-  "notes": "Revised scope discussed at 8/10/26 budget meeting — look at entryway through the gate, push to 2027.  ·  9/10/26 meeting: Do the whole scope — parking lot ($67K) + entrance ($34K). Keep existing 1/2' metal plate. Capitalize as capex.  ·  9/21/26 meeting: Review quotes."
+  "notes": "Revised scope discussed at 8/10/26 budget meeting — look at entryway through the gate, push to 2027.  ·  9/10/26 meeting: Do the whole scope — parking lot ($67K) + entrance ($34K). Keep existing 1/2' metal plate. Capitalize as capex.  ·  9/21/26 meeting: Review quotes.  ·  11/9/26 meeting: Project complete."
  },
  {
   "id": 4377,
@@ -2217,7 +2217,7 @@
   "pct": 0,
   "carryover": false,
   "requestDate": "2026-08-10",
-  "notes": "New request from 8/10/26 budget meeting — asphalt repairs, look at entryway to warehouse. Awaiting Fexa project ID, region, assignee, and budget estimate.  ·  9/21/26 meeting: Quote still pending."
+  "notes": "New request from 8/10/26 budget meeting — asphalt repairs, look at entryway to warehouse. Awaiting Fexa project ID, region, assignee, and budget estimate.  ·  9/21/26 meeting: Quote still pending.  ·  11/9/26 meeting: Steven traveling this week to meet the contractor — 2027 budget item."
  },
  {
   "id": 8864,
@@ -2233,7 +2233,8 @@
   "effortDays": 60,
   "pct": 0,
   "carryover": false,
-  "requestDate": "2026-11-02"
+  "requestDate": "2026-11-02",
+  "notes": "11/9/26 meeting: Greenheck fan out — asked the team to push the repair to 2027."
  },
  {
   "id": 8931,
@@ -2249,6 +2250,7 @@
   "effortDays": 20,
   "pct": 0,
   "carryover": true,
-  "requestDate": "2026-11-05"
+  "requestDate": "2026-11-05",
+  "notes": "11/9/26 meeting: Leeland met the contractor Friday."
  }
 ]
