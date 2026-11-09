@@ -318,9 +318,16 @@ def parse_module(path, prior, as_of):
             continue
         if not isinstance(pr["id"], int):
             code = (re.match(r"(\d{3})", pr.get("store", "")) or [None, None])[1]
-            match = next((p for p in out if code and p["store"].startswith(code)
-                          and pr["type"].lower() in p["name"].lower()
-                          and any(w in p["name"].lower() for w in pr["name"].lower().split()[-2:])), None)
+            words = [w for w in re.findall(r"[a-z]+", pr["name"].lower().split(" - ")[-1]) if len(w) > 3]
+            prior_ids = {pid_key(x["id"]) for x in prior}
+
+            def fits(p):
+                if not code or not p["store"].startswith(code) or pid_key(p["id"]) in prior_ids:
+                    return False                       # only brand-new Fexa projects at the same store
+                if pr["type"] != "Other" and pr["type"].lower() not in (p["type"] + " " + p["name"]).lower():
+                    return False
+                return any(w in p["name"].lower() for w in words)
+            match = next((p for p in out if fits(p)), None)
             if match:
                 for kx in ("notes", "requestDate"):
                     if pr.get(kx) and not match.get(kx):
