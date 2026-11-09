@@ -448,11 +448,30 @@ def js_array(items, grouped=False):
     return "[" + "\n".join(lines) + "\n]"
 
 
+def meeting_photos(date):
+    """Photos in meeting-notes/photos/<date>/, grouped by filename prefix (e.g. 113-montgomery-01.jpg).
+    Optional captions.json maps a prefix to a heading."""
+    d = ROOT / "meeting-notes" / "photos" / date
+    if not d.is_dir():
+        return []
+    caps = json.loads((d / "captions.json").read_text()) if (d / "captions.json").exists() else {}
+    groups = {}
+    for f in sorted(d.iterdir()):
+        if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            key = re.sub(r"[-_ ]*\d+$", "", f.stem)
+            groups.setdefault(key, []).append(f"meeting-notes/photos/{date}/{f.name}")
+    return [{"caption": caps.get(k, k.replace("-", " ").title()), "files": v} for k, v in groups.items()]
+
+
 def meeting_notes():
     notes = []
     for f in sorted((ROOT / "meeting-notes").glob("*.md"), reverse=True):
         if re.match(r"\d{4}-\d{2}-\d{2}\.md$", f.name):
-            notes.append({"date": f.stem, "text": f.read_text().strip()})
+            n = {"date": f.stem, "text": f.read_text().strip()}
+            photos = meeting_photos(f.stem)
+            if photos:
+                n["photos"] = photos
+            notes.append(n)
     return notes
 
 
