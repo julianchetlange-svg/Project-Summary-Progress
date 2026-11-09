@@ -2252,5 +2252,22 @@
   "carryover": true,
   "requestDate": "2026-11-05",
   "notes": "11/9/26 meeting: Leeland met the contractor Friday."
+ },
+ {
+  "id": "PENDING-103",
+  "status": "Budget Request",
+  "store": "103 San Benito",
+  "region": "Region 05",
+  "assignee": "Unassigned",
+  "budget": 0,
+  "cost": 0,
+  "type": "Sitework",
+  "name": "103 San Benito - Sitework - Yard Repairs",
+  "start": "",
+  "effortDays": 0,
+  "pct": 0,
+  "carryover": false,
+  "requestDate": "2026-11-09",
+  "notes": "New request from 11/9/26 budget meeting — get a quote from the Brownsville contractor on yard repairs. Awaiting Fexa project ID, assignee and budget estimate."
  }
 ]
