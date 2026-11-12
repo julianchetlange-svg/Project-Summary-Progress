@@ -1,31 +1,10 @@
 [
  {
-  "name": "047 Waco - Fence Install",
-  "detail": "",
-  "department": null,
-  "projected": null,
-  "amount": 17069.29
- },
- {
-  "name": "008 Stephenville - A- Frame Rack",
-  "detail": "Unplanned Spend - Approved RVW",
-  "department": null,
-  "projected": null,
-  "amount": 5700
- },
- {
   "name": "018 Abilene - A- Frame Rack",
   "detail": "Unplanned Spend - Approved RVW",
   "department": null,
   "projected": null,
-  "amount": 5700
- },
- {
-  "name": "017 North Corpus - Sitework - Grading - Cantilever Rack",
-  "detail": "Unplanned Spend - Approved Budget Review - WW & RVW",
-  "department": null,
-  "projected": null,
-  "amount": 9100
+  "amount": 5547.56
  },
  {
   "name": "060 Brenham Demo - Asbestos Remediation",
@@ -56,11 +35,53 @@
   "amount": 33012.78
  },
  {
+  "name": "008 Stephenville - A- Frame Rack",
+  "detail": "Unplanned Spend - Approved RVW - Unplanned Item - 5,547.56",
+  "department": null,
+  "projected": null,
+  "amount": 5547.56
+ },
+ {
   "name": "033 Pharr- Sitework - Concrete Washout",
   "detail": "Original Budget - $30,000 - Actual Cost $7,350 - $22,650 Under Budget",
   "department": null,
   "projected": null,
   "amount": -22650
+ },
+ {
+  "name": "013 Richwood - Doors Lifecycle",
+  "detail": "Orginal - $45,000.00 Actual - $39,602.27 = $5,397.77 under (12%)",
+  "department": null,
+  "projected": null,
+  "amount": -5397.77
+ },
+ {
+  "name": "003 Brazoria - Doors Lifecycle",
+  "detail": "Orginal - $45,000.00 Actual - $38,906.71 = $6,093.29 under (14%)",
+  "department": null,
+  "projected": null,
+  "amount": -6093.29
+ },
+ {
+  "name": "050 SC San Antonio - Sitework",
+  "detail": "Repair Damaged Asphalt - Not in Budget - 14,878.72",
+  "department": null,
+  "projected": null,
+  "amount": 14878.72
+ },
+ {
+  "name": "017 North Corpus - Sitework - Grading - Cantilever Rack",
+  "detail": "Unplanned Spend - Approved Budget Review - WW & RVW",
+  "department": null,
+  "projected": null,
+  "amount": 9074.06
+ },
+ {
+  "name": "047 Waco - Fence Install",
+  "detail": "",
+  "department": null,
+  "projected": null,
+  "amount": 17069.29
  },
  {
   "name": "122 Canyon Lake - New Store",
@@ -126,11 +147,11 @@
   "amount": 1596.56
  },
  {
-  "name": "Racking Inspection/Repairs - 004, 006, 008, 015, 016, 017, 018, 029, 030, 034, 037, 040, 043, 044, 047, 049, 050, 052, 057, 063, 087, 090, 101, 103,109, 111, 117, 119, 359",
+  "name": "Racking Inspection/Repairs - 004, 006, 008, 015, 016, 017, 018, 019, 029, 030, 034, 035, 037, 040, 043, 044, 047, 049, 050, 052, 057, 063,, 087, 090, 101, 103,109, 111, 117, 119, 359",
   "detail": "Most Likely Qualifies as expense, will track against budget to be safe",
   "department": null,
   "projected": null,
-  "amount": 98819.7
+  "amount": 132869.83
  },
  {
   "name": "103 San Benito - Lighting",
@@ -196,6 +217,13 @@
   "amount": 18686.1
  },
  {
+  "name": "029, 057, 063, 090, 063, 084, 060, 088, 114, 043, 109 Signage",
+  "detail": "151,000 Budget - Actual Spend - 138,439.45 - $7,559.77 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -7559.77
+ },
+ {
   "name": "087 Fort Stockton - Sitework - Asphalt Repairs",
   "detail": "Original Budget $45,000 - Actual Spend $52,900.80 - $7,900.80 Over Budget",
   "department": null,
@@ -222,6 +250,13 @@
   "department": null,
   "projected": null,
   "amount": -5566.33
+ },
+ {
+  "name": "735 Fleet - YTD Delivery Balance",
+  "detail": "Budget $2,777,000 - Actual Cost $2,639,937.98 - $137,062.02 Under Budget",
+  "department": null,
+  "projected": null,
+  "amount": -137062.02
  },
  {
   "name": "900 Headquarters - HVAC - RTU and Split System Replacement",
@@ -252,13 +287,6 @@
   "amount": -2599.24
  },
  {
-  "name": "029, 057, 063, 090, 084, 060, 088, 114, 043, 109 Signage",
-  "detail": "151,000 Budget - Actual Spend - 133,288 - $12,711.22 Under Budget",
-  "department": null,
-  "projected": null,
-  "amount": -12711.22
- },
- {
   "name": "015 Store - Burglar & Fire Alarm",
   "detail": "Original Budget $78,000 - Actual Spend $83,407.41 - $5,407.41 Over Budget",
   "department": null,
@@ -280,11 +308,11 @@
   "amount": 2013.16
  },
  {
-  "name": "735 Fleet - YTD Delivery Balance",
-  "detail": "Budget $2,777,000 - Actual Cost $2,639,937.98 - $137,062.02 Under Budget",
+  "name": "039 Longview - Replace Septic System",
+  "detail": "Unplanned Spend",
   "department": null,
   "projected": null,
-  "amount": -137062.02
+  "amount": 70559.51
  },
  {
   "name": "035 Odessa - Replace 2 Split Systems",
@@ -292,13 +320,6 @@
   "department": null,
   "projected": null,
   "amount": 40040.88
- },
- {
-  "name": "039 Longview - Replace Septic System",
-  "detail": "Unplanned Spend",
-  "department": null,
-  "projected": null,
-  "amount": 70559.51
  },
  {
   "name": "066 Alice - Burglar & Fire Alarm",
