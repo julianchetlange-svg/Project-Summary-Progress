@@ -378,6 +378,20 @@
   "amount": 8735.69
  },
  {
+  "name": "044 Kerrville - Lifecycle Replacements - Doors",
+  "detail": "Original - $30,000.00 Actual Expense - $26,669.22 = $3,330.78 under (11%)",
+  "department": null,
+  "projected": null,
+  "amount": -3330.78
+ },
+ {
+  "name": "024 Pasadena - Burglar & Fire Alarm",
+  "detail": "Original $78,000 - Actual -75,620.42 = -$2,379.58",
+  "department": null,
+  "projected": null,
+  "amount": -2379.58
+ },
+ {
   "name": "359 Burnet Distribution - Sitework",
   "detail": "Budget 60,890.63 - Cost $37,213.10 - Variance -$23,677.53 (under)",
   "department": null,

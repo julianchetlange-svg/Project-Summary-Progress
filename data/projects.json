@@ -6,12 +6,12 @@
   "region": "Headquarters",
   "assignee": "Chet Lange",
   "budget": 1200000,
-  "cost": -1239714.52,
+  "cost": -1245424.88,
   "type": "Contingency",
   "name": "730 Store Development - Contingency",
   "start": "2026-01-01",
   "effortDays": 364,
-  "pct": 79,
+  "pct": 84,
   "carryover": false
  },
  {
@@ -36,12 +36,12 @@
   "region": "Headquarters",
   "assignee": "Greg Wallace",
   "budget": 140000,
-  "cost": 92977.99,
+  "cost": 101509.8,
   "type": "Sitework",
   "name": "730 Store Development - Parking Lot Striping",
   "start": "2026-03-15",
   "effortDays": 280,
-  "pct": 84,
+  "pct": 88,
   "carryover": false
  },
  {
@@ -81,7 +81,7 @@
   "region": "Region 07",
   "assignee": "Jeff Schaefer",
   "budget": 11000000,
-  "cost": 3092058.21,
+  "cost": 3099628.21,
   "type": "New Facility",
   "name": "122 Canyon Lake - New Store",
   "start": "2026-01-12",
@@ -137,7 +137,7 @@
  },
  {
   "id": 6818,
-  "status": "Pre-Construction",
+  "status": "Active",
   "store": "066 Alice",
   "region": "Region 04",
   "assignee": "Leeland Weiss",
@@ -151,6 +151,21 @@
   "carryover": false,
   "requestDate": "2026-07-08",
   "notes": "Requested by the store and regional manager. Leeland is getting a quote.  ·  8/10/26 meeting: Only do patch work — send quote to Ron; Leeland to move forward with the quote.  ·  9/10/26 meeting: Did $500K of concrete work in 2021; sent clarification to the team. Try to patch at lower cost and push to 2027.  ·  10/12/26 meeting: Revised quotes for review.  ·  11/9/26 meeting: Project starts 11/17."
+ },
+ {
+  "id": 9095,
+  "status": "Active",
+  "store": "047 Waco",
+  "region": "Region 02",
+  "assignee": "Steven McCormick",
+  "budget": 16183.51,
+  "cost": 0,
+  "type": "HVAC",
+  "name": "047 Waco - Replace RTU Heat Exchangers",
+  "start": "2026-11-24",
+  "effortDays": 2,
+  "pct": 0,
+  "carryover": false
  },
  {
   "id": 1131,
@@ -247,14 +262,14 @@
   "status": "Pre-Construction",
   "store": "016 New Braunfels",
   "region": "Region 07",
-  "assignee": "Carlos Garcia",
+  "assignee": "Leeland Weiss",
   "budget": 20000,
   "cost": 0,
   "type": "Sitework",
   "name": "016 New Braunfels - Base work freight truck exit",
   "start": "2026-06-01",
   "effortDays": 120,
-  "pct": 0,
+  "pct": 55,
   "carryover": false,
   "notes": "Looking at lower insurance requirements for this work so we don't have to hire a large commercial contractor under the current insurance requirements.  ·  8/10/26 meeting: Use Ray's contractor (does not meet insurance requirements). Work to be done on Sunday.  ·  11/9/26 meeting: Still looking for an additional quote — most recent came in at $7,700. Getting one more quote before using Ray's contractor; Leeland met with Kapbuilt on Friday."
  },
@@ -310,7 +325,7 @@
   "region": "Region 02",
   "assignee": "Jeff Schaefer",
   "budget": 9530000,
-  "cost": 65270,
+  "cost": 69320,
   "type": "New Facility",
   "name": "123 Springtown (fka Reno) - New Store",
   "start": "2026-08-17",
@@ -371,12 +386,12 @@
   "region": "Region 05",
   "assignee": "Leeland Weiss",
   "budget": 5000,
-  "cost": 0,
+  "cost": 3615.32,
   "type": "Racking Inspection",
   "name": "089 Mission - Racking Inspection",
   "start": "2026-11-09",
   "effortDays": 30,
-  "pct": 0,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -392,6 +407,21 @@
   "start": "2026-05-15",
   "effortDays": 120,
   "pct": 6,
+  "carryover": false
+ },
+ {
+  "id": 9029,
+  "status": "Budget Plan",
+  "store": "508 The Retreat",
+  "region": "Headquarters",
+  "assignee": "Carlos Garcia",
+  "budget": 38984.88,
+  "cost": 3618,
+  "type": "Sitework",
+  "name": "508 Retreat - Sitework - Walking Trail 3nd Section",
+  "start": "2026-11-16",
+  "effortDays": 90,
+  "pct": 50,
   "carryover": false
  },
  {
@@ -416,7 +446,7 @@
   "region": "Region 03",
   "assignee": "Greg Wallace",
   "budget": 78000,
-  "cost": 8410.81,
+  "cost": 80379.58,
   "type": "Alarms",
   "name": "024 Pasadena - Burglar & Fire Alarm",
   "start": "2026-09-14",
@@ -431,27 +461,12 @@
   "region": "Region 07",
   "assignee": "Leeland Weiss",
   "budget": 30000,
-  "cost": 2152.01,
+  "cost": 3125.72,
   "type": "Doors",
   "name": "016 New Braunfels - Lifecycle Replacements",
   "start": "2026-04-01",
   "effortDays": 210,
   "pct": 83,
-  "carryover": false
- },
- {
-  "id": 1133,
-  "status": "Post-Construction",
-  "store": "044 Kerrville",
-  "region": "Region 07",
-  "assignee": "Leeland Weiss",
-  "budget": 30000,
-  "cost": 0,
-  "type": "Doors",
-  "name": "044 Kerrville - Lifecycle Replacements",
-  "start": "2026-07-01",
-  "effortDays": 90,
-  "pct": 75,
   "carryover": false
  },
  {
@@ -482,6 +497,21 @@
   "start": "2026-08-10",
   "effortDays": 30,
   "pct": 50,
+  "carryover": false
+ },
+ {
+  "id": 1133,
+  "status": "Closed",
+  "store": "044 Kerrville",
+  "region": "Region 07",
+  "assignee": "Leeland Weiss",
+  "budget": 30000,
+  "cost": 26669.22,
+  "type": "Doors",
+  "name": "044 Kerrville - Lifecycle Replacements",
+  "start": "2026-07-01",
+  "effortDays": 90,
+  "pct": 75,
   "carryover": false
  },
  {
@@ -2138,7 +2168,7 @@
   "name": "900 Headquarters - HVAC - RTU System Replacement",
   "start": "2026-08-14",
   "effortDays": 5,
-  "pct": 87,
+  "pct": 21,
   "carryover": false
  },
  {
@@ -2365,5 +2395,21 @@
   "carryover": false,
   "requestDate": "2026-11-09",
   "notes": "Added after the 11/9/26 budget meeting — order a container forklift for Burnet."
+ },
+ {
+  "id": 9128,
+  "status": "Budget Request",
+  "store": "008 Stephenville",
+  "region": "Region 02",
+  "assignee": "Leeland Weiss",
+  "budget": 105000,
+  "cost": 0,
+  "type": "Lighting",
+  "name": "008 Stephenville - LED Retro",
+  "start": "2027-04-01",
+  "effortDays": 60,
+  "pct": 0,
+  "carryover": false,
+  "requestDate": "2026-11-19"
  }
 ]
